@@ -3,8 +3,14 @@
 export default {
     template: `
         <nav>
-            
             <button>compose</button>
+            <ul>
+                <li>inbox</li>
+                <li>starred</li>
+                <li>sent</li>
+                <li>drafts</li>
+            </ul>
+            
 
         </nav>
     `
