@@ -1,5 +1,6 @@
 'use-strict';
 
+import keepService from '../services/keep-service.js'
 import noteText from './note-txt.cmp.js'
 import noteImg from './note-img.cmp.js'
 import noteTodos from './note-todos.cmp.js'
@@ -16,7 +17,7 @@ export default {
     `,
     created() {
         console.log('note item is alive');
-        
+
     },
     data() {
         return {
@@ -25,10 +26,11 @@ export default {
     },
     methods: {
         changeColor(color) {
-            this.bgcolor = color
+            this.bgcolor = color;
+            // this.updateColor(this.note.id, color);
         },
-        updateChanges() {
-
+        updateColor(noteId, color) {
+            keepService.updateColor(noteId, color)
         }
     },
     computed: {
@@ -39,6 +41,6 @@ export default {
         noteText,
         noteImg,
         noteTodos,
-        noteTools
+        noteTools,
     }
 }

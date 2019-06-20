@@ -2,6 +2,7 @@
 
 export default {
     query,
+    updateColor,
     // updateNote,
     // getById,
     // addNote,
@@ -60,8 +61,13 @@ function deleteNote(noteId) {
 }
 
 // for editing the note in real time with the tools
-function updateNote() {
+function updateNoteContent() {
 
+}
+
+function updateColor(noteId, color) {
+    const note = notes.find(note => note.id === noteId);
+    note.color = color;
 }
 
 function getById(noteId) {
