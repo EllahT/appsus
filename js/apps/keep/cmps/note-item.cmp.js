@@ -7,11 +7,11 @@ import noteTools from './note-tools.cmp.js'
 
 export default {
     template: `
-        <li class="note-item" :content="note.content">
-            <note-text v-if="note.type === 'txt'"></note-text>
-            <note-img v-else-if="note.type === 'img'"></note-img>
-            <note-todos v-else="note.type === 'todo'"></note-todos>
-            <note-tools></note-tools>
+        <li :style="{'background-color': bgcolor}" class="note-item">
+            <note-text :content="note.content" v-if="note.type === 'txt'"></note-text>
+            <note-img :content="note.content" v-else-if="note.type === 'img'"></note-img>
+            <note-todos :content="note.content" v-else="note.type === 'todo'"></note-todos>
+            <note-tools @changedColor="changeColor"></note-tools>
         </li>
     `,
     created() {
@@ -20,18 +20,19 @@ export default {
     },
     data() {
         return {
-
+            bgcolor: this.note.color
         }
     },
     methods: {
-        changeColor() {
+        changeColor(color) {
+            this.bgcolor = color
+        },
+        updateChanges() {
 
         }
     },
     computed: {
-        checkColor() {
 
-        }
     },
     props: ['note'],
     components: {

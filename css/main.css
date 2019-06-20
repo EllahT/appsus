@@ -1,2 +1,7 @@
 @import './keep/keep-main.css';
 @import './email/email-main.css';
+
+a:link, a:visited {
+    text-decoration: none;
+    color: black
+}

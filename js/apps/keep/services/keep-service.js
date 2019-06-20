@@ -18,14 +18,14 @@ const fakeNotes = [
         id: 'stamMashu',
         type: 'txt',
         content: 'I have to work',
-        color: 'torquoise',
+        color: '#63f0e2',
         isPinned: false
     },
     {
         id: 'otherMashu',
         type: 'todo',
         content: 'I have to study',
-        color: 'torquoise',
+        color: '#fafa34',
         isPinned: false
     }
 ]
