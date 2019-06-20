@@ -7,9 +7,8 @@ import notesList from '../cmps/notes-list.cmp.js'
 export default {
     template: `
     <section>
-    <h1>Whassssup keep</h1>    
-    <!-- <p>{{notes}}</p> -->
-    <notes-list :notes="notes"></notes-list>
+        <h1>Whassssup keep</h1>    
+        <notes-list :notes="notes"></notes-list>
     </section>
     `,
     created() {
