@@ -34,7 +34,7 @@ export default {
         },
         
         imageForDisplay(isRead) {
-            return (isRead)? '../../../../img/email-img/close-envelope.png' : '../../../../img/email-img/open-envelope.png';
+            return (isRead)? 'img/email-img/close-envelope.png' : 'img/email-img/open-envelope.png';
         },
 
         openEmail(emailId) {
