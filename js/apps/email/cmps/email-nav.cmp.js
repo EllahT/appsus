@@ -2,7 +2,7 @@
 
 export default {
     template: `
-        <nav>
+        <nav class="email-nav">
             <button>compose</button>
             <ul>
                 <li>inbox</li>
@@ -10,7 +10,7 @@ export default {
                 <li>sent</li>
                 <li>drafts</li>
             </ul>
-            
+
 
         </nav>
     `

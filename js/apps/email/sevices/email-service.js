@@ -17,8 +17,8 @@ const EMAILS_KEY = 'mrEmails';
 let emails;
 
 let defaultEmails = [
-    {id: utilService.makeId(), from:utilService.makeLorem(5), subject: utilService.makeLorem(10), body: utilService.makeLorem(50), isRead: true, sentAt: getDateAndTime(), isStarred: false, replays: []},
-    {id: utilService.makeId(), from:utilService.makeLorem(5), subject: utilService.makeLorem(10), body: utilService.makeLorem(50), isRead: true, sentAt: getDateAndTime(), isStarred: true, replays: []},
+    {id: utilService.makeId(), from:utilService.makeLorem(5), subject: utilService.makeLorem(10), body: 'searching inside the body', isRead: true, sentAt: getDateAndTime(), isStarred: false, replays: []},
+    {id: utilService.makeId(), from:utilService.makeLorem(5), subject: 'test test', body: utilService.makeLorem(50), isRead: true, sentAt: getDateAndTime(), isStarred: true, replays: []},
     {id: utilService.makeId(), from:utilService.makeLorem(5), subject: utilService.makeLorem(10), body: utilService.makeLorem(50), isRead: false, sentAt: getDateAndTime(), isStarred: false, replays: []},
     {id: utilService.makeId(), from:utilService.makeLorem(5), subject: utilService.makeLorem(10), body: utilService.makeLorem(50), isRead: true, sentAt: getDateAndTime(), isStarred: false, replays: []},
     {id: utilService.makeId(), from:utilService.makeLorem(5), subject: utilService.makeLorem(10), body: utilService.makeLorem(50), isRead: false, sentAt: getDateAndTime(), isStarred: true, replays: []}
@@ -53,24 +53,32 @@ function toggleReadEmail(emailId) {
     email.isRead = !email.isRead;
 }
 
-function query(filter) {
+function query(filterAndSortPrms) {
     if (!emails) emails = storageService.load(EMAILS_KEY);
     if (!emails || !emails.length) {
         emails = defaultEmails;
         storageService.store(EMAILS_KEY, emails);
     }
 
-    if (!filter) return Promise.resolve(emails) 
+    if (!filterAndSortPrms) return Promise.resolve(emails)
     
-    // return filterEmails(filter)
-    //     .then((filteredEmails) => {
-    //         return filteredEmails;
-    //     })
-}
+    let filteredEmails;
 
-function filterEmails() {
-//do filtering by filter.type (title/body) and filter.txt return promise reloved to filtered arr
-}
+    if (filterAndSortPrms.searchPrms.subject) {
+        filteredEmails = emails.filter(email => email.subject.includes(filterAndSortPrms.searchPrms.subject))
+    }
+
+    if (filterAndSortPrms.searchPrms.content) {
+        filteredEmails = emails.filter(email => email.body.includes(filterAndSortPrms.searchPrms.content))
+    }
+
+    return Promise.resolve(filteredEmails);
+
+        // searchPrms: {subject: 'test', content: ''},
+        //         filter: 'all',
+        //         sort: ''
+    
+}    
 
 function getEmailById(emailId) {
     const email = emails.find(email => email.id === emailId);
