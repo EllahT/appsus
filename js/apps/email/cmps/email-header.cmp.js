@@ -10,7 +10,7 @@ export default {
     template: `
     <section class="email-header">
         <app-logo></app-logo>
-        <email-search></email-search>
+        <email-search @searchBy="emitSearchBy" @clearSearch="emitClear"></email-search>
         <email-filter></email-filter>
         <email-sort></email-sort>
         <app-nav></app-nav>
@@ -24,7 +24,17 @@ export default {
     created() {
         console.log('Email Header is alive');
         
-    }, 
+    },
+
+    methods: {
+        emitSearchBy(searchPrms) {
+            this.$emit('searchBy',searchPrms);
+        },
+
+        emitClear() {
+            this.$emit('clearSearch','');
+        }
+    },
 
     components: {
         appLogo,

@@ -1,11 +1,26 @@
 @import '../email/email-list.css';
 
 .email-app {
-    
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    grid-template-rows: 100px 1fr;
+    grid-template-areas: 
+    "emailHeader emailHeader"
+    "emailNav emailMain"
 }
 
 .email-header {
+    grid-area: emailHeader;
     display: flex;
     background-color: lightblue;
     justify-content: space-between;
+    align-items: center;
+}
+
+.email-nav {
+    grid-area: emailNav;
+}
+
+.email-list-container {
+    grid-area: emailMain;
 }

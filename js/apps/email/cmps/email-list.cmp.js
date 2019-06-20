@@ -5,7 +5,7 @@ import emailPreview from '../cmps/email-preview.cmp.js';
 
 export default {
     template: `
-        <section>
+        <section class="email-list-container">
             <ul class="email-list">
                 <li class="email-item" v-for="email in emails" :key="email.id"  :class="{'read-item-container' : email.isRead}">
                     <img class="email-envelope" :src="imageForDisplay(email.isRead)" @click.stop="toggleReadEmail(email.id)"/>
