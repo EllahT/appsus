@@ -1,11 +1,11 @@
 'use-strict';
 
 export default {
-    updateNote,
-    getById,
-    addNote,
-    deleteNote,
-    query
+    query,
+    // updateNote,
+    // getById,
+    // addNote,
+    // deleteNote,
 }
 
 const NOTES_KEY = 'notes';
@@ -13,19 +13,28 @@ const NOTES_KEY = 'notes';
 import utilService from '../../../services/util.service.js'
 import storageService from '../../../services/storage.service.js'
 
-const fakeNotes = [{
-    id: 'stamMashu',
-    type: 'txt',
-    content: 'I have to work',
-    color: 'torquoise',
-    isPinned: false
-}]
+const fakeNotes = [
+    {
+        id: 'stamMashu',
+        type: 'txt',
+        content: 'I have to work',
+        color: 'torquoise',
+        isPinned: false
+    },
+    {
+        id: 'otherMashu',
+        type: 'txt',
+        content: 'I have to study',
+        color: 'torquoise',
+        isPinned: false
+    }
+]
 
 let notes;
 
 function query() {
     let updatedNotes;
-    if (!notes) updateNotes = storageService.load(NOTES_KEY);
+    if (!notes) updatedNotes = storageService.load(NOTES_KEY);
     if (!updatedNotes || !updatedNotes.length) {
         updatedNotes = fakeNotes;
         storageService.store(NOTES_KEY, updatedNotes)
