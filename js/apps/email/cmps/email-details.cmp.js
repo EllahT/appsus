@@ -1,0 +1,1 @@
+//shows all the email content

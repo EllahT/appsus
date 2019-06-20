@@ -1,0 +1,1 @@
+//shows only title + date/ hour + read/unread as a sign
