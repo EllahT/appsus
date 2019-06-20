@@ -2,7 +2,11 @@
 
 export default {
     template: `
-    <h1>i'm email inner nav!</h1>
+        <nav>
+            
+            <button>compose</button>
+
+        </nav>
     `
 }
 
