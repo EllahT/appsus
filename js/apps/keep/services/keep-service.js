@@ -1,22 +1,52 @@
 'use-strict';
 
-import makeId from '../services/util.service.js'
+export default {
+    query,
+    // updateNote,
+    // getById,
+    // addNote,
+    // deleteNote,
+}
 
-let notes = [{
-    id: 'stamMashu',
-    type: txt,
-    content: 'I have to work',
-    color: torquoise,
-    isPinned: false
-}]
+const NOTES_KEY = 'notes';
 
-function createNotes() {
+import utilService from '../../../services/util.service.js'
+import storageService from '../../../services/storage.service.js'
 
+const fakeNotes = [
+    {
+        id: 'stamMashu',
+        type: 'txt',
+        content: 'I have to work',
+        color: 'torquoise',
+        isPinned: false
+    },
+    {
+        id: 'otherMashu',
+        type: 'txt',
+        content: 'I have to study',
+        color: 'torquoise',
+        isPinned: false
+    }
+]
+
+let notes;
+
+function query() {
+    let updatedNotes;
+    if (!notes) updatedNotes = storageService.load(NOTES_KEY);
+    if (!updatedNotes || !updatedNotes.length) {
+        updatedNotes = fakeNotes;
+        storageService.store(NOTES_KEY, updatedNotes)
+    }
+
+    // insert checking filter here
+    return Promise.resolve(updatedNotes);
 }
 
 function addNote(type, color, content, time) {
     let newNote = {
-        id: makeId(),
+        id: utilService.makeId(),
         type: type,
         color: color,
         content: content,
@@ -25,9 +55,7 @@ function addNote(type, color, content, time) {
     notes.unshift(newNote);
 }
 
-
-
-function deleteNote() {
+function deleteNote(noteId) {
 
 }
 
@@ -36,18 +64,10 @@ function updateNote() {
 
 }
 
-function getById() {
+function getById(noteId) {
 
 }
 
-function getNotes() {
+function setFilter() {
 
-}
-
-export default {
-    updateNote,
-    getById,
-    addNote,
-    deleteNote,
-    getNotes
 }
