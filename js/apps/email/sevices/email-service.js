@@ -17,23 +17,23 @@ const EMAILS_KEY = 'mrEmails';
 let emails;
 
 let defaultEmails = [
-    {id: utilService.makeId(), from:utilService.makeLorem(5), subject: utilService.makeLorem(10), body: utilService.makeLorem(50), isRead: true, sentAt: new Date(), isStarred: false, replays: []},
-    {id: utilService.makeId(), from:utilService.makeLorem(5), subject: utilService.makeLorem(10), body: utilService.makeLorem(50), isRead: true, sentAt: new Date(), isStarred: true, replays: []},
-    {id: utilService.makeId(), from:utilService.makeLorem(5), subject: utilService.makeLorem(10), body: utilService.makeLorem(50), isRead: false, sentAt: new Date(), isStarred: false, replays: []},
-    {id: utilService.makeId(), from:utilService.makeLorem(5), subject: utilService.makeLorem(10), body: utilService.makeLorem(50), isRead: true, sentAt: new Date(), isStarred: false, replays: []},
-    {id: utilService.makeId(), from:utilService.makeLorem(5), subject: utilService.makeLorem(10), body: utilService.makeLorem(50), isRead: false, sentAt: new Date(), isStarred: true, replays: []}
+    {id: utilService.makeId(), from:utilService.makeLorem(5), subject: utilService.makeLorem(10), body: utilService.makeLorem(50), isRead: true, sentAt: getDateAndTime(), isStarred: false, replays: []},
+    {id: utilService.makeId(), from:utilService.makeLorem(5), subject: utilService.makeLorem(10), body: utilService.makeLorem(50), isRead: true, sentAt: getDateAndTime(), isStarred: true, replays: []},
+    {id: utilService.makeId(), from:utilService.makeLorem(5), subject: utilService.makeLorem(10), body: utilService.makeLorem(50), isRead: false, sentAt: getDateAndTime(), isStarred: false, replays: []},
+    {id: utilService.makeId(), from:utilService.makeLorem(5), subject: utilService.makeLorem(10), body: utilService.makeLorem(50), isRead: true, sentAt: getDateAndTime(), isStarred: false, replays: []},
+    {id: utilService.makeId(), from:utilService.makeLorem(5), subject: utilService.makeLorem(10), body: utilService.makeLorem(50), isRead: false, sentAt: getDateAndTime(), isStarred: true, replays: []}
 ];
 
-function addEmail(from, subject, body, isRead = false, sentAt = new Date(), isStarred = false) {
+function addEmail(from, subject, body, isRead = false, isStarred = false) {
     if (!emails) query();
-    let newEmail = {id: utilService.makeId(), subject, body, isRead, sentAt, isStarred, replays: []};
+    let newEmail = {id: utilService.makeId(), subject, body, isRead, sentAt: getDateAndTime(), isStarred, replays: []};
     emails.push(newEmail);
 
     return Promise.resolve(emailId);
 }
 
 function deleteEmail(emailId) {
-    const emailIdx = emails.findIdx((email) => {email.id === emailId});
+    const emailIdx = emails.findIdx(email => email.id === emailId);
     emails.slice(emailIdx, 1);
 
     return Promise.resolve(emailId);
@@ -44,12 +44,12 @@ function replayEmail(emailId) {
 }
 
 function toggleStarEmail(emailId) {
-    const email = emails.find((email) => {email.id === emailId});
+    const email = emails.find(email => email.id === emailId);
     email.isStarred = !email.isStarred;
 }
 
 function toggleReadEmail(emailId) {
-    const email = emails.find((email) => {email.id === emailId});
+    const email = emails.find(email => email.id === emailId);
     email.isRead = !email.isRead;
 }
 
@@ -73,11 +73,14 @@ function filterEmails() {
 }
 
 function getEmailById(emailId) {
-    const email = emails.find((email) => {email.id === emailId});
+    const email = emails.find(email => email.id === emailId);
     return Promise.resolve(email);
 }
 
-
+function getDateAndTime() {
+    let timeStamp = new Date();
+    return {year: timeStamp.getFullYear(), month: timeStamp.getMonth()+1, day: timeStamp.getDate(), hours: timeStamp.getHours(), minutes: timeStamp.getMinutes()}
+}
 
 
 

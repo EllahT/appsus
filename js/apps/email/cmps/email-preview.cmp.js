@@ -2,11 +2,14 @@
 
 export default {
     template: `
-        <li class="email-preview" :class="{'read-item-container' : email.isRead}">
-            <div class="email-from" :class="{'read-item-txt' : email.isRead}">{{email.from}}</div>
-            <div :class="{'read-item-txt' : email.isRead}">{{email.subject}}</div>
-            <div>{{previewBody}}</div>
-        </li>
+        <div class="email-preview" @click="emitOpen">
+            <span class="email-from" :class="{'read-item-txt' : email.isRead}">{{email.from}}</span>
+            <div class="email-txts">
+                <span class="email-subject-txt" :class="{'read-item-txt' : email.isRead}">{{email.subject}}</span>
+                <span class="email-body-txt">{{email.body}}</span>
+            </div>
+            <span class="email-date">{{dateForDisplay}}</span>
+        </div>
     
     `,
     props: ['email'],
@@ -18,18 +21,20 @@ export default {
     },
 
     computed: {
-        previewBody() {
+        dateForDisplay() {
+            const timeStamp = new Date();
+            const currYear = timeStamp.getFullYear();
+            const currMonth = timeStamp.getMonth()+1;
+            const currDay = timeStamp.getDate();
+            const sent = this.email.sentAt;
 
+            return (sent.year !== currYear)? (sent.day + '.' + sent.month + '.' + sent.year) : (sent.day === currDay && sent.month === currMonth)? (sent.hours + ':' + sent.minutes) : (sent.day + '.' + sent.month);
+        },
+    },
+
+    methods: {
+        emitOpen() {
+            this.$emit('openEmail',this.email.id);
         }
-
     }
-    
 }
-
-// lsubject, body, isRead, sentAt, isStarred, replays: []};
-//shows only title + date/ hour + read/unread as a sign
-
-// • Present the listed emails as read/unread
-// • Ability to mark as read/unread
-// • Click email at list – opens the email for reading
-// open email maybe from here?
