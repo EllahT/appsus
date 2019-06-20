@@ -23,7 +23,7 @@ const fakeNotes = [
     },
     {
         id: 'otherMashu',
-        type: 'txt',
+        type: 'todo',
         content: 'I have to study',
         color: 'torquoise',
         isPinned: false
@@ -65,7 +65,8 @@ function updateNote() {
 }
 
 function getById(noteId) {
-
+    const note = notes.find(note => note.id === noteId);
+    return note;
 }
 
 function setFilter() {
