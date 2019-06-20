@@ -1,0 +1,23 @@
+.email-list {
+    list-style: none;
+}
+
+.email-preview {
+    display: flex;
+}
+
+.email-from {
+    min-width: 33%;
+}
+
+.read-item-txt {
+    font-weight: bold;
+}
+
+.read-item-container {
+    background-color: lightgray;
+}
+
+.email-preview-body {
+    color: gray;
+}

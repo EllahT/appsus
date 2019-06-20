@@ -1,3 +1,11 @@
+@import '../email/email-list.css';
+
 .email-app {
-    background-color: aqua;
+    
+}
+
+.email-header {
+    display: flex;
+    background-color: lightblue;
+    justify-content: space-between;
 }

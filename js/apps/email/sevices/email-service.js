@@ -1,35 +1,84 @@
-// List of emails (inbox)
-// • Show unread emails count on top (find the right place)
-// • Present the listed emails as read/unread
-// • Ability to mark as read/unread
-// • Click email at list – opens the email for reading
-// • New email – ability to create a new email and send it. Support send
-// email only to yourself.
-// • Search emails
-// • Filter read/unread
-// • Sort of emails by date, title
-// • Reply – allows editing, adding “Re:” to subject
+'use strict'
 
-// Model - Start with a basic model of emails:
-// {subject: 'Wassap with Vue?', body: 'May I', isRead: false, sentAt : 1551133930594}
-// •
-// • <email-app>
-// • EmailApp Gets emails from service (asynch)
-// • <email-list> renders a list of <email-preview> pass down an email prop
-// <email-preview>
-// o Has an email prop
-// o Renders the subject
-// o Gives visual indication for read/unread (i.e.: bold/unbold ; closed or
-// open envelop)
-// • <email-details>
-// • Routable component (page)
-// • show the entire email
-// • allow deleting an email (using a service)
-// • <email-status>
-// • Renders how many read from the emails
-// • <email-filter>
-// • Allow filtering by text and Read / Unread
-// • <email-compose>
-// • Has a form with subject and body
-// • Use the service to add email to the list
-// • Yes, we are only supporting selfi-emails for now (-: 
+import storageService from '../../../services/storage.service.js';
+import utilService from '../../../services/util.service.js';
+
+export default {
+    addEmail,
+    deleteEmail,
+    replayEmail,
+    toggleStarEmail,
+    toggleReadEmail,
+    query,
+    getEmailById
+}
+
+const EMAILS_KEY = 'mrEmails';
+let emails;
+
+let defaultEmails = [
+    {id: utilService.makeId(), from:utilService.makeLorem(5), subject: utilService.makeLorem(10), body: utilService.makeLorem(50), isRead: true, sentAt: new Date(), isStarred: false, replays: []},
+    {id: utilService.makeId(), from:utilService.makeLorem(5), subject: utilService.makeLorem(10), body: utilService.makeLorem(50), isRead: true, sentAt: new Date(), isStarred: true, replays: []},
+    {id: utilService.makeId(), from:utilService.makeLorem(5), subject: utilService.makeLorem(10), body: utilService.makeLorem(50), isRead: false, sentAt: new Date(), isStarred: false, replays: []},
+    {id: utilService.makeId(), from:utilService.makeLorem(5), subject: utilService.makeLorem(10), body: utilService.makeLorem(50), isRead: true, sentAt: new Date(), isStarred: false, replays: []},
+    {id: utilService.makeId(), from:utilService.makeLorem(5), subject: utilService.makeLorem(10), body: utilService.makeLorem(50), isRead: false, sentAt: new Date(), isStarred: true, replays: []}
+];
+
+function addEmail(from, subject, body, isRead = false, sentAt = new Date(), isStarred = false) {
+    if (!emails) query();
+    let newEmail = {id: utilService.makeId(), subject, body, isRead, sentAt, isStarred, replays: []};
+    emails.push(newEmail);
+
+    return Promise.resolve(emailId);
+}
+
+function deleteEmail(emailId) {
+    const emailIdx = emails.findIdx((email) => {email.id === emailId});
+    emails.slice(emailIdx, 1);
+
+    return Promise.resolve(emailId);
+}
+
+function replayEmail(emailId) {
+    //get email by id, add to it's replays arr and then return think about how to render
+}
+
+function toggleStarEmail(emailId) {
+    const email = emails.find((email) => {email.id === emailId});
+    email.isStarred = !email.isStarred;
+}
+
+function toggleReadEmail(emailId) {
+    const email = emails.find((email) => {email.id === emailId});
+    email.isRead = !email.isRead;
+}
+
+function query(filter) {
+    if (!emails) emails = storageService.load(EMAILS_KEY);
+    if (!emails || !emails.length) {
+        emails = defaultEmails;
+        storageService.store(EMAILS_KEY, emails);
+    }
+
+    if (!filter) return Promise.resolve(emails) 
+    
+    // return filterEmails(filter)
+    //     .then((filteredEmails) => {
+    //         return filteredEmails;
+    //     })
+}
+
+function filterEmails() {
+//do filtering by filter.type (title/body) and filter.txt return promise reloved to filtered arr
+}
+
+function getEmailById(emailId) {
+    const email = emails.find((email) => {email.id === emailId});
+    return Promise.resolve(email);
+}
+
+
+
+
+
+
