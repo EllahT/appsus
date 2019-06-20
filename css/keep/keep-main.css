@@ -1,3 +1,43 @@
 .note-item {
     list-style-type: none;
+    padding: 10px;
+    margin-bottom: 10px;
+    max-width: 200px; 
 }
+
+.yellow {
+    background-color: #fafa34;
+}
+
+.turquoise {
+    background-color: #63f0e2;
+}
+
+.purple {
+    background-color: #965bd1;
+}
+
+.keep-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.clr-circle {
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    border: 1px darkslategrey solid;
+}
+
+.clr-picker {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    justify-items: baseline;
+}
+
+.add-new {
+    display: flex;
+    flex-flow: row wrap;
+}
+
