@@ -11,7 +11,7 @@ export default {
     <section class="email-app">
         <email-header @clearSearch="clearSearch" @searchBy="searchEmails"></email-header>
         <email-nav></email-nav>
-        <email-list :emails="emails"></email-list>
+        <router-view :emails="emails"></router-view>
     </section>
     `,
 

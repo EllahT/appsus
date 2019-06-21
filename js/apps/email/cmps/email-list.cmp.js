@@ -38,7 +38,7 @@ export default {
         },
 
         openEmail(emailId) {
-            console.log(emailId);
+            this.$router.push('/email/emails/'+emailId);
         }
     },
 

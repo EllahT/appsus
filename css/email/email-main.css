@@ -24,3 +24,7 @@
 .email-list-container {
     grid-area: emailMain;
 }
+
+.email-nav-list {
+    list-style: none;
+}

@@ -4,8 +4,8 @@ export default {
     template: `
         <nav class="email-nav">
             <button>compose</button>
-            <ul>
-                <li>inbox</li>
+            <ul class="email-nav-list">
+                <li><router-link exact to="/email/inbox">Inbox</router-link></li>
                 <li>starred</li>
                 <li>sent</li>
                 <li>drafts</li>
