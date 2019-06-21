@@ -3,26 +3,30 @@
 import emailList from '../cmps/email-list.cmp.js';
 import emailHeader from '../cmps/email-header.cmp.js';
 import emailNav from '../cmps/email-nav.cmp.js';
-import emailService from '../sevices/email-service.js';
+import emailService from '../services/email-service.js';
+import emailCompose from '../cmps/email-compose.cmp.js';
 
 export default {
     
     template: `
     <section class="email-app">
         <email-header @clearSearch="clearSearch" @searchBy="searchEmails"></email-header>
-        <email-nav></email-nav>
+        <email-nav @openCompose="openCompose"></email-nav>
         <router-view :emails="emails"></router-view>
+        <email-compose @emailSent="sendEmailAndClose" @closeCompose="saveDraftAndClose" v-if="showCompose"></email-compose>
     </section>
     `,
 
     data() {
         return {
             emails: [],
-            filterAndSortPrms: {
-                searchPrms: {subject: '', content: ''},
+            filterAndSortParams: {
+                searchParams: {subject: '', content: ''},
                 filter: 'all',
                 sort: ''
-            }
+            },
+            showCompose: false
+            // emailsToSend: null
         }
     },
     created() {
@@ -31,27 +35,63 @@ export default {
     }, 
 
     methods: {
-        searchEmails(searchPrms) {
-            this.filterAndSortPrms.searchPrms = searchPrms;
+        searchEmails(searchParams) {
+            this.$router.push('/email/inbox');
+            this.filterAndSortParams.searchParams = searchParams;
             this.updateEmails();
         },
         
         updateEmails() {
-            emailService.query(this.filterAndSortPrms)
+            emailService.query(this.filterAndSortParams)
             .then((emails) => {this.emails = emails})
         },
 
         clearSearch() {
-            this.filterAndSortPrms.searchPrms = {subject: '', content: ''};
+            this.filterAndSortParams.searchParams = {subject: '', content: ''};
             emailService.query()
             .then((emails) => {this.emails = emails})
+        },
+
+        sendEmailAndClose(newEmail) {
+            this.showCompose = false;
+            emailService.sendEmail(newEmail.from, newEmail.to, newEmail.subject, newEmail.body)
+            .then(newEmailId => {})
+        },
+
+        saveDraftAndClose(newDraft) {
+            this.showCompose = false;
+            if (!newDraft.subject && !newDraft.body) return;
+            emailService.addDraft(newDraft.from, newDraft.to, newDraft.subject, newDraft.body)
+            .then(newDraftId => {})
+        },
+
+        openCompose() {
+            this.showCompose = true;
         }
     },
+
+    // watch: {
+    //     'this.$route': () => {
+    //       if (this.$route.name === 'list') {
+    //         this.emailsToSend = this.emails
+    //       } else {
+    //         null
+    //       }
+    //     }
+    //   },
 
     components: {
         emailList,
         emailHeader,
-        emailNav
+        emailNav,
+        emailCompose
     }
 }
+
+
+
+
+// reminders: 
+    // flow text to sec line - subject and body and then ...
+    // empty search gets empty list insted of full list
 

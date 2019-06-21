@@ -3,7 +3,7 @@
 export default {
     template: `
         <nav class="email-nav">
-            <button>compose</button>
+            <button @click="emitOpenCompose">compose</button>
             <ul class="email-nav-list">
                 <li><router-link exact to="/email/inbox">Inbox</router-link></li>
                 <li>starred</li>
@@ -13,7 +13,13 @@ export default {
 
 
         </nav>
-    `
+    `,
+
+    methods: {
+        emitOpenCompose() {
+            this.$emit('openCompose');
+        }
+    }
 }
 
 

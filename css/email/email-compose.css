@@ -1,0 +1,40 @@
+.compose-email {
+    position: fixed;
+    bottom: 10px;
+    border: 1px solid;
+    width: 400px;
+    height: 500px;
+    background-color: #e5eef3;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.new-mail-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.compose-email-header {
+    background-color: #475a63;
+    color: white;
+    height: 40px;
+    padding: 10px;
+    border-radius: inherit;
+    display: flex;
+    justify-content: space-between;
+}
+
+.close-compose-btn {
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+.close-compose-btn:hover {
+    background-color: #5f92ab;;
+}
+
+
+  

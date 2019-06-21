@@ -2,21 +2,28 @@
 
 export default {
     template: `
-        <div class="email-preview" @click="emitOpen">
-            <span class="email-from" :class="{'read-item-txt' : !email.isRead}">{{email.from}}</span>
-            <div class="email-txts">
-                <span class="email-subject-txt" :class="{'read-item-txt' : !email.isRead}">{{email.subject}}</span>
-                <span class="email-body-txt">{{email.body}}</span>
+        <div class="email-preview">
+            <div class="email-from" :class="{'unread-item-txt' : !email.isRead}">{{fromToDisplay}}</div>
+            <div class="email-subject" :class="{'unread-item-txt' : !email.isRead}">{{email.subject}}</div>
+            <div class="email-body">{{email.body}}</div>
+            
+            <div class="email-date">{{dateForDisplay}}</div>
+            <div class="email-delete">
+                <span class="far fa-trash-alt" @click.stop="emitDeleteEmail"></span>
             </div>
-            <span class="email-date">{{dateForDisplay}}</span>
         </div>
-    
     `,
     props: ['email'],
 
     data() {
         return {
             isOpen: false,
+        }
+    },
+
+    methods: {
+        emitDeleteEmail() {
+            this.$emit('deleteEmail', this.email.id);
         }
     },
 
@@ -27,14 +34,21 @@ export default {
             const currMonth = timeStamp.getMonth()+1;
             const currDay = timeStamp.getDate();
             const sent = this.email.sentAt;
+            
+            const padTwo = num => num.toString().padStart(2, '0');
 
-            return (sent.year !== currYear)? (sent.day + '.' + sent.month + '.' + sent.year) : (sent.day === currDay && sent.month === currMonth)? (sent.hours + ':' + sent.minutes) : (sent.day + '.' + sent.month);
+            return (sent.year !== currYear) ?
+                (padTwo(sent.day) + '.' + padTwo(sent.month) + '.' + sent.year) :
+                (sent.day === currDay && sent.month === currMonth) ?
+                    (padTwo(sent.hours) + ':' + padTwo(sent.minutes)) :
+                    (padTwo(sent.day) + '.' + padTwo(sent.month));
         },
-    },
 
-    methods: {
-        emitOpen() {
-            this.$emit('openEmail',this.email.id);
+        fromToDisplay() {
+            const nameEnd = this.email.from.indexOf('<');
+            return (nameEnd === -1) ?
+                this.email.from :
+                this.email.from.slice(0, nameEnd);
         }
     }
 }
