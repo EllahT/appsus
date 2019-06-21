@@ -1,6 +1,10 @@
 @import './keep/keep-main.css';
 @import './email/email-main.css';
 
+* {
+    box-sizing: border-box;
+}
+
 a:link, a:visited {
     text-decoration: none;
     color: black

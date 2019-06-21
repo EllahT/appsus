@@ -3,9 +3,9 @@
 export default {
     template: `
         <div class="email-preview" @click="emitOpen">
-            <span class="email-from" :class="{'read-item-txt' : email.isRead}">{{email.from}}</span>
+            <span class="email-from" :class="{'read-item-txt' : !email.isRead}">{{email.from}}</span>
             <div class="email-txts">
-                <span class="email-subject-txt" :class="{'read-item-txt' : email.isRead}">{{email.subject}}</span>
+                <span class="email-subject-txt" :class="{'read-item-txt' : !email.isRead}">{{email.subject}}</span>
                 <span class="email-body-txt">{{email.body}}</span>
             </div>
             <span class="email-date">{{dateForDisplay}}</span>

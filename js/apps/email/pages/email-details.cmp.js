@@ -1,3 +1,11 @@
+export default {
+    
+    template: ``
+}
+
+
+
+
 //shows all the email content
 
 

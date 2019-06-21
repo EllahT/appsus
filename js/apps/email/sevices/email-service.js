@@ -28,6 +28,7 @@ function addEmail(from, subject, body, isRead = false, isStarred = false) {
     if (!emails) query();
     let newEmail = {id: utilService.makeId(), subject, body, isRead, sentAt: getDateAndTime(), isStarred, replays: []};
     emails.push(newEmail);
+    storageService.store(EMAILS_KEY,emails);
 
     return Promise.resolve(emailId);
 }
@@ -46,11 +47,13 @@ function replayEmail(emailId) {
 function toggleStarEmail(emailId) {
     const email = emails.find(email => email.id === emailId);
     email.isStarred = !email.isStarred;
+    storageService.store(EMAILS_KEY,emails);
 }
 
 function toggleReadEmail(emailId) {
     const email = emails.find(email => email.id === emailId);
     email.isRead = !email.isRead;
+    storageService.store(EMAILS_KEY,emails);
 }
 
 function query(filterAndSortPrms) {
