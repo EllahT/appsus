@@ -1,10 +1,11 @@
 'use-strict';
 
-import keepService from '../services/keep-service.js'
-import imgDisplay from '../cmps/img-display.cmp.js'
-import todosDisplay from '../cmps/todos-display.cmp.js'
-import noteTools from '../cmps/note-tools.cmp.js'
-import todoItem from '../cmps/todo-item.cmp.js'
+import keepService from '../services/keep-service.js';
+import imgDisplay from '../cmps/img-display.cmp.js';
+import todosDisplay from '../cmps/todos-display.cmp.js';
+import noteTools from '../cmps/note-tools.cmp.js';
+import todoItem from '../cmps/todo-item.cmp.js';
+import videoDisplay from '../cmps/video-display.cmp.js';
 
 export default {
     template: `
@@ -12,6 +13,7 @@ export default {
             <p v-if="note.type === 'txt'">{{note.content}}</p>
             <todos-display :note="note" v-else-if="note.type === 'todo'"></todos-display>
             <img-display :content="note.content" v-else-if="note.type === 'img'"></img-display>
+            <video-display :content="note.content" v-else-if="note.type === 'video'"></video-display>
             <note-tools @changedColor="changeColor" @deletedNote="deleteNote(noteId)"></note-tools>
         </li>
     `,
@@ -58,6 +60,7 @@ export default {
         noteTools,
         todoItem,
         imgDisplay,
-        todosDisplay
+        todosDisplay,
+        videoDisplay
     }
 }

@@ -1,9 +1,10 @@
 'use-strict';
 
-import keepService from '../services/keep-service.js'
-import noteText from './note-txt.cmp.js'
-import noteImg from './note-img.cmp.js'
-import noteTodos from './note-todos.cmp.js'
+import keepService from '../services/keep-service.js';
+import noteText from './note-txt.cmp.js';
+import noteImg from './note-img.cmp.js';
+import noteTodos from './note-todos.cmp.js';
+import noteVideo from './note-video.cmp.js';
 
 export default {
     template: `
@@ -14,9 +15,11 @@ export default {
             <input type="button" value="txt" @click="setType"/>
             <input type="button" value="img" @click="setType"/>
             <input type="button" value="todo" @click="setType"/>
+            <input type="button" value="video" @click="setType"/>
 
             <note-text :content="note.content" @contentChanged="changeContent" v-if="note.type === 'txt'"></note-text>
             <note-img @imgNoteChanged="changeContent" v-else-if="note.type === 'img'"></note-img>
+            <note-video @videoNoteChanged="changeContent" v-else-if="note.type === 'video'"></note-video>
             <note-todos :content="note.content" @newTodosChanged="changeContent" v-else="note.type === 'todo'"></note-todos>
             
             <!-- <button class="showColors">to do: btn to open colors menu</button> -->
@@ -46,6 +49,7 @@ export default {
             if (ev.target.classList.contains('purple')) this.note.color = '#965bd1';
             if (ev.target.classList.contains('turquoise')) this.note.color = '#63f0e2';
         },
+        
         addNewNote() {
             console.log(this.note);
             
@@ -57,27 +61,25 @@ export default {
                 time: ''
             }
         },
+        
         doSomething() {
             console.log('editing text');
             
         },
 
         setType(ev) {
-            if (ev.target.value === 'txt') this.note.type = 'txt';
-            if (ev.target.value === 'img') this.note.type = 'img';
-            if (ev.target.value === 'todo') this.note.type = 'todo';
+            this.note.type = ev.target.value;
         },
+        
         changeContent(content) {
             this.note.content = content;
         },
+    },
 
-    },
-    computed: {
-        // addNote(type, color, content, time)
-    },
     components: {
         noteText,
         noteTodos,
-        noteImg
+        noteImg,
+        noteVideo
     }
 }
