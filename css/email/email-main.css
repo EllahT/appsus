@@ -54,3 +54,7 @@
 .email-nav-list li {
     margin: 5px 0;
 }
+
+.theresUnread {
+    font-weight: bold;
+}

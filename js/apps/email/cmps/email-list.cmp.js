@@ -56,8 +56,8 @@ export default {
 
     watch: { 
         'filter': {
-            handler: function(newVal) {
-                this.$emit('filtered',newVal);
+            handler: function(filter) {
+                this.$emit('filtered',filter);
            },
            immediate: true
          }

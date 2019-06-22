@@ -18,7 +18,7 @@ export default {
             @sorted="sortEmails">
         </email-header>
         
-        <email-nav @openCompose="openCompose"></email-nav>
+        <email-nav @openCompose="openCompose" :unreadCount="unreadCount"></email-nav>
         
         <router-view :emails="emails" 
             @filtered="filterEmails" 
@@ -45,7 +45,8 @@ export default {
             isOptionFilterOn: true,
             showCompose: false,
             draft: '',
-            reply: ''
+            reply: '',
+            unreadCount: 0
         }
     },
     created() {
@@ -122,6 +123,18 @@ export default {
             this.showCompose = true;
         }
     },
+
+    watch: { 
+        'emails': {
+            handler: function(emails) {
+                if (!emails || !emails.length) return;
+                emailService.getUnreadCount()
+                .then((counter) => {this.unreadCount = counter});
+           },
+           immediate: true,
+           deep: true
+         }
+   },
 
     components: {
         emailList,

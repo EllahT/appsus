@@ -11,7 +11,8 @@ export default {
     openEmail,
     query,
     getEmailById,
-    addDraft
+    addDraft,
+    getUnreadCount
 }
 
 const EMAILS_KEY = 'mrEmails';
@@ -324,6 +325,9 @@ function getDateAndTime() {
     return {timeStamp: timeStamp.getTime(), year: timeStamp.getFullYear(), month: timeStamp.getMonth()+1, day: timeStamp.getDate(), hours: timeStamp.getHours(), minutes: timeStamp.getMinutes(), strDate: timeStamp.toDateString()}
 }
 
-
+function getUnreadCount() {
+    const undreadEmails = emails.filter(email => ((!email.isRead) && email.type === 'email'));
+    return Promise.resolve(undreadEmails.length);
+}
 
 

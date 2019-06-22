@@ -5,7 +5,7 @@ export default {
         <nav class="email-nav">
             <button @click="emitOpenCompose">compose</button>
             <ul class="email-nav-list">
-                <li><router-link exact to="/email/inbox">Inbox</router-link></li>
+                <li><router-link exact to="/email/inbox"><span :class="{'theresUnread': unreadCount > 0}">Inbox({{unreadCount}})</span></router-link></li>
                 <li><router-link exact to="/email/starred">Starred</router-link></li>
                 <li><router-link exact to="/email/sent">Sent</router-link></li>
                 <li><router-link exact to="/email/drafts">Drafts</router-link></li>
@@ -13,10 +13,14 @@ export default {
         </nav>
     `,
 
+    props: ['unreadCount'],
+
     methods: {
         emitOpenCompose() {
             this.$emit('openCompose');
-        }
+        },
+
+        
     }
 }
 
