@@ -1,5 +1,6 @@
 'use strict'
 
+import userMsg from '../../../cmps/user-msg.cmp.js';
 import appLogo from '../../../cmps/logo.cmp.js';
 import emailSearch from '../cmps/email-search.cmp.js';
 import emailFilter from '../cmps/email-filter.cmp.js';
@@ -14,6 +15,7 @@ export default {
             <email-search @searchBy="emitSearchBy" @clearSearch="emitClear"></email-search>
             <email-filter :isOptionFilterOn="isOptionFilterOn" @filtered="emitFilterBy"></email-filter>
             <email-sort @sorted="emitSortBy"></email-sort>
+            <user-msg></user-msg>
         </div>
         <app-nav></app-nav>
     </section>
@@ -53,6 +55,7 @@ export default {
         emailSearch,
         emailFilter,
         emailSort,
-        appNav
+        appNav,
+        userMsg
     }
 }

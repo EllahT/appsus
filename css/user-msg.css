@@ -1,0 +1,23 @@
+.user-msg {
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: #96abb5;
+    border-radius: 10px;
+    padding: 5px;
+    z-index: 100;
+}
+
+.user-msg button {
+    float: right;
+    border-color: white;
+}
+
+.user-msg.success {
+    background-color:lightseagreen;
+    color: white;
+}
+.user-msg.failure {
+    background-color:lightpink;
+    color: red;
+}
