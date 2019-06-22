@@ -10,10 +10,10 @@ export default {
                 <p>Add a todo</p>
                 <form @submit.prevent="addTodo" >
                     <input type="text" v-model="newTodo.text" />
-                    <input type="submit" @submit="emitContent(this.todos)" value="+"/>
+                    <input type="submit" value="+"/>
                 </form>
                 <ul>
-                    <todo-item @deletingTodo="deleteTodo" :class="toggleChecked" v-for="currTodo in todos" :todo="currTodo" :key="currTodo.id"></todo-item>
+                    <todo-item @deletingTodo="deleteTodo" v-for="currTodo in todos" :todo="currTodo" :key="currTodo.id"></todo-item>
                 </ul>
             </form>
         </section>
@@ -30,18 +30,16 @@ export default {
             this.newTodo.id = utilService.makeId();
             this.todos.push(this.newTodo);
             this.newTodo = { text: '', isDone: false, id: '' };
+            this.emitContent();
         },
         deleteTodo(todoId) {
             const todoIdx = this.todos.findIndex((todo) => { todo.id === todoId })
             this.todos.splice(todoIdx, 1);
+            this.emitContent();
         },
-        toggleChecked(todoId) {
-            const todoIdx = this.todos.findIndex((todo) => { todo.id === todoId })
-
-        },
-        emitContent(todos) {
-            this.$emit('contentChanged', this.todos);
-            console.log('emiting');
+        emitContent() {
+            this.$emit('newTodosChanged', this.todos);
+            console.log('emiting', this.todos);
             
         }
         // eventBus.$emit('add-todo', 'Todo Was Added!');

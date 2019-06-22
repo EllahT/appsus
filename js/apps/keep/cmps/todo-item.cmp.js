@@ -2,8 +2,8 @@
 
 export default {
     template: `
-        <li class="todo-item">
-            <input type="checkbox" name="do" />
+        <li class="todo-item" :class="{'done': todo.isDone}">
+            <input type="checkbox" @change="toggle" />
             <label>{{todo.text}}</label>
             <button @click.prevent="emitDeleteTodo(todo.id)">✖</button>
         </li>
@@ -17,9 +17,9 @@ export default {
         emitDeleteTodo(todoId) {
             this.$emit('deletingTodo', todoId);
         },
-        toggle(todo) {
-            todo.isDone = !todo.isDone;
-            console.log(todo.isDone);
+        toggle() {
+            this.todo.isDone = !this.todo.isDone;
         },
+
     }
 }
