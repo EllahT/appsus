@@ -3,9 +3,9 @@
 export default {
     query,
     updateColor,
+    getById,
+    addNote,
     // updateNote,
-    // getById,
-    // addNote,
     // deleteNote,
 }
 
@@ -34,15 +34,15 @@ const fakeNotes = [
 let notes;
 
 function query() {
-    let updatedNotes;
-    if (!notes) updatedNotes = storageService.load(NOTES_KEY);
-    if (!updatedNotes || !updatedNotes.length) {
-        updatedNotes = fakeNotes;
-        storageService.store(NOTES_KEY, updatedNotes)
+    // let updatedNotes;
+    if (!notes) notes = storageService.load(NOTES_KEY);
+    if (!notes || !notes.length) {
+        notes = fakeNotes;
+        storageService.store(NOTES_KEY, notes)
     }
 
     // insert checking filter here
-    return Promise.resolve(updatedNotes);
+    return Promise.resolve(notes);
 }
 
 function addNote(type, color, content, time) {
@@ -54,6 +54,8 @@ function addNote(type, color, content, time) {
         created: time
     }
     notes.unshift(newNote);
+    storageService.store(NOTES_KEY, notes);
+
 }
 
 function deleteNote(noteId) {
@@ -68,22 +70,31 @@ function updateNoteContent() {
 function updateColor(noteId, color) {
     if (!notes) {
         query()
-        .then((notesTemp) => {
-            let note = notesTemp.find(note => note.id === noteId);
-            note.color = color;
-            notes = notesTemp;
-        })
-    }
-
-    else {
+            .then((notesTemp) => {
+                let note = notesTemp.find(note => note.id === noteId);
+                note.color = color;
+                notes = notesTemp;
+                storageService.store(NOTES_KEY, notes);
+            })
+    } else {
         let note = notes.find(note => note.id === noteId);
         note.color = color;
+        storageService.store(NOTES_KEY, notes);
     }
 }
 
 function getById(noteId) {
-    const note = notes.find(note => note.id === noteId);
-    return note;
+    if (!notes) {
+        query()
+            .then(() => {
+                const note = notes.find(note => note.id === noteId);
+                return Promise.resolve(note);
+            })
+    }
+    else {
+        const note = notes.find(note => note.id === noteId);
+        return Promise.resolve(note);
+    }
 }
 
 function setFilter() {

@@ -1,10 +1,10 @@
 'use-strict';
 
 import keepService from '../services/keep-service.js'
-import noteText from './note-txt.cmp.js'
-import noteImg from './note-img.cmp.js'
-import noteTodos from './note-todos.cmp.js'
-import noteTools from './note-tools.cmp.js'
+import noteText from '../cmps/note-txt.cmp.js'
+import noteImg from '../cmps/note-img.cmp.js'
+import noteTodos from '../cmps/note-todos.cmp.js'
+import noteTools from '../cmps/note-tools.cmp.js'
 
 export default {
     template: `
@@ -17,11 +17,14 @@ export default {
     `,
     created() {
         console.log('note item is alive');
-
+        // const noteId = this.$route.params.theNoteId;
+        // keepService.getById(noteId)
+        //     .then(note => this.note = note)
     },
     data() {
         return {
-            bgcolor: this.note.color
+            bgcolor: this.note.color,
+            noteId: this.note.id
         }
     },
     methods: {

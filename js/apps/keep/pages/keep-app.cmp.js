@@ -1,7 +1,7 @@
 'use-strict';
 
 import keepService from '../services/keep-service.js'
-import notesList from '../cmps/notes-list.cmp.js'
+import notesList from './notes-list.cmp.js'
 import keepHeader from '../cmps/keep-header.cmp.js'
 import addNew from '../cmps/add-new.cmp.js'
 
@@ -10,7 +10,7 @@ export default {
     <section>
         <keep-header></keep-header>
         <h1>Whassssup keep</h1>
-        <add-new class="add-new"></add-new>    
+        <add-new :notes="notes" class="add-new"></add-new>    
         <notes-list :notes="notes"></notes-list>
     </section>
     `,
