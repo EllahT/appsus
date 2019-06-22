@@ -9,8 +9,8 @@ import keepApp from './apps/keep/pages/keep-app.cmp.js';
 export default [
     { path: '/', component: homepageCmp },
     { path: '/email', component: emailApp, children: [
-        { path: 'emails/:theEmailId', component: emailDetails},
-        { path: 'inbox', name: 'list', component: emailList}
+        { path: 'inbox', component: emailList},
+        { path: ':theEmailId', component: emailDetails}
     ] },
     { path: '/keep', component: keepApp },
 ]

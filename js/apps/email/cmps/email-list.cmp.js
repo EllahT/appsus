@@ -9,11 +9,9 @@ export default {
             <ul class="email-list">
                 <li class="email-item" v-for="email in emails" :key="email.id" 
                     :class="{'unread-item-container' : !email.isRead}"
-                    @mouseover="changedHoveredEmail(email.id)"
-                    @mouseout="changedHoveredEmail(undefined)"
                     @click="openEmail(email.id)">
-                    <img class="email-envelope" :src="imageForDisplay(email.isRead)" @click.stop="toggleReadEmail(email.id)"/>
-                    <span class="star fa fa-star" :class="{'active-star': email.isStarred}" @click.stop="toggleStarEmail(email.id)"></span>
+                    <span class="email-envelope" :class="imageForDisplay(email.isRead)" @click.stop="toggleReadEmail(email.id)"></span>
+                    <span class="fa fa-star star" :class="{'active-star': email.isStarred}" @click.stop="toggleStarEmail(email.id)"></span>
                     <email-preview :email="email" @deleteEmail="deleteEmail"></email-preview>
                 </li>
             </ul>
@@ -21,19 +19,12 @@ export default {
     `,
 
     props: ['emails'],
-    
-    data() {
-        return {
-            hoveredEmail: ''
-            //, isHovering: false
-        }
+
+    created() {
+        console.log(this.emails)
     },
-
+    
     methods: {
-        isHovered(emailId) {
-            return (emailId === this.hoveredEmail);
-        },
-
         toggleStarEmail(emailId) {
             emailService.toggleStarEmail(emailId);
         }, 
@@ -43,30 +34,17 @@ export default {
         },
         
         imageForDisplay(isRead) {
-            return (isRead)? 'img/email-img/open-envelope.png' : 'img/email-img/close-envelope.png';
+            return (isRead)? 'fas fa-envelope-open' : 'fas fa-envelope';
         },
 
         openEmail(emailId) {
             emailService.openEmail(emailId);
-            this.$router.push('/email/emails/'+emailId);
-        }, 
-
-        changedHoveredEmail(emailId) {
-            // console.log('hover')
-            // if (this.isHovering) return;
-            this.hoveredEmail = emailId;
-            this.isHovering = true;
+            this.$router.push('/email/'+emailId);
         }, 
 
         deleteEmail(emailId) {
             emailService.deleteEmail(emailId);
         }
-
-        // , clearHoveredEmail() {
-        //     console.log('out')
-        //     this.isHovering = false;
-        //     this.hoveredEmail = '';
-        // }
     },
 
     components: {

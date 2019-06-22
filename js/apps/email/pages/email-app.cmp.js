@@ -26,12 +26,12 @@ export default {
                 sort: ''
             },
             showCompose: false
-            // emailsToSend: null
         }
     },
     created() {
         console.log('Email is alive');
         this.clearSearch();
+        // const filterFolder = this.$route.params.;
     }, 
 
     methods: {
@@ -70,16 +70,6 @@ export default {
         }
     },
 
-    // watch: {
-    //     'this.$route': () => {
-    //       if (this.$route.name === 'list') {
-    //         this.emailsToSend = this.emails
-    //       } else {
-    //         null
-    //       }
-    //     }
-    //   },
-
     components: {
         emailList,
         emailHeader,
@@ -88,10 +78,4 @@ export default {
     }
 }
 
-
-
-
-// reminders: 
-    // flow text to sec line - subject and body and then ...
-    // empty search gets empty list insted of full list
 
