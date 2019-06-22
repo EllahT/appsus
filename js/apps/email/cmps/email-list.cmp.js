@@ -45,7 +45,7 @@ export default {
         }, 
 
         deleteEmail(emailId) {
-            emailService.deleteEmail(emailId);
+            this.$emit('deleteEmail',emailId);
         },
 
         openDraft(emailId) {

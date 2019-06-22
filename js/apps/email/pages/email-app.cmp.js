@@ -24,7 +24,8 @@ export default {
         <router-view :emails="emails" 
             @filtered="filterEmails" 
             @openDraft="openDraft"
-            @replyEmail="replyEmail"></router-view>
+            @replyEmail="replyEmail"
+            @deleteEmail="deleteEmail"></router-view>
         
         <email-compose 
             :draft="draft"
@@ -96,6 +97,8 @@ export default {
                 eventBus.$emit(SHOW_MSG,
                 {txt: 'your email has been sent!', type: 'success'});
                 this.updateEmails();
+                this.reply = '';
+                this.draft = '';
             })
         },
 
@@ -107,6 +110,8 @@ export default {
                 eventBus.$emit(SHOW_MSG,
                 {txt: 'your draft has been saved!', type: 'success'});
                 this.updateEmails();
+                this.reply = '';
+                this.draft = '';
             })
         },
 
@@ -126,6 +131,15 @@ export default {
         replyEmail(email) {
             this.reply = email;
             this.showCompose = true;
+        },
+
+        deleteEmail(emailId) {
+            emailService.deleteEmail(emailId)
+            .then(emailId => {
+                eventBus.$emit(SHOW_MSG,
+                {txt: 'your email has been deleted!', type: 'failure'});
+                this.updateEmails();
+            })
         }
     },
 
