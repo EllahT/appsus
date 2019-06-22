@@ -7,7 +7,7 @@ export default {
                 <div class="search-by-subject">
                     <input @keyup.enter="emitSearch" type="text" v-model="searchTxt" placeholder="search inside emails subject"/>
                     <select v-model="searchBy">
-                        <option v-for="option in arrSearchPrms" :value="option" >{{option}}</option>
+                        <option v-for="option in arrSearchParams" :value="option" >{{option}}</option>
                     </select>
                     <button @click="emitClearSearchs">Clear</button>
                 </div>
@@ -16,27 +16,27 @@ export default {
     `,
     data() {
         return {
-            searchPrms: {subject: '', content: ''},
+            searchParams: {subject: '', content: ''},
             searchBy: 'subject',
-            searchTxt: null
+            searchTxt: ''
         }
     },
 
     computed: {
-        arrSearchPrms() {
-            return Object.keys(this.searchPrms);
+        arrSearchParams() {
+            return Object.keys(this.searchParams);
         }
     },
 
     methods: {
         emitSearch() {
-            this.searchPrms[this.searchBy] = this.searchTxt;
-            this.$emit('searchBy',this.searchPrms);
-            this.searchPrms = {subject: '', content: ''};
+            this.searchParams[this.searchBy] = this.searchTxt;
+            this.$emit('searchBy',this.searchParams);
+            this.searchParams = {subject: '', content: ''};
         },
 
         emitClearSearchs() {
-            this.$emit('clearSearch',this.searchPrms);
+            this.$emit('clearSearch',this.searchParams);
         }
     }
 }

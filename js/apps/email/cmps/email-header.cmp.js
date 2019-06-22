@@ -27,8 +27,8 @@ export default {
     },
 
     methods: {
-        emitSearchBy(searchPrms) {
-            this.$emit('searchBy',searchPrms);
+        emitSearchBy(searchParams) {
+            this.$emit('searchBy',searchParams);
         },
 
         emitClear() {

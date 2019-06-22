@@ -10,7 +10,7 @@ export default [
     { path: '/', component: homepageCmp },
     { path: '/email', component: emailApp, children: [
         { path: 'emails/:theEmailId', component: emailDetails},
-        { path: 'inbox', component: emailList}
+        { path: 'inbox', name: 'list', component: emailList}
     ] },
     { path: '/keep', component: keepApp },
 ]
