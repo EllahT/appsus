@@ -9,9 +9,7 @@ import noteTools from '../cmps/note-tools.cmp.js'
 export default {
     template: `
         <li :style="{'background-color': bgcolor}" class="note-item">
-            <note-text :content="note.content" v-if="note.type === 'txt'"></note-text>
-            <note-img :content="note.content" v-else-if="note.type === 'img'"></note-img>
-            <note-todos :content="note.content" v-else="note.type === 'todo'"></note-todos>
+            {{note.content}}
             <note-tools @changedColor="changeColor" @deletedNote="deleteNote(noteId)"></note-tools>
         </li>
     `,
@@ -45,9 +43,6 @@ export default {
     },
     props: ['note'],
     components: {
-        noteText,
-        noteImg,
-        noteTodos,
-        noteTools,
+        noteTools
     }
 }

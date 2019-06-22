@@ -1,12 +1,23 @@
 'use-strict';
 
 import keepService from '../services/keep-service.js'
+import noteText from './note-txt.cmp.js'
+import noteImg from './note-img.cmp.js'
+import noteTodos from './note-todos.cmp.js'
 
 export default {
     template: `
     <section>
-        <h1>Where new Notes Happen. Which is soon.</h1>
+        <h1>Where new Notes Happen.</h1>
         <form action="#" @submit.prevent="addNewNote(note.type, note.color, note.content, note.time)">
+            
+            <input type="button" value="txt" @click="setType"/>
+            <input type="button" value="img" @click="setType"/>
+            <input type="button" value="todo" @click="setType"/>
+
+            <note-text :content="note.content" v-if="note.type === 'txt'"></note-text>
+            <note-img :content="note.content" v-else-if="note.type === 'img'"></note-img>
+            <note-todos :content="note.content" v-else="note.type === 'todo'"></note-todos>
             
             <input type="text" v-model="note.content" @input="doSomething"/>
             <!-- <button class="showColors">to do: btn to open colors menu</button> -->
@@ -40,11 +51,21 @@ export default {
             keepService.addNote(this.note.type, this.note.color, this.note.content, this.note.time)
         },
         doSomething() {
-            console.log('is this thing on');
+            console.log('editing text');
             
+        },
+        setType(ev) {
+            if (ev.target.value === 'txt') this.note.type = 'txt';
+            if (ev.target.value === 'img') this.note.type = 'img';
+            if (ev.target.value === 'todo') this.note.type = 'todo';
         }
     },
     computed: {
         // addNote(type, color, content, time)
+    },
+    components: {
+        noteText,
+        noteTodos,
+        noteImg
     }
 }
