@@ -9,14 +9,14 @@ export default {
     template: `
     <section>
         <h1>Where new Notes Happen.</h1>
-        <form action="#" @submit.prevent="addNewNote(note.type, note.color, note.content, note.time)">
+        <form action="#" @submit.prevent="addNewNote(note.type, note.color, note.content)">
             
             <input type="button" value="txt" @click="setType"/>
             <input type="button" value="img" @click="setType"/>
             <input type="button" value="todo" @click="setType"/>
 
             <note-text :content="note.content" @contentChanged="changeContent" v-if="note.type === 'txt'"></note-text>
-            <note-img @imgNoteAdded="addNewNote" v-else-if="note.type === 'img'"></note-img>
+            <note-img @imgNoteAdded="changeContent" v-else-if="note.type === 'img'"></note-img>
             <note-todos :content="note.content" @contentChanged="changeContent" v-else="note.type === 'todo'"></note-todos>
             
             <!-- <button class="showColors">to do: btn to open colors menu</button> -->
@@ -60,6 +60,8 @@ export default {
         },
         changeContent(content) {
             console.log('content changed');
+            console.log(this.note.content, content);
+            
             this.note.content = content;
         },
     },

@@ -11,12 +11,12 @@ export default {
     template: `
         <li :style="{'background-color': bgcolor}" class="note-item">
             <p v-if="note.type === 'txt'">{{note.content}}</p>
-            <p v-else="note.type === 'todo'">
+            <p v-else-if="note.type === 'todo'">
                 <ul>
                     <todo-item @deletingTodo="deleteTodo" :class="toggleChecked" v-for="currTodo in note.content" :todo="currTodo" :key="currTodo.id"></todo-item>
                 </ul>
             </p>
-            <img-display :content="note.content" v-if="note.type === 'img'"></img-display>
+            <img-display :content="note.content" v-else-if="note.type === 'img'"></img-display>
             <note-tools @changedColor="changeColor" @deletedNote="deleteNote(noteId)"></note-tools>
         </li>
     `,
