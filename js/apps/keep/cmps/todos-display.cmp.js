@@ -7,7 +7,7 @@ import keepService from '../services/keep-service.js'
 export default {
     template: `
     <ul>
-        <todo-item @deletingTodo="deleteTodo" 
+        <todo-item @deletingTodo="deleteTodo" @isDoneChanged="changeIsDone"
              v-for="currTodo in note.content"
         :todo="currTodo" :key="currTodo.id"></todo-item>
     </ul>
@@ -19,6 +19,9 @@ export default {
     methods: {
         deleteTodo(todoId) {
             keepService.deleteTodo(todoId, this.note.id)  
+        },
+        changeIsDone(todoId) {
+            keepService.changeIsDone(todoId, this.note.id)
         }
     },
     components: {

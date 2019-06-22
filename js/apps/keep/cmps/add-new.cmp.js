@@ -49,7 +49,13 @@ export default {
         addNewNote() {
             console.log(this.note);
             
-            keepService.addNote(this.note.type, this.note.color, this.note.content)
+            keepService.addNote(this.note.type, this.note.color, this.note.content);
+            this.note = {
+                type: 'txt',
+                color: '#fafa34',
+                content: '',
+                time: ''
+            }
         },
         doSomething() {
             console.log('editing text');
@@ -61,10 +67,10 @@ export default {
             if (ev.target.value === 'img') this.note.type = 'img';
             if (ev.target.value === 'todo') this.note.type = 'todo';
         },
-
         changeContent(content) {
             this.note.content = content;
-        }
+        },
+
     },
     computed: {
         // addNote(type, color, content, time)

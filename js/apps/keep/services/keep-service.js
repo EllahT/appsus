@@ -7,7 +7,8 @@ export default {
     addNote,
     // editNote,
     deleteNote,
-    deleteTodo
+    deleteTodo,
+    changeIsDone
 }
 
 const NOTES_KEY = 'notes';
@@ -117,7 +118,7 @@ function addTodo(newTodo, noteId) {
 function deleteTodo(todoId, noteId) {
     const note = notes.find(note => note.id === noteId);
     let todos = note.content;
-    const todoIdx = todos.findIndex((todo) => { todo.id === todoId })
+    const todoIdx = todos.findIndex(todo => { todo.id === todoId })
     todos.splice(todoIdx, 1);
     storageService.store(NOTES_KEY, notes);
 }
@@ -141,4 +142,14 @@ function deleteTodo(todoId, noteId) {
 function getDateAndTime() {
     let timeStamp = new Date();
     return {timeStamp: timeStamp.getTime(), year: timeStamp.getFullYear(), month: timeStamp.getMonth()+1, day: timeStamp.getDate(), hours: timeStamp.getHours(), minutes: timeStamp.getMinutes(), strDate: timeStamp.toDateString()}
+}
+
+function changeIsDone(todoId, noteId) {
+    const note = notes.find(note => note.id === noteId);
+    let todos = note.content;
+    const todo = todos.find(todo => todo.id === todoId );
+    console.log(todo);
+    
+    todo.isDone = !todo.isDone;
+    storageService.store(NOTES_KEY, notes);
 }

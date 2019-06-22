@@ -6,16 +6,14 @@ import todoItem from './todo-item.cmp.js';
 export default {
     template: `
         <section>
-            <form action="#">
                 <p>Add a todo</p>
-                <form @submit.prevent="addTodo" >
+                <form @submit.prevent="emitContent" >
                     <input type="text" v-model="newTodo.text" />
-                    <input type="submit" value="+"/>
+                    <button @click="addTodo">+</button>
                 </form>
                 <ul>
-                    <todo-item @deletingTodo="deleteTodo" v-for="currTodo in todos" :todo="currTodo" :key="currTodo.id"></todo-item>
+                    <todo-item @deletingTodo="deleteTodo" @isDoneChanged="changeIsDone" v-for="currTodo in todos" :todo="currTodo" :key="currTodo.id"></todo-item>
                 </ul>
-            </form>
         </section>
     `, // class binding to cross text
     data() {
@@ -30,17 +28,19 @@ export default {
             this.newTodo.id = utilService.makeId();
             this.todos.push(this.newTodo);
             this.newTodo = { text: '', isDone: false, id: '' };
-            this.emitContent();
         },
         deleteTodo(todoId) {
-            const todoIdx = this.todos.findIndex((todo) => { todo.id === todoId })
+            const todoIdx = this.todos.findIndex(todo => todo.id === todoId);
             this.todos.splice(todoIdx, 1);
-            this.emitContent();
         },
         emitContent() {
             this.$emit('newTodosChanged', this.todos);
             console.log('emiting', this.todos);
             
+        },
+        changeIsDone(todoId) {
+            const todoIdx = this.todos.findIndex(todo => todo.id === todoId);
+            this.todos[todoIdx].isDone = !this.todos[todoIdx].isDone;
         }
         // eventBus.$emit('add-todo', 'Todo Was Added!');
 
