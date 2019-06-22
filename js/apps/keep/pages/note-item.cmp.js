@@ -1,15 +1,19 @@
 'use-strict';
 
 import keepService from '../services/keep-service.js'
-import noteText from '../cmps/note-txt.cmp.js'
-import noteImg from '../cmps/note-img.cmp.js'
-import noteTodos from '../cmps/note-todos.cmp.js'
 import noteTools from '../cmps/note-tools.cmp.js'
+import todoItem from '../cmps/todo-item.cmp.js'
 
 export default {
     template: `
         <li :style="{'background-color': bgcolor}" class="note-item">
-            {{note.content}}
+            <p v-if="note.type === 'txt'">{{note.content}}</p>
+            <p v-else-if="note.type === 'img'">{{note.content}}</p>
+            <p v-else="note.type === 'todo'">
+                <ul>
+                    <todo-item @deletingTodo="deleteTodo" :class="toggleChecked" v-for="currTodo in note.content" :todo="currTodo" :key="currTodo.id"></todo-item>
+                </ul>
+            </p>
             <note-tools @changedColor="changeColor" @deletedNote="deleteNote(noteId)"></note-tools>
         </li>
     `,
@@ -22,7 +26,7 @@ export default {
     data() {
         return {
             bgcolor: this.note.color,
-            noteId: this.note.id
+            noteId: this.note.id,
         }
     },
     methods: {
@@ -36,13 +40,22 @@ export default {
         deleteNote(noteId) {
             console.log('item to delete:', noteId);
             keepService.deleteNote(noteId);
+        },
+        deleteTodo(todoId, noteId) {
+            keepService.deleteTodo(todoId, noteId);
+        },
+        toggleChecked(todoId) {
+
         }
     },
     computed: {
-
+        isTodos() {
+            return note.type === 'todo'
+        }
     },
     props: ['note'],
     components: {
-        noteTools
+        noteTools,
+        todoItem
     }
 }

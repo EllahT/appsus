@@ -42,3 +42,11 @@
     flex-flow: row wrap;
 }
 
+.done {
+    text-decoration: line-through;
+}
+
+.todo-item {
+    list-style-type: none;
+}
+

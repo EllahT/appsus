@@ -7,6 +7,7 @@ export default {
     addNote,
     // editNote,
     deleteNote,
+    deleteTodo
 }
 
 const NOTES_KEY = 'notes';
@@ -24,7 +25,7 @@ const fakeNotes = [
     },
     {
         id: 'otherMashu',
-        type: 'todo',
+        type: 'txt',
         content: 'I have to study',
         color: '#fafa34',
         isPinned: false
@@ -104,3 +105,36 @@ function getById(noteId) {
 function setFilter() {
 
 }
+
+function addTodo(newTodo, noteId) {
+    newTodo.id = utilService.makeId()
+    const note = notes.find(note => note.id === noteId);
+    let todos = note.content;
+    todos.push(newTodo);
+    storageService.store(NOTES_KEY, notes);
+}
+
+function deleteTodo(todoId, noteId) {
+    const note = notes.find(note => note.id === noteId);
+    let todos = note.content;
+    const todoIdx = todos.findIndex((todo) => { todo.id === todoId })
+    todos.splice(todoIdx, 1);
+    storageService.store(NOTES_KEY, notes);
+}
+
+// addTodo() {
+//     console.log('soon adding to do');
+//     console.log(this.newTodo);
+//     this.newTodo.id = utilService.makeId();
+//     console.log(this.newTodo.id);
+
+//     this.todos.push(this.newTodo)
+// },
+// deleteTodo(todoId) {
+//     const todoIdx = this.todos.findIndex((todo) => { todo.id === todoId })
+//     this.todos.splice(todoIdx, 1);
+// },
+// ifChecked(todoId) {
+//     const todoIdx = this.todos.findIndex((todo) => { todo.id === todoId })
+
+// }

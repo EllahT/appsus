@@ -15,11 +15,10 @@ export default {
             <input type="button" value="img" @click="setType"/>
             <input type="button" value="todo" @click="setType"/>
 
-            <note-text :content="note.content" v-if="note.type === 'txt'"></note-text>
-            <note-img :content="note.content" v-else-if="note.type === 'img'"></note-img>
-            <note-todos :content="note.content" v-else="note.type === 'todo'"></note-todos>
+            <note-text :content="note.content" @contentChanged="changeContent" v-if="note.type === 'txt'"></note-text>
+            <note-img :content="note.content" @contentChanged="changeContent" v-else-if="note.type === 'img'"></note-img>
+            <note-todos :note="note" @contentChanged="changeContent" v-else="note.type === 'todo'"></note-todos>
             
-            <input type="text" v-model="note.content" @input="doSomething"/>
             <!-- <button class="showColors">to do: btn to open colors menu</button> -->
             <input type="button" class="clr-circle yellow" @click="setClr"/>
             <input type="button" class="clr-circle purple" @click="setClr"/>
@@ -34,7 +33,7 @@ export default {
     data() {
         return {
             note: {
-                type: 'txt',
+                type: '',
                 color: '#fafa34',
                 content: '',
                 time: ''
@@ -58,7 +57,11 @@ export default {
             if (ev.target.value === 'txt') this.note.type = 'txt';
             if (ev.target.value === 'img') this.note.type = 'img';
             if (ev.target.value === 'todo') this.note.type = 'todo';
-        }
+        },
+        changeContent(content) {
+            console.log('content changed');
+            this.note.content = content;
+        },
     },
     computed: {
         // addNote(type, color, content, time)
