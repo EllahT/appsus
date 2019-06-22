@@ -10,7 +10,13 @@ export default {
     
     template: `
     <section class="email-app">
-        <email-header @clearSearch="clearSearch" @searchBy="searchEmails" @filtered="filterEmails"></email-header>
+        <email-header 
+            @clearSearch="clearSearch" 
+            @searchBy="searchEmails" 
+            @filtered="filterEmails" 
+            :isOptionFilterOn="isOptionFilterOn"
+            @sorted="sortEmails">
+        </email-header>
         <email-nav @openCompose="openCompose"></email-nav>
         <router-view :emails="emails" @filtered="filterEmails"></router-view>
         <email-compose @emailSent="sendEmailAndClose" @closeCompose="saveDraftAndClose" v-if="showCompose"></email-compose>
@@ -23,8 +29,9 @@ export default {
             filterAndSortParams: {
                 searchParams: {subject: '', content: ''},
                 filter: 'all',
-                sort: ''
+                sort: {by: 'Sent at', op: '+'}
             },
+            isOptionFilterOn: true,
             showCompose: false,
         }
     },
@@ -41,10 +48,18 @@ export default {
         },
 
         filterEmails(filter) {
-            if (filter === 'read' || filter === 'unread') {
+            if (filter === 'read' || filter === 'unread'|| filter === 'all') {
+                this.isOptionFilterOn = true;
                 this.$router.push('/email/inbox');
+            } else {
+                this.isOptionFilterOn = false;
             }
             this.filterAndSortParams.filter = filter;
+            this.updateEmails();
+        },
+
+        sortEmails(sorter) {
+            this.filterAndSortParams.sort = sorter;
             this.updateEmails();
         },
         
@@ -62,14 +77,18 @@ export default {
         sendEmailAndClose(newEmail) {
             this.showCompose = false;
             emailService.sendEmail(newEmail.from, newEmail.to, newEmail.subject, newEmail.body)
-            .then(newEmailId => {})
+            .then(newEmailId => {
+                this.updateEmails();
+            })
         },
 
         saveDraftAndClose(newDraft) {
             this.showCompose = false;
             if (!newDraft.subject && !newDraft.body) return;
             emailService.addDraft(newDraft.from, newDraft.to, newDraft.subject, newDraft.body)
-            .then(newDraftId => {})
+            .then(newDraftId => {
+                this.updateEmails();
+            })
         },
 
         openCompose() {

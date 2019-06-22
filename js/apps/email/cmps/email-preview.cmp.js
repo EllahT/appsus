@@ -13,7 +13,7 @@ export default {
             </div>
         </div>
     `,
-    props: ['email'],
+    props: ['email','filter'],
 
     data() {
         return {

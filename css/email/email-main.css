@@ -21,6 +21,18 @@
     padding: 10px;
 }
 
+.email-heade-searchAndFilter {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+} 
+
+@media (min-width: 400px) {
+    .email-header-searchAndFilter {
+        flex-direction: row;
+    }   
+}
+
 .email-nav {
     grid-area: emailNav;
     width: 80px;
