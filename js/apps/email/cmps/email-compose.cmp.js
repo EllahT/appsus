@@ -18,6 +18,8 @@ export default {
     
     `,
 
+    props: ['draft'],
+
     data() {
         return {
             email: {
@@ -27,6 +29,13 @@ export default {
                 body: '', 
                 replies: []
             }
+        }
+    },
+    
+    created() {
+        if (this.draft !== '') {
+            this.email.subject = this.draft.subject;
+            this.email.body = this.draft.body;
         }
     },
 
@@ -54,9 +63,3 @@ export default {
         }
     }
 }
-
-
-//kind of modal that adds new email
-
-// • New email – ability to create a new email and send it. Support send
-// email only to yourself.
