@@ -5,8 +5,8 @@ export default {
     updateColor,
     getById,
     addNote,
-    // updateNote,
-    // deleteNote,
+    // editNote,
+    deleteNote,
 }
 
 const NOTES_KEY = 'notes';
@@ -59,11 +59,15 @@ function addNote(type, color, content, time) {
 }
 
 function deleteNote(noteId) {
+    const noteIdx = notes.findIndex(note => note.id === noteId);
+    notes.splice(noteIdx, 1);
+    storageService.store(NOTES_KEY, notes);
 
+    // return Promise.resolve(noteId)
 }
 
 // for editing the note in real time with the tools
-function updateNoteContent() {
+function editNoteContent() {
 
 }
 
