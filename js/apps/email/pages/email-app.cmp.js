@@ -22,10 +22,12 @@ export default {
         
         <router-view :emails="emails" 
             @filtered="filterEmails" 
-            @openDraft="openDraft"></router-view>
+            @openDraft="openDraft"
+            @replyEmail="replyEmail"></router-view>
         
         <email-compose 
             :draft="draft"
+            :reply="reply"
             @emailSent="sendEmailAndClose" 
             @closeCompose="saveDraftAndClose" 
             v-if="showCompose"></email-compose>
@@ -42,7 +44,8 @@ export default {
             },
             isOptionFilterOn: true,
             showCompose: false,
-            draft: ''
+            draft: '',
+            reply: ''
         }
     },
     created() {
@@ -112,6 +115,11 @@ export default {
                 this.showCompose = true;
                 emailService.deleteEmail(dratfId);
             })
+        },
+
+        replyEmail(email) {
+            this.reply = email;
+            this.showCompose = true;
         }
     },
 

@@ -6,7 +6,6 @@ import utilService from '../../../services/util.service.js';
 export default {
     sendEmail,
     deleteEmail,
-    replyEmail,
     toggleStarEmail,
     toggleReadEmail,
     openEmail,
@@ -28,7 +27,6 @@ const defaultEmails = [
         isRead: true, 
         sentAt: {timeStamp: 1561121640, year: 2019, month: 6, day: 21, hours: 12, minutes: 54, strDate: 'Fri Jun 21, 2019'}, 
         isStarred: false, 
-        replies: [],
         type: 'email'
     },
     {
@@ -40,7 +38,6 @@ const defaultEmails = [
         isRead: true, 
         sentAt: getDateAndTime(), 
         isStarred: false, 
-        replies: [],
         type: 'email'
     },
     {
@@ -52,7 +49,6 @@ const defaultEmails = [
         isRead: true, 
         sentAt: getDateAndTime(), 
         isStarred: true, 
-        replies: [],
         type: 'email'
     },
     {
@@ -64,7 +60,6 @@ const defaultEmails = [
         isRead: false, 
         sentAt: getDateAndTime(), 
         isStarred: false, 
-        replies: [],
         type: 'email'
     },
     {
@@ -76,7 +71,6 @@ const defaultEmails = [
         isRead: true, 
         sentAt: getDateAndTime(), 
         isStarred: false, 
-        replies: [],
         type: 'email'
     },
     {
@@ -89,7 +83,6 @@ const defaultEmails = [
         isRead: false, 
         sentAt: getDateAndTime(), 
         isStarred: true, 
-        replies: [],
         type: 'email'
     },
     {
@@ -123,7 +116,6 @@ const defaultEmails = [
         isRead: true, 
         sentAt: {timeStamp: 1561121640, year: 2019, month: 6, day: 21, hours: 12, minutes: 54, strDate: 'Fri Jun 21, 2019'}, 
         isStarred: false, 
-        replies: [],
         type: 'sent'
     }, 
     {
@@ -135,7 +127,6 @@ const defaultEmails = [
         isRead: true, 
         sentAt: {timeStamp: 1561121640, year: 2019, month: 6, day: 21, hours: 12, minutes: 54, strDate: 'Fri Jun 21, 2019'}, 
         isStarred: true, 
-        replies: [],
         type: 'sent'
     }
 ];
@@ -148,7 +139,6 @@ function sendEmail(from, to, subject, body) {
         isRead: false, 
         sentAt: getDateAndTime(), 
         isStarred: false, 
-        replies: [],
         type: 'email'
     };
     emails.unshift(newEmail);
@@ -183,7 +173,6 @@ function addSentEmail (newEmail) {
         isRead: true,
         sentAt: getDateAndTime(), 
         isStarred: false,
-        replies: [],
         type: 'sent'
     };
     
@@ -201,10 +190,6 @@ function deleteEmail(emailId) {
     } else {
         return Promise.reject('there is no email with this email id');
     }
-}
-
-function replyEmail(emailId) {
-    //get email by id, add to it's replies arr and then return think about how to render
 }
 
 function toggleStarEmail(emailId) {

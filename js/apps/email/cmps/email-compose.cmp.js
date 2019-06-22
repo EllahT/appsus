@@ -1,4 +1,3 @@
-
 export default {
     
     template: `
@@ -8,17 +7,23 @@ export default {
             <button class="close-compose-btn" @click="closeModal">&times;</button>
         </div>
         <form class="new-mail-form" @submit.prevent="emitNewEmail">
-            from: <input type="text" v-model="email.from" readonly/>
-            to: <input type="text" v-model="email.to" readonly/>
-            <input type="text" v-model="email.subject" ref="subjectInput" placeholder="subject"/>
-            <textarea v-model="email.body"></textarea> 
+            <div class="from-input-container">
+                <div>from:</div>
+                <input type="text" v-model="email.from" readonly/>
+            </div>
+            <div class="to-input-container">
+                <div>to: </div>
+                <input type="text" v-model="email.to" readonly/>
+            </div>
+            <input class="email-input-subject" type="text" v-model="email.subject" ref="subjectInput" placeholder="subject"/>
+            <textarea class="email-input-body" v-model="email.body" ref="bodyInput"></textarea> 
             <button class="submitBtn" :disabled="invalid">Send</button>
         </form>
     </section>
     
     `,
 
-    props: ['draft'],
+    props: ['draft', 'reply'],
 
     data() {
         return {
@@ -27,7 +32,6 @@ export default {
                 to: 'popo popo <popo@gmail.com>',
                 subject: '', 
                 body: '', 
-                replies: []
             }
         }
     },
@@ -37,10 +41,16 @@ export default {
             this.email.subject = this.draft.subject;
             this.email.body = this.draft.body;
         }
+        
+        if (this.reply !=='') {
+            this.email.subject = 'RE: '+ this.reply.subject;
+            this.email.body = this.reply.body + '\n\n***\n\n';
+        }
+
     },
 
     mounted() {
-        this.$refs.subjectInput.focus();
+        (this.reply === '')? this.$refs.subjectInput.focus() : this.$refs.bodyInput.focus();
     }, 
 
     computed: {

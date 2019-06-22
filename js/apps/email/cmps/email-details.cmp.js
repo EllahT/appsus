@@ -27,10 +27,7 @@ export default {
                 isRead: null, 
                 sentAt: {}, 
                 isStarred: null, 
-                replys: []
             },
-
-            replyMode: false
         }
     },
 
@@ -52,10 +49,8 @@ export default {
         }, 
 
         replyEmail() {
-            this.replyMode = true;
+            this.$emit('replyEmail',this.email);
         }
 
     }
 }
-
-// • Reply – allows editing, adding “Re:” to subject
