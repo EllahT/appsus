@@ -1,3 +1,5 @@
+@import '../keep/note-image.css';
+
 .note-item {
     list-style-type: none;
     padding: 10px;

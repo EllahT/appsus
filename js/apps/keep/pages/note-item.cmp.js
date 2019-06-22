@@ -2,14 +2,14 @@
 
 import keepService from '../services/keep-service.js'
 import noteText from '../cmps/note-txt.cmp.js'
-import noteImg from '../cmps/note-img.cmp.js'
+import imgDisplay from '../cmps/img-display.cmp.js'
 import noteTodos from '../cmps/note-todos.cmp.js'
 import noteTools from '../cmps/note-tools.cmp.js'
 
 export default {
     template: `
         <li :style="{'background-color': bgcolor}" class="note-item">
-            {{note.content}}
+        <img-display :content="note.content" v-if="note.type === 'img'"></img-display>
             <note-tools @changedColor="changeColor" @deletedNote="deleteNote(noteId)"></note-tools>
         </li>
     `,
@@ -43,6 +43,7 @@ export default {
     },
     props: ['note'],
     components: {
-        noteTools
+        noteTools,
+        imgDisplay
     }
 }

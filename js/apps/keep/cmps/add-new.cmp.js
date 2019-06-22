@@ -16,7 +16,7 @@ export default {
             <input type="button" value="todo" @click="setType"/>
 
             <note-text :content="note.content" v-if="note.type === 'txt'"></note-text>
-            <note-img :content="note.content" v-else-if="note.type === 'img'"></note-img>
+            <note-img @imgNoteAdded="addNewNote" v-else-if="note.type === 'img'"></note-img>
             <note-todos :content="note.content" v-else="note.type === 'todo'"></note-todos>
             
             <input type="text" v-model="note.content" @input="doSomething"/>
@@ -47,8 +47,8 @@ export default {
             if (ev.target.classList.contains('purple')) this.note.color = '#965bd1';
             if (ev.target.classList.contains('turquoise')) this.note.color = '#63f0e2';
         },
-        addNewNote() {
-            keepService.addNote(this.note.type, this.note.color, this.note.content, this.note.time)
+        addNewNote(content) {
+            keepService.addNote(this.note.type, this.note.color, content)
         },
         doSomething() {
             console.log('editing text');

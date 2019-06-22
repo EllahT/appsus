@@ -1,14 +1,29 @@
-'use-strict';
+'use-strict'
 
 export default {
     template: `
         <section>
-            <h2>Hello note type img</h2>
+        <form>
+            <input v-model="imgUrl" type="text" placeholder="insert url of an image from the web"/>
+            <div class="displayDiv">
+                <img :src="imgUrl" class="input-img"/>
+            </div>
+            <button @click="emitAddImgNote">save note</button>
+        </form>
         </section>
     `,
+    
     props: ['content'],
-    created() {
+    
+    data() {
+        return {
+            imgUrl: ''
+        }
+    }, 
 
-    },
-
+    methods: {
+        emitAddImgNote() {
+            this.$emit('imgNoteAdded',this.imgUrl);
+        }
+    }
 }
