@@ -2,21 +2,30 @@
 
 export default {
     template: `
-        <section class="email-search">
-            <div class="searchs">
-                <div class="search-by-subject">
-                    <input @keyup.enter="emitSearch" type="text" v-model="searchTxt" placeholder="search inside emails subject"/>
-                    <select v-model="searchBy">
-                        <option v-for="option in arrSearchParams" :value="option" >{{option}}</option>
-                    </select>
-                    <button @click="emitClearSearchs">Clear</button>
-                </div>
-            </div>
+        <section class="email-filter">
+            <select v-model="filterBy">
+                <option>Read</option>
+                <option>Unread</option>
+            </select>
         </section>
-    `
+    `,
+
+    
+    data() {
+        return {
+            filterBy: ''
+        }
+    },
+
+    watch: { 
+        'filterBy': {
+            handler: function(newVal) {
+                this.$emit('filtered',newVal.toLowerCase());
+                this.filterBy = '';
+           },
+           immediate: true
+         }
+   },
+
+
 }
-
-
-//filter read/unread
-
-// • Filter read/unread

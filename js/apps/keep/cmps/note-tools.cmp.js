@@ -20,7 +20,6 @@ export default {
     },
     methods: {
         emitChangeColor(color) {
-            console.log(color);
             this.$emit('changedColor', color)
         }
     },

@@ -10,9 +10,9 @@ export default {
     
     template: `
     <section class="email-app">
-        <email-header @clearSearch="clearSearch" @searchBy="searchEmails"></email-header>
+        <email-header @clearSearch="clearSearch" @searchBy="searchEmails" @filtered="filterEmails"></email-header>
         <email-nav @openCompose="openCompose"></email-nav>
-        <router-view :emails="emails"></router-view>
+        <router-view :emails="emails" @filtered="filterEmails"></router-view>
         <email-compose @emailSent="sendEmailAndClose" @closeCompose="saveDraftAndClose" v-if="showCompose"></email-compose>
     </section>
     `,
@@ -25,19 +25,26 @@ export default {
                 filter: 'all',
                 sort: ''
             },
-            showCompose: false
+            showCompose: false,
         }
     },
     created() {
         console.log('Email is alive');
         this.clearSearch();
-        // const filterFolder = this.$route.params.;
     }, 
 
     methods: {
         searchEmails(searchParams) {
             this.$router.push('/email/inbox');
             this.filterAndSortParams.searchParams = searchParams;
+            this.updateEmails();
+        },
+
+        filterEmails(filter) {
+            if (filter === 'read' || filter === 'unread') {
+                this.$router.push('/email/inbox');
+            }
+            this.filterAndSortParams.filter = filter;
             this.updateEmails();
         },
         

@@ -18,11 +18,7 @@ export default {
         </section>
     `,
 
-    props: ['emails'],
-
-    created() {
-        console.log(this.emails)
-    },
+    props: ['emails', 'filter'],
     
     methods: {
         toggleStarEmail(emailId) {
@@ -46,6 +42,15 @@ export default {
             emailService.deleteEmail(emailId);
         }
     },
+
+    watch: { 
+        'filter': {
+            handler: function(newVal) {
+                this.$emit('filtered',newVal);
+           },
+           immediate: true
+         }
+   },
 
     components: {
         emailPreview
