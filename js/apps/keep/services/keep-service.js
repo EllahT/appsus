@@ -66,8 +66,19 @@ function updateNoteContent() {
 }
 
 function updateColor(noteId, color) {
-    const note = notes.find(note => note.id === noteId);
-    note.color = color;
+    if (!notes) {
+        query()
+        .then((notesTemp) => {
+            let note = notesTemp.find(note => note.id === noteId);
+            note.color = color;
+            notes = notesTemp;
+        })
+    }
+
+    else {
+        let note = notes.find(note => note.id === noteId);
+        note.color = color;
+    }
 }
 
 function getById(noteId) {

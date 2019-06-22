@@ -27,7 +27,7 @@ export default {
     methods: {
         changeColor(color) {
             this.bgcolor = color;
-            // this.updateColor(this.note.id, color);
+            this.updateColor(this.note.id, color);
         },
         updateColor(noteId, color) {
             keepService.updateColor(noteId, color)
