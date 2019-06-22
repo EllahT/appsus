@@ -6,12 +6,10 @@ export default {
             <button @click="emitOpenCompose">compose</button>
             <ul class="email-nav-list">
                 <li><router-link exact to="/email/inbox">Inbox</router-link></li>
-                <li>starred</li>
-                <li>sent</li>
-                <li>drafts</li>
+                <li><router-link exact to="/email/starred">Starred</router-link></li>
+                <li><router-link exact to="/email/sent">Sent</router-link></li>
+                <li><router-link exact to="/email/drafts">Drafts</router-link></li>
             </ul>
-
-
         </nav>
     `,
 
@@ -23,11 +21,6 @@ export default {
 }
 
 
-
-
-
-
-//the side nav - link to compose, inbox, sent, drafts, status, starred
 
 // • Show unread emails count on top (find the right place)
 // *****in mobile the nav is humburgered and there is a compose as an icon at absolute pos right bottom****

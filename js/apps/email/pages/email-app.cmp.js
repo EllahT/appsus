@@ -10,9 +10,9 @@ export default {
     
     template: `
     <section class="email-app">
-        <email-header @clearSearch="clearSearch" @searchBy="searchEmails"></email-header>
+        <email-header @clearSearch="clearSearch" @searchBy="searchEmails" @filtered="filterEmails"></email-header>
         <email-nav @openCompose="openCompose"></email-nav>
-        <router-view :emails="emails"></router-view>
+        <router-view :emails="emails" @filtered="filterEmails"></router-view>
         <email-compose @emailSent="sendEmailAndClose" @closeCompose="saveDraftAndClose" v-if="showCompose"></email-compose>
     </section>
     `,
@@ -25,8 +25,7 @@ export default {
                 filter: 'all',
                 sort: ''
             },
-            showCompose: false
-            // emailsToSend: null
+            showCompose: false,
         }
     },
     created() {
@@ -38,6 +37,14 @@ export default {
         searchEmails(searchParams) {
             this.$router.push('/email/inbox');
             this.filterAndSortParams.searchParams = searchParams;
+            this.updateEmails();
+        },
+
+        filterEmails(filter) {
+            if (filter === 'read' || filter === 'unread') {
+                this.$router.push('/email/inbox');
+            }
+            this.filterAndSortParams.filter = filter;
             this.updateEmails();
         },
         
@@ -70,16 +77,6 @@ export default {
         }
     },
 
-    // watch: {
-    //     'this.$route': () => {
-    //       if (this.$route.name === 'list') {
-    //         this.emailsToSend = this.emails
-    //       } else {
-    //         null
-    //       }
-    //     }
-    //   },
-
     components: {
         emailList,
         emailHeader,
@@ -88,10 +85,4 @@ export default {
     }
 }
 
-
-
-
-// reminders: 
-    // flow text to sec line - subject and body and then ...
-    // empty search gets empty list insted of full list
 

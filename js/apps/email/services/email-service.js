@@ -17,8 +17,10 @@ export default {
 
 const EMAILS_KEY = 'mrEmails';
 const DRAFTS_KEY = 'mrDrafts';
+const SENTEMAILS_KEY = 'mrSentEmails';
 let emails;
-let drafts = [];
+let drafts = storageService.load(DRAFTS_KEY);
+let sentEmails = storageService.load(SENTEMAILS_KEY);
 
 let defaultEmails = [
     {id: utilService.makeId(), from: 'Puki Levi', to: 'Popo Cohen', subject: 'this is the subject of the email, super importent!!', body: 'this is the content of the email blah blah blah', isRead: true, sentAt: {year: 2019, month: 6, day: 21, hours: 12, minutes: 35, strDate: 'Fri Jun 21 2019'}, isStarred: false, replies: []},
@@ -40,16 +42,27 @@ function sendEmail(from, to, subject, body) {
     };
     emails.unshift(newEmail);
     storageService.store(EMAILS_KEY, emails);
+    addSentEmail(newEmail);
 
     return Promise.resolve(newEmail.id);
 }
 
-function addDraft(from, to, subject, body) {
+function addDraft (from, to, subject, body) {
+    if (!drafts) drafts = [];
     let newDraft = {id: utilService.makeId(), from, to, subject, body, isRead: false, sentAt: getDateAndTime(), isStarred: false, replies: []};
     drafts.unshift(newDraft);
     storageService.store(DRAFTS_KEY,drafts);
 
     return Promise.resolve(newDraft.id);
+}
+
+function addSentEmail (newEmail) {
+    if (!sentEmails) sentEmails = [];
+    let newSentEmail = newEmail;
+    newSentEmail.from = newEmail.to;
+    newSentEmail.to = newEmail.from;
+    sentEmails.unshift(newSentEmail);
+    storageService.store(SENTEMAILS_KEY, sentEmails);
 }
 
 function deleteEmail(emailId) {
@@ -99,6 +112,26 @@ function query(filterAndSortParams) {
 
     if (filterAndSortParams.searchParams.content) {
         filteredEmails = filteredEmails.filter(email => email.body.includes(filterAndSortParams.searchParams.content));
+    }
+
+    if (filterAndSortParams.filter === 'starred') {
+        filteredEmails = filteredEmails.filter(email => email.isStarred);
+    }
+
+    if (filterAndSortParams.filter === 'read') {
+        filteredEmails = filteredEmails.filter(email => email.isRead);
+    }
+
+    if (filterAndSortParams.filter === 'unread') {
+        filteredEmails = filteredEmails.filter(email => !email.isRead);
+    }
+
+    if (filterAndSortParams.filter === 'sent') {
+        return Promise.resolve(sentEmails)
+    }
+
+    if (filterAndSortParams.filter === 'drafts') {
+        return Promise.resolve(drafts);
     }
 
     return Promise.resolve(filteredEmails);

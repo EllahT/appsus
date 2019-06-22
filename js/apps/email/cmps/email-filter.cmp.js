@@ -2,11 +2,30 @@
 
 export default {
     template: `
-    <h1>i'm filter!</h1>
-    `
+        <section class="email-filter">
+            <select v-model="filterBy">
+                <option>Read</option>
+                <option>Unread</option>
+            </select>
+        </section>
+    `,
+
+    
+    data() {
+        return {
+            filterBy: ''
+        }
+    },
+
+    watch: { 
+        'filterBy': {
+            handler: function(newVal) {
+                this.$emit('filtered',newVal.toLowerCase());
+                this.filterBy = '';
+           },
+           immediate: true
+         }
+   },
+
+
 }
-
-
-//filter read/unread
-
-// • Filter read/unread

@@ -10,12 +10,13 @@ import noteItemCmp from './apps/keep/pages/note-item.cmp.js'
 
 export default [
     { path: '/', component: homepageCmp },
-    {
-        path: '/email', component: emailApp, children: [
-            { path: 'emails/:theEmailId', component: emailDetails },
-            { path: 'inbox', name: 'list', component: emailList }
-        ]
-    },
+    { path: '/email', component: emailApp, children: [
+        { path: 'inbox', component: emailList, props: {filter: 'inbox'}},
+        { path: 'starred', component: emailList, props: {filter: 'starred'}},
+        { path: 'drafts', component: emailList, props: {filter: 'drafts'}},
+        { path: 'sent', component: emailList, props: {filter: 'sent'}},
+        { path: ':theEmailId', component: emailDetails}
+    ] },
     { path: '/keep', component: keepApp },
     { path: '/list', component: notesListCmp},
     { path: '/list/:theItemId', component: noteItemCmp }

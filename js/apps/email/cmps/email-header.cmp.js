@@ -11,7 +11,7 @@ export default {
     <section class="email-header">
         <app-logo></app-logo>
         <email-search @searchBy="emitSearchBy" @clearSearch="emitClear"></email-search>
-        <email-filter></email-filter>
+        <email-filter @filtered="emitFilterBy"></email-filter>
         <email-sort></email-sort>
         <app-nav></app-nav>
     </section>
@@ -29,6 +29,11 @@ export default {
     methods: {
         emitSearchBy(searchParams) {
             this.$emit('searchBy',searchParams);
+        },
+
+        emitFilterBy(filter)  {
+            if (filter === '') return;
+            this.$emit('filtered',filter);
         },
 
         emitClear() {
