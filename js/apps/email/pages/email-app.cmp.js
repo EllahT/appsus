@@ -17,9 +17,18 @@ export default {
             :isOptionFilterOn="isOptionFilterOn"
             @sorted="sortEmails">
         </email-header>
+        
         <email-nav @openCompose="openCompose"></email-nav>
-        <router-view :emails="emails" @filtered="filterEmails"></router-view>
-        <email-compose @emailSent="sendEmailAndClose" @closeCompose="saveDraftAndClose" v-if="showCompose"></email-compose>
+        
+        <router-view :emails="emails" 
+            @filtered="filterEmails" 
+            @openDraft="openDraft"></router-view>
+        
+        <email-compose 
+            :draft="draft"
+            @emailSent="sendEmailAndClose" 
+            @closeCompose="saveDraftAndClose" 
+            v-if="showCompose"></email-compose>
     </section>
     `,
 
@@ -33,6 +42,7 @@ export default {
             },
             isOptionFilterOn: true,
             showCompose: false,
+            draft: ''
         }
     },
     created() {
@@ -93,6 +103,15 @@ export default {
 
         openCompose() {
             this.showCompose = true;
+        },
+
+        openDraft(dratfId) {
+            emailService.getEmailById(dratfId)
+            .then(draft => {
+                this.draft = draft;
+                this.showCompose = true;
+                emailService.deleteEmail(dratfId);
+            })
         }
     },
 

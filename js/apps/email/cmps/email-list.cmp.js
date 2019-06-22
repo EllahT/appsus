@@ -35,12 +35,22 @@ export default {
         },
 
         openEmail(emailId) {
-            this.$router.push('/email/'+emailId);
+            if (this.filter === 'drafts') {
+                this.openDraft(emailId)
+
+            } else {
+                emailService.openEmail(emailId);
+                this.$router.push('/email/'+emailId);
+            }
         }, 
 
         deleteEmail(emailId) {
             emailService.deleteEmail(emailId);
         },
+
+        openDraft(emailId) {
+            this.$emit('openDraft',emailId);
+        }
 
     },
 
