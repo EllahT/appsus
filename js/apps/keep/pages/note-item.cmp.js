@@ -1,6 +1,9 @@
 'use-strict';
 
 import keepService from '../services/keep-service.js'
+import noteText from '../cmps/note-txt.cmp.js'
+import imgDisplay from '../cmps/img-display.cmp.js'
+import noteTodos from '../cmps/note-todos.cmp.js'
 import noteTools from '../cmps/note-tools.cmp.js'
 import todoItem from '../cmps/todo-item.cmp.js'
 
@@ -8,12 +11,12 @@ export default {
     template: `
         <li :style="{'background-color': bgcolor}" class="note-item">
             <p v-if="note.type === 'txt'">{{note.content}}</p>
-            <p v-else-if="note.type === 'img'">{{note.content}}</p>
             <p v-else="note.type === 'todo'">
                 <ul>
                     <todo-item @deletingTodo="deleteTodo" :class="toggleChecked" v-for="currTodo in note.content" :todo="currTodo" :key="currTodo.id"></todo-item>
                 </ul>
             </p>
+            <img-display :content="note.content" v-if="note.type === 'img'"></img-display>
             <note-tools @changedColor="changeColor" @deletedNote="deleteNote(noteId)"></note-tools>
         </li>
     `,
@@ -56,6 +59,7 @@ export default {
     props: ['note'],
     components: {
         noteTools,
-        todoItem
+        todoItem,
+        imgDisplay
     }
 }

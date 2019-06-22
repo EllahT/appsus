@@ -16,8 +16,8 @@ export default {
             <input type="button" value="todo" @click="setType"/>
 
             <note-text :content="note.content" @contentChanged="changeContent" v-if="note.type === 'txt'"></note-text>
-            <note-img :content="note.content" @contentChanged="changeContent" v-else-if="note.type === 'img'"></note-img>
-            <note-todos :note="note" @contentChanged="changeContent" v-else="note.type === 'todo'"></note-todos>
+            <note-img @imgNoteAdded="addNewNote" v-else-if="note.type === 'img'"></note-img>
+            <note-todos :content="note.content" @contentChanged="changeContent" v-else="note.type === 'todo'"></note-todos>
             
             <!-- <button class="showColors">to do: btn to open colors menu</button> -->
             <input type="button" class="clr-circle yellow" @click="setClr"/>
@@ -46,8 +46,8 @@ export default {
             if (ev.target.classList.contains('purple')) this.note.color = '#965bd1';
             if (ev.target.classList.contains('turquoise')) this.note.color = '#63f0e2';
         },
-        addNewNote() {
-            keepService.addNote(this.note.type, this.note.color, this.note.content, this.note.time)
+        addNewNote(content) {
+            keepService.addNote(this.note.type, this.note.color, content)
         },
         doSomething() {
             console.log('editing text');

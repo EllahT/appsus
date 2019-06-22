@@ -10,12 +10,16 @@ export default {
     template: `
     <section class="email-header">
         <app-logo></app-logo>
-        <email-search @searchBy="emitSearchBy" @clearSearch="emitClear"></email-search>
-        <email-filter @filtered="emitFilterBy"></email-filter>
-        <email-sort></email-sort>
+        <div class="email-header-searchAndFilter">
+            <email-search @searchBy="emitSearchBy" @clearSearch="emitClear"></email-search>
+            <email-filter :isOptionFilterOn="isOptionFilterOn" @filtered="emitFilterBy"></email-filter>
+            <email-sort @sorted="emitSortBy"></email-sort>
+        </div>
         <app-nav></app-nav>
     </section>
     `,
+
+    props: ['isOptionFilterOn'],
     data() {
         return {
 
@@ -32,8 +36,11 @@ export default {
         },
 
         emitFilterBy(filter)  {
-            if (filter === '') return;
             this.$emit('filtered',filter);
+        },
+
+        emitSortBy(sorter)  {
+            this.$emit('sorted',sorter);
         },
 
         emitClear() {

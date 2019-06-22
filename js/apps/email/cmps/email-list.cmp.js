@@ -10,9 +10,10 @@ export default {
                 <li class="email-item" v-for="email in emails" :key="email.id" 
                     :class="{'unread-item-container' : !email.isRead}"
                     @click="openEmail(email.id)">
-                    <span class="email-envelope" :class="imageForDisplay(email.isRead)" @click.stop="toggleReadEmail(email.id)"></span>
+                    <span v-if="filter !== 'drafts' && filter !== 'sent'" class="email-envelope" :class="imageForDisplay(email.isRead)" @click.stop="toggleReadEmail(email.id)"></span>
                     <span class="fa fa-star star" :class="{'active-star': email.isStarred}" @click.stop="toggleStarEmail(email.id)"></span>
-                    <email-preview :email="email" @deleteEmail="deleteEmail"></email-preview>
+                    <email-preview :filter="filter" :email="email" @deleteEmail="deleteEmail">
+                    </email-preview>
                 </li>
             </ul>
         </section>
@@ -34,19 +35,29 @@ export default {
         },
 
         openEmail(emailId) {
-            emailService.openEmail(emailId);
-            this.$router.push('/email/'+emailId);
+            if (this.filter === 'drafts') {
+                this.openDraft(emailId)
+
+            } else {
+                emailService.openEmail(emailId);
+                this.$router.push('/email/'+emailId);
+            }
         }, 
 
         deleteEmail(emailId) {
             emailService.deleteEmail(emailId);
+        },
+
+        openDraft(emailId) {
+            this.$emit('openDraft',emailId);
         }
+
     },
 
     watch: { 
         'filter': {
-            handler: function(newVal) {
-                this.$emit('filtered',newVal);
+            handler: function(filter) {
+                this.$emit('filtered',filter);
            },
            immediate: true
          }

@@ -46,13 +46,13 @@ function query() {
     return Promise.resolve(notes);
 }
 
-function addNote(type, color, content, time) {
+function addNote(type, color, content) {
     let newNote = {
         id: utilService.makeId(),
         type: type,
         color: color,
         content: content,
-        created: time
+        created: getDateAndTime()
     }
     notes.unshift(newNote);
     storageService.store(NOTES_KEY, notes);
@@ -138,3 +138,7 @@ function deleteTodo(todoId, noteId) {
 //     const todoIdx = this.todos.findIndex((todo) => { todo.id === todoId })
 
 // }
+function getDateAndTime() {
+    let timeStamp = new Date();
+    return {timeStamp: timeStamp.getTime(), year: timeStamp.getFullYear(), month: timeStamp.getMonth()+1, day: timeStamp.getDate(), hours: timeStamp.getHours(), minutes: timeStamp.getMinutes(), strDate: timeStamp.toDateString()}
+}
