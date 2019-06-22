@@ -2,7 +2,8 @@
     list-style-type: none;
     padding: 10px;
     margin-bottom: 10px;
-    max-width: 200px; 
+    max-width: 200px;
+    border: 1px black solid; 
 }
 
 .yellow {
