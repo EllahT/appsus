@@ -5,6 +5,7 @@ import appLogo from '../../../cmps/logo.cmp.js'
 import keepSearch from '../cmps/keep-search.cmp.js';
 import keepFilter from '../cmps/keep-filter.cmp.js';
 import keepSort from '../cmps/keep-sort.cmp.js';
+import userMsg from '../../../cmps/user-msg.cmp.js';
 
 export default {
     template: `
@@ -16,6 +17,7 @@ export default {
             <keep-sort @sorted="emitSortBy"></keep-sort>
         </div>
         <main-nav></main-nav>
+        <user-msg></user-msg>
     </header>
     `,
     methods: {
@@ -41,7 +43,8 @@ export default {
         appLogo,
         keepSearch,
         keepFilter,
-        keepSort
+        keepSort,
+        userMsg
     }
 }
 

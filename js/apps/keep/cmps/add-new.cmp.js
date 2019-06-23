@@ -5,6 +5,7 @@ import noteText from './note-txt.cmp.js';
 import noteImg from './note-img.cmp.js';
 import noteTodos from './note-todos.cmp.js';
 import noteVideo from './note-video.cmp.js';
+import eventBus, { SHOW_MSG } from '../../../services/event-bus.service.js';
 
 export default {
     template: `
@@ -61,6 +62,8 @@ export default {
                 time: '',
                 isPinned: false
             }
+
+            eventBus.$emit(SHOW_MSG, {txt: 'your note has been added!', type: 'success'});
         },
         setType(ev) {
             this.note.type = ev.target.value;
