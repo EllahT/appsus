@@ -3,7 +3,7 @@
 export default {
     template: `
         <section class="email-sort">
-            <h3>Sort <span class="fas fa-sort-amount-up-alt"></span></h3>
+            <h3>Sort <span class="fas fa-sort"></span></h3>
             <div class="sorters">
                 <select v-model="sortBy.by">
                     <option>Sent At</option>

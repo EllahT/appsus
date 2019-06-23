@@ -218,10 +218,10 @@ function query(filterAndSortParams) {
         storageService.store(EMAILS_KEY, emails);
     }
 
-    if (!filterAndSortParams) return Promise.resolve(emails)
-    
-    let filteredEmails = emails.filter(email => (email.type === 'email'));;
+    let filteredEmails = emails.filter(email => (email.type === 'email'));
 
+    if (!filterAndSortParams) return Promise.resolve(filteredEmails)
+    
     if (filterAndSortParams.searchParams.subject) {
         filteredEmails = filteredEmails.filter(email => email.subject.includes(filterAndSortParams.searchParams.subject));
     }

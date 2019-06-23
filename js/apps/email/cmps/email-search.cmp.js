@@ -9,7 +9,7 @@ export default {
                 <select v-model="searchBy">
                     <option v-for="option in arrSearchParams" :value="option" >{{option}}</option>
                 </select>
-                <button @click="emitClearSearchs">Clear</button>
+                <span class="fas fa-remove-format" @click="emitClearSearchs"></span>
             </div>
         </section>
     `,
