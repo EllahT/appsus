@@ -95,7 +95,7 @@ export default {
 
         clearSearch() {
             this.filterAndSortParams.searchParams = {subject: '', content: ''};
-            emailService.query()
+            emailService.query(this.filterAndSortParams)
             .then((emails) => {this.emails = emails})
         },
 

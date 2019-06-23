@@ -41,6 +41,8 @@
 .email-nav {
     grid-area: emailNav;
     width: 80px;
+    text-align: center;
+    margin: 10px 0;
 }
 
 .email-list-container {
