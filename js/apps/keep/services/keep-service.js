@@ -29,7 +29,7 @@ const fakeNotes = [
     {
         id: 'otherMashu',
         type: 'todo',
-        content: [{text: 'Stay hungry', isDone: false, id: 'thebestid'},{text: 'Stay foolish', isDone: false, id: 'thesecondbestid'}],
+        content: [{text: 'Stay hungry', isDone: true, id: 'thebestid'},{text: 'Stay foolish', isDone: false, id: 'thesecondbestid'}],
         color: '#fafa34',
         isPinned: false,
         created: getDateAndTime()

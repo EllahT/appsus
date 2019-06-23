@@ -50,7 +50,7 @@ export default {
         setClr(ev) {
             if (ev.target.classList.contains('yellow')) this.note.color = '#fafa34';
             if (ev.target.classList.contains('purple')) this.note.color = '#965bd1';
-            if (ev.target.classList.contains('turquoise')) this.note.color = '#63f0e2';
+            if (ev.target.classList.contains('turquoise')) this.note.color = '#00faaf';
         },
         
         addNewNote() {            

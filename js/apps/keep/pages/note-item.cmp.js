@@ -11,7 +11,7 @@ import eventBus, { SHOW_MSG, COMPOSE_MAIL_CONTENT } from '../../../services/even
 export default {
     template: `
         <li :style="{'background-color': bgcolor}" class="note-item">
-            <p v-if="note.type === 'txt'">{{note.content}}</p>
+            <p class="note-txt" v-if="note.type === 'txt'">{{note.content}}</p>
             <todos-display v-else-if="note.type === 'todo'" :note="note"></todos-display>
             <img-display v-else-if="note.type === 'img'" :content="note.content"></img-display>
             <video-display v-else="note.type === 'video'" :content="note.content"></video-display>

@@ -9,13 +9,12 @@ import pinnedNotes from '../cmps/pinned-notes.cmp.js'
 export default {
     template: `
     <section>
-        <keep-header
+        <keep-header class="keep-header"
             @clearSearch="clearSearch" 
             @searchBy="searchNotes" 
             @filtered="filterNotes" 
             @sorted="sortNotes">
         </keep-header>
-        <h1>Whassssup keep</h1>
         <pinned-notes :notes="notes"></pinned-notes>
         <add-new :notes="notes" class="add-new"></add-new>    
         <notes-list :notes="notes"></notes-list>
