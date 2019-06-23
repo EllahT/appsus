@@ -1,7 +1,7 @@
 export default {
     template: `
     <div class="video-container">
-        <video class="video-display-input" preload="auto" tabindex="-1" controls :src="content"></video>
+        <iframe class="watch" width=80% height=80% :src="content"></iframe>    
     </div>
     `,
 
