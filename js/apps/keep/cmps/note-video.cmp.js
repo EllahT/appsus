@@ -1,31 +1,65 @@
 'use-strict'
 
+import youtubeService from '../../../services/youtueb.service.js';
+
 export default {
     template: `
         <section>
-        <form>
-            <input v-model="videoUrl" type="text" placeholder="insert url of a video from the web"/>
-            <div class="displayDiv">
-                <video preload="auto" v-if="videoUrl" tabindex="-1" width="320" height="240" controls :src="videoUrl"></video>
+            <form>
+                Search for videos
+                <input @keyup.enter.prevent="updateVideoList" v-model="videoSearchParam" type="text" placeholder="search for videos"/>
+            </form>
+        
+            
+            <div v-if="videoList" class="videos-container">
+                <h1>Videos</h1>
+
+                <ul v-for="video in videoList" class="videos-list">
+                    <div @click="pickVideo(video.id.videoId)">{{video.snippet.title}}</div>
+                </ul>
             </div>
-        </form>
+
+            <div v-if="videoId" class="displayDiv">
+                <iframe class="watch" width=80% height=80% :src="urlToSrc"></iframe>    
+            </div>
+
         </section>
+
     `,
     
     props: ['content'],
     
     data() {
         return {
-            videoUrl: ''
+            videoId: '',
+            videoList: [],
+            videoSearchParam: 'dogs'
+
         }
     }, 
 
-    watch: { 
-        'videoUrl': {
-            handler: function() {
-                this.$emit('videoNoteChanged',this.videoUrl);
-           },
-           immediate: true
-         },
-        }
+    computed: {
+        urlToSrc() {
+          return `https://www.youtube.com/embed/${this.videoId}`;  
+        } 
+    },
+
+    methods: {
+        updateVideoList() {
+            youtubeService.getVideos(this.videoSearchParam)
+            .then((res) => {
+                this.videoList = res;
+            })
+        },
+
+        pickVideo(videoId) {
+            this.videoId = videoId;
+        },
+    }, 
+
+    watch: {
+        'urlToSrc': function() {
+            this.$emit('videoNoteChanged',this.urlToSrc);
+        },   
+    }
 }
