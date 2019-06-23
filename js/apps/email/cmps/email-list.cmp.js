@@ -2,6 +2,7 @@
 
 import emailService from '../services/email-service.js';
 import emailPreview from '../cmps/email-preview.cmp.js';
+import eventBus, {NOTE_MAIL_CONTENT} from '../../../services/event-bus.service.js';
 
 export default {
     template: `
@@ -11,6 +12,7 @@ export default {
                     :class="{'unread-item-container' : !email.isRead}"
                     @click="openEmail(email.id)">
                     <span v-if="filter !== 'drafts' && filter !== 'sent'" class="email-envelope" :class="imageForDisplay(email.isRead)" @click.stop="toggleReadEmail(email.id)"></span>
+                    <span class="far fa-sticky-note email-note" @click.stop="noteThisMail(email)"></span>
                     <span class="fa fa-star star" :class="{'active-star': email.isStarred}" @click.stop="toggleStarEmail(email.id)"></span>
                     <email-preview :filter="filter" :email="email" @deleteEmail="deleteEmail">
                     </email-preview>
@@ -50,6 +52,13 @@ export default {
 
         openDraft(emailId) {
             this.$emit('openDraft',emailId);
+        },
+
+        noteThisMail(email) {
+            setTimeout(() => {
+                eventBus.$emit(NOTE_MAIL_CONTENT,email);
+            },100)
+            this.$router.push('/keep');
         }
 
     },

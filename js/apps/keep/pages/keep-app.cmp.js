@@ -1,10 +1,11 @@
 'use-strict';
 
-import keepService from '../services/keep-service.js'
-import notesList from './notes-list.cmp.js'
-import keepHeader from '../cmps/keep-header.cmp.js'
-import addNew from '../cmps/add-new.cmp.js'
-import pinnedNotes from '../cmps/pinned-notes.cmp.js'
+import keepService from '../services/keep-service.js';
+import notesList from './notes-list.cmp.js';
+import keepHeader from '../cmps/keep-header.cmp.js';
+import addNew from '../cmps/add-new.cmp.js';
+import pinnedNotes from '../cmps/pinned-notes.cmp.js';
+import eventBus, {NOTE_MAIL_CONTENT} from '../../../services/event-bus.service.js';
 
 export default {
     template: `
@@ -25,6 +26,14 @@ export default {
         keepService.query()
             .then(notes => this.notes = notes);
     },
+
+    mounted() {
+        eventBus.$on(NOTE_MAIL_CONTENT, (email)=> {
+            let content = email.subject + '\n' + email.body;
+            keepService.addNote('txt', '#fafa34', content , false);
+        })
+    },
+
     data() {
         return {
             notes: [],
@@ -78,6 +87,10 @@ export default {
             keepService.query()
             .then((notes) => {this.notes = notes})
         },
+    },
+
+    destroyed() {
+        eventBus.$off(NOTE_MAIL_CONTENT, this.listener);
     },
   
     components: {

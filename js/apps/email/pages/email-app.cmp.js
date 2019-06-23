@@ -164,6 +164,10 @@ export default {
          }
    },
 
+   destroyed() {
+        eventBus.$off(COMPOSE_MAIL_CONTENT, this.listener);
+    },
+
     components: {
         emailList,
         emailHeader,
