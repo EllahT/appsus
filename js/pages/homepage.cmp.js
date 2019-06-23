@@ -4,7 +4,7 @@ import mainNav from '../cmps/nav.cmp.js'
 export default  {
     template: `
     <section class="home">
-        <h1>Welcome to appsus! </h1>
+        <h1>Welcome to Strudel Appsus</h1>
         <h4>by Tammy and Ellah </h4>
         <main-nav></main-nav>
 

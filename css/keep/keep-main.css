@@ -5,8 +5,13 @@
     list-style-type: none;
     padding: 10px;
     margin-bottom: 10px;
-    max-width: 200px;
+    max-width: 300px;
     border: 1px black solid; 
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+
 }
 
 .yellow {
@@ -14,7 +19,7 @@
 }
 
 .turquoise {
-    background-color: #63f0e2;
+    background-color: #00faaf;
 }
 
 .purple {
@@ -23,8 +28,11 @@
 
 .keep-header {
     display: flex;
+    flex-direction: row;
     justify-content: center;
     padding: 10px;
+    background-color: #00faaf;
+    border-top-left-radius: 50%;
 }
 
 .clr-circle {
@@ -61,11 +69,26 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    padding: 40px;
+    /* padding: 40px; */
 }
 
 @media (min-width: 400px) {
     .keep-searchAndFilter {
         flex-direction: row;
     }   
+}
+
+.note-txt {
+    max-width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    /* line-break: inherit; */
+}
+
+.keep-title {
+    background-color: white;
+    border-top-left-radius: 25%;
+    border-top-right-radius: 25px;
+    padding: 20px;
 }

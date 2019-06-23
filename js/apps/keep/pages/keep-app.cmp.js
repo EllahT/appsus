@@ -9,11 +9,14 @@ import pinnedNotes from '../cmps/pinned-notes.cmp.js'
 export default {
     template: `
     <section>
-        <keep-header></keep-header>
-        <h1>Whassssup keep</h1>
-        <pinned-notes :notes="notes"></pinned-notes>
-        <add-new :notes="notes" class="add-new"></add-new>    
-        <notes-list :notes="notes"></notes-list>
+        <keep-header class="keep-header"></keep-header>
+        <div class="app-container">
+            <div class="file-background">
+                <pinned-notes :notes="notes"></pinned-notes>
+                <add-new :notes="notes" class="add-new"></add-new>    
+                <notes-list :notes="notes"></notes-list>
+            </div>
+        </div>
     </section>
     `,
     created() {

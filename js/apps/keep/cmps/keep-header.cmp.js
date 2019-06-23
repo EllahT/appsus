@@ -10,6 +10,7 @@ export default {
     template: `
     <header class="keep-header">
         <app-logo></app-logo>
+        <h1 class="keep-title">keep</h1>
         <div class="keep-searchAndFilter">
             <keep-search @searchBy="emitSearchBy" @clearSearch="emitClear"></keep-search>
             <keep-filter @filtered="emitFilterBy"></keep-filter>

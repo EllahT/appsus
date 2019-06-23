@@ -22,13 +22,13 @@ const fakeNotes = [
         id: 'stamMashu',
         type: 'txt',
         content: 'Remember that your nose and ears are constantly growing',
-        color: '#63f0e2',
+        color: '#00faaf',
         isPinned: false
     },
     {
         id: 'otherMashu',
         type: 'todo',
-        content: [{text: 'Stay hungry', isDone: false, id: 'thebestid'},{text: 'Stay foolish', isDone: false, id: 'thesecondbestid'}],
+        content: [{text: 'Stay hungry', isDone: true, id: 'thebestid'},{text: 'Stay foolish', isDone: false, id: 'thesecondbestid'}],
         color: '#fafa34',
         isPinned: false
     },
