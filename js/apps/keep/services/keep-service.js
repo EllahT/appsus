@@ -9,7 +9,8 @@ export default {
     deleteNote,
     deleteTodo,
     changeIsDone,
-    togglePin
+    togglePin,
+    addTodo
 }
 
 const NOTES_KEY = 'notes';

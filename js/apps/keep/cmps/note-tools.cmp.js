@@ -3,6 +3,7 @@
 export default {
     template: `
     <section>
+    <button :note="note" v-if="note.type === 'txt' || note.type === 'todo'" @click="emitEditClicked">Edit</button>
     <div class="clr-picker">
         <div @click="emitChangeColor(color.code)" v-for="color in colors" :class="color.name" class="clr-circle"></div>
     </div>
@@ -31,7 +32,9 @@ export default {
         },
         pinnedImg(note) {
             return (note.isPinned)? 'Unpin' : 'Pin';
-            
+        },
+        emitEditClicked() {
+            this.$emit('editIsClicked', this.note.id);
         }
     },
     props: ['note'],

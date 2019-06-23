@@ -6,18 +6,18 @@ import todosDisplay from '../cmps/todos-display.cmp.js';
 import noteTools from '../cmps/note-tools.cmp.js';
 import todoItem from '../cmps/todo-item.cmp.js';
 import videoDisplay from '../cmps/video-display.cmp.js';
-import editNote from '.';
+import editNote from '../cmps/edit-note.cmp.js';
 import eventBus, { SHOW_MSG } from '../../../services/event-bus.service.js';
 
 export default {
     template: `
         <li :style="{'background-color': bgcolor}" class="note-item">
-            <edit-note v-if="editIsClicked" :note="note"></edit-note>
+            <edit-note v-if="editClicked" :note="note"></edit-note>
             <p class="note-txt" v-if="note.type === 'txt'">{{note.content}}</p>
             <todos-display v-else-if="note.type === 'todo'" :note="note"></todos-display>
             <img-display v-else-if="note.type === 'img'" :content="note.content"></img-display>
             <video-display v-else="note.type === 'video'" :content="note.content"></video-display>
-            <note-tools :note="note" @toggledPin="togglePin" @changedColor="changeColor" @deletedNote="deleteNote(note.id)"></note-tools>
+            <note-tools :note="note" @editIsClicked="openEditModal" @toggledPin="togglePin" @changedColor="changeColor" @deletedNote="deleteNote(note.id)"></note-tools>
         </li>
     `,
     created() {
@@ -28,7 +28,7 @@ export default {
     data() {
         return {
             bgcolor: this.note.color,
-            clickedNote: this.note.id
+            editClicked: false
         }
     },
     methods: {
@@ -50,6 +50,11 @@ export default {
         togglePin(noteId) {
             keepService.togglePin(noteId);
         },
+        openEditModal(noteId) {
+            console.log('hi');
+            this.editClicked = !this.editClicked;
+            
+        }
 
     },
     computed: {
@@ -63,6 +68,7 @@ export default {
         todoItem,
         imgDisplay,
         todosDisplay,
-        videoDisplay
+        videoDisplay,
+        editNote
     }
 }
