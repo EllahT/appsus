@@ -2,8 +2,7 @@
 
 export default {
     template: `
-        <section class="email-sort">
-            <h3>Sort <span class="fas fa-sort"></span></h3>
+        <section class="keep-sort">
             <div class="sorters">
                 <select v-model="sortBy.by">
                     <option>Created</option>
@@ -15,6 +14,7 @@ export default {
                     <option>-</option>
                 </select>
             </div>
+            <h3><span class="fas fa-sort"></span></h3>
         </section>
     `,
 

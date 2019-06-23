@@ -2,10 +2,9 @@
 
 export default {
     template: `
-        <section class="email-filter">
-            <h3>Filter By Note Type <span class="fas fa-envelope"></span></h3>
+        <section class="keep-filter">
             <select v-model="filterBy">
-                <option>All</option>
+                <option>Show All</option>
                 <option>Text</option>
                 <option>Todos</option>
                 <option>Image</option>
