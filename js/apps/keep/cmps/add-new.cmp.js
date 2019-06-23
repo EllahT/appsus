@@ -49,12 +49,13 @@ export default {
         addNewNote() {
             console.log(this.note);
             
-            keepService.addNote(this.note.type, this.note.color, this.note.content);
+            keepService.addNote(this.note.type, this.note.color, this.note.content, this.note.isPinned);
             this.note = {
                 type: 'txt',
                 color: '#fafa34',
                 content: '',
-                time: ''
+                time: '',
+                isPinned: false
             }
         },
         doSomething() {

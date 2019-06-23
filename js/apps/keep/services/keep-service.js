@@ -26,9 +26,16 @@ const fakeNotes = [
     },
     {
         id: 'otherMashu',
-        type: 'txt',
-        content: 'I have to study',
+        type: 'todo',
+        content: [{text: 'Stay hungry', isDone: false, id: 'thebestid'},{text: 'Stay foolish', isDone: false, id: 'thesecondbestid'}],
         color: '#fafa34',
+        isPinned: false
+    },
+    {
+        id: 'odMashu',
+        type: 'img',
+        content: 'http://cdn.kickvick.com/wp-content/uploads/2015/09/cutest-bunny-rabbits-17.jpg',
+        color: '#965bd1',
         isPinned: false
     }
 ]

@@ -42,7 +42,6 @@ export default {
             const todoIdx = this.todos.findIndex(todo => todo.id === todoId);
             this.todos[todoIdx].isDone = !this.todos[todoIdx].isDone;
         }
-        // eventBus.$emit('add-todo', 'Todo Was Added!');
 
     },
     created() {
