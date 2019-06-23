@@ -5,7 +5,7 @@ import emailHeader from '../cmps/email-header.cmp.js';
 import emailNav from '../cmps/email-nav.cmp.js';
 import emailService from '../services/email-service.js';
 import emailCompose from '../cmps/email-compose.cmp.js';
-import eventBus, { SHOW_MSG } from '../../../services/event-bus.service.js';
+import eventBus, { SHOW_MSG, COMPOSE_MAIL_CONTENT } from '../../../services/event-bus.service.js';
 
 export default {
     
@@ -30,6 +30,7 @@ export default {
         <email-compose 
             :draft="draft"
             :reply="reply"
+            :note="note"
             @emailSent="sendEmailAndClose" 
             @closeCompose="saveDraftAndClose" 
             v-if="showCompose"></email-compose>
@@ -48,6 +49,7 @@ export default {
             showCompose: false,
             draft: '',
             reply: '',
+            note: '',
             unreadCount: 0
         }
     },
@@ -55,6 +57,13 @@ export default {
         console.log('Email is alive');
         this.clearSearch();
     }, 
+
+    mounted() {
+        eventBus.$on(COMPOSE_MAIL_CONTENT, (content)=> {
+            this.note = content;
+            this.showCompose = true;
+        })
+    },
 
     methods: {
         searchEmails(searchParams) {
@@ -154,6 +163,10 @@ export default {
            deep: true
          }
    },
+
+   destroyed() {
+        eventBus.$off(COMPOSE_MAIL_CONTENT, this.listener);
+    },
 
     components: {
         emailList,

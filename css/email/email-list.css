@@ -28,7 +28,7 @@
     flex-shrink: 0;
 }
 
-.email-envelope, .star {
+.email-envelope, .star, .email-note {
     cursor: pointer;
     margin-right: 8px;
 }

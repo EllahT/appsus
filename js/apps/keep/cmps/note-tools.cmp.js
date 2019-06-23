@@ -3,7 +3,7 @@
 export default {
     template: `
     <section>
-    <button :note="note" v-if="note.type === 'txt' || note.type === 'todo'" @click="emitEditClicked">Edit</button>
+    <button :note="note" v-if="note.type === 'todo'" @click="emitEditClicked">Edit</button>
     <div class="clr-picker">
         <div @click="emitChangeColor(color.code)" v-for="color in colors" :class="color.name" class="clr-circle"></div>
     </div>

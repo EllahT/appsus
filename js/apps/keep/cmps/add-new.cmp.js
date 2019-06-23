@@ -30,8 +30,6 @@ export default {
             <input type="button" :value="pinnedImg" @click="togglePin"/>
             <button type="submit">+</button>
 
-
-
         </form>
     </section>
     `,
@@ -68,7 +66,6 @@ export default {
         setType(ev) {
             this.note.type = ev.target.value;
         },
-        
         changeContent(content) {
             this.note.content = content;
         },
