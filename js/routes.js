@@ -6,10 +6,12 @@ import emailList from './apps/email/cmps/email-list.cmp.js';
 import keepApp from './apps/keep/pages/keep-app.cmp.js';
 import notesListCmp from './apps/keep/pages/notes-list.cmp.js';
 import noteItemCmp from './apps/keep/pages/note-item.cmp.js'
+import aboutCmp from './pages/about.cmp.js';
 
 
 export default [
     { path: '/', component: homepageCmp },
+    { path: '/about', component: aboutCmp },
     { path: '/email', component: emailApp, children: [
         { path: 'inbox', component: emailList, props: {filter: 'inbox'}},
         { path: 'starred', component: emailList, props: {filter: 'starred'}},

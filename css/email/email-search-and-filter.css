@@ -1,0 +1,5 @@
+.email-search, .email-filter, .email-sort {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}

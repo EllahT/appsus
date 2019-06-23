@@ -1,6 +1,7 @@
 @import '../email/email-list.css';
 @import '../email/email-details.css';
 @import '../email/email-compose.css';
+@import '../email/email-search-and-filter.css';
 
 .email-app {
     display: grid;
@@ -15,17 +16,21 @@
     grid-area: emailHeader;
     display: flex;
     background-color: lightblue;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     max-width: 100vw;
     padding: 10px;
 }
 
-.email-heade-searchAndFilter {
+.email-header-searchAndFilter {
+    flex-grow: 1;
+
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-} 
+    justify-content: space-around;
+    align-items: center;
+    padding: 40px;
+}
 
 @media (min-width: 400px) {
     .email-header-searchAndFilter {

@@ -1,0 +1,33 @@
+.nav-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 20px;
+    text-align: end;
+}
+
+.toggle-nav-btn {
+    cursor: pointer;
+}
+
+.main-nav {
+    display: flex;
+    flex-direction: column;
+    max-width: max-content;
+    text-align: center;
+    color: gray;
+    background-color: lightgray;
+}
+
+.main-nav > a {
+    margin: 5px;
+    cursor: pointer;
+}
+
+.main-nav > a:hover {
+    color: black;
+}
+
+
+
+

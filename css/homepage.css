@@ -1,0 +1,17 @@
+.home {
+    min-height: 50vh;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+}
+
+.home img {
+    max-width: max-content;
+    align-self: center;
+}
+
+.homepage-txt {
+    margin: 40px 0;
+}

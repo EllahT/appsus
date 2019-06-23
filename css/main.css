@@ -1,6 +1,9 @@
 @import './keep/keep-main.css';
 @import './email/email-main.css';
 @import './user-msg.css';
+@import './homepage.css';
+@import './nav.css';
+@import './about.css';
 
 * {
     box-sizing: border-box;
@@ -8,9 +11,25 @@
 
 a:link, a:visited {
     text-decoration: none;
-    color: black
+    color: inherit;
 }
 
 button {
     cursor: pointer;
+}
+
+.logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 20px;
+}
+
+.logo-sign {
+    color: white;
+    font-size: 80px;
+}
+
+.logo img {
+    border-radius: 50px;
 }
