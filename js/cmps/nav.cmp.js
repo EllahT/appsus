@@ -2,7 +2,6 @@
 
 export default {
     template: `
-    <div class="screen" @click.self="closeNav">
         <div class="nav-container">
             <span class="fas fa-th-large fa-2x toggle-nav-btn" @click="toggleShowNav"></span>
             <nav class="main-nav" v-if="isShowNav">
@@ -12,7 +11,6 @@ export default {
                 <router-link to="/keep"><span class="far fa-sticky-note fa-lg"></span></router-link>
             </nav>
         </div>
-    </div>
     `,
 
     data() {
