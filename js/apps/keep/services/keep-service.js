@@ -5,7 +5,7 @@ export default {
     updateColor,
     getById,
     addNote,
-    // editNote,
+    editNoteContent,
     deleteNote,
     deleteTodo,
     changeIsDone,

@@ -6,11 +6,13 @@ import todosDisplay from '../cmps/todos-display.cmp.js';
 import noteTools from '../cmps/note-tools.cmp.js';
 import todoItem from '../cmps/todo-item.cmp.js';
 import videoDisplay from '../cmps/video-display.cmp.js';
+import editNote from '.';
 import eventBus, { SHOW_MSG } from '../../../services/event-bus.service.js';
 
 export default {
     template: `
         <li :style="{'background-color': bgcolor}" class="note-item">
+            <edit-note v-if="editIsClicked" :note="note"></edit-note>
             <p class="note-txt" v-if="note.type === 'txt'">{{note.content}}</p>
             <todos-display v-else-if="note.type === 'todo'" :note="note"></todos-display>
             <img-display v-else-if="note.type === 'img'" :content="note.content"></img-display>
@@ -26,6 +28,7 @@ export default {
     data() {
         return {
             bgcolor: this.note.color,
+            clickedNote: this.note.id
         }
     },
     methods: {
@@ -46,7 +49,7 @@ export default {
         },
         togglePin(noteId) {
             keepService.togglePin(noteId);
-        }
+        },
 
     },
     computed: {
