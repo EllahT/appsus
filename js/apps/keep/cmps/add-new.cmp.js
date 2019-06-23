@@ -52,9 +52,7 @@ export default {
             if (ev.target.classList.contains('turquoise')) this.note.color = '#63f0e2';
         },
         
-        addNewNote() {
-            console.log(this.note);
-            
+        addNewNote() {            
             keepService.addNote(this.note.type, this.note.color, this.note.content, this.note.isPinned);
             this.note = {
                 type: 'txt',
