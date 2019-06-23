@@ -1,4 +1,5 @@
 @import '../keep/note-image.css';
+@import '../keep//note-video.css';
 
 .note-item {
     list-style-type: none;

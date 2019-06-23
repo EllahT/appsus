@@ -5,6 +5,7 @@ import emailHeader from '../cmps/email-header.cmp.js';
 import emailNav from '../cmps/email-nav.cmp.js';
 import emailService from '../services/email-service.js';
 import emailCompose from '../cmps/email-compose.cmp.js';
+import eventBus, { SHOW_MSG } from '../../../services/event-bus.service.js';
 
 export default {
     
@@ -23,7 +24,8 @@ export default {
         <router-view :emails="emails" 
             @filtered="filterEmails" 
             @openDraft="openDraft"
-            @replyEmail="replyEmail"></router-view>
+            @replyEmail="replyEmail"
+            @deleteEmail="deleteEmail"></router-view>
         
         <email-compose 
             :draft="draft"
@@ -91,8 +93,12 @@ export default {
         sendEmailAndClose(newEmail) {
             this.showCompose = false;
             emailService.sendEmail(newEmail.from, newEmail.to, newEmail.subject, newEmail.body)
-            .then(newEmailId => {
+            .then(newEmailId => { 
+                eventBus.$emit(SHOW_MSG,
+                {txt: 'your email has been sent!', type: 'success'});
                 this.updateEmails();
+                this.reply = '';
+                this.draft = '';
             })
         },
 
@@ -101,7 +107,11 @@ export default {
             if (!newDraft.subject && !newDraft.body) return;
             emailService.addDraft(newDraft.from, newDraft.to, newDraft.subject, newDraft.body)
             .then(newDraftId => {
+                eventBus.$emit(SHOW_MSG,
+                {txt: 'your draft has been saved!', type: 'success'});
                 this.updateEmails();
+                this.reply = '';
+                this.draft = '';
             })
         },
 
@@ -121,6 +131,15 @@ export default {
         replyEmail(email) {
             this.reply = email;
             this.showCompose = true;
+        },
+
+        deleteEmail(emailId) {
+            emailService.deleteEmail(emailId)
+            .then(emailId => {
+                eventBus.$emit(SHOW_MSG,
+                {txt: 'your email has been deleted!', type: 'failure'});
+                this.updateEmails();
+            })
         }
     },
 
