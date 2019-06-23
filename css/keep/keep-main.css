@@ -23,7 +23,8 @@
 
 .keep-header {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    padding: 10px;
 }
 
 .clr-circle {
@@ -53,3 +54,18 @@
     list-style-type: none;
 }
 
+.keep-searchAndFilter {
+    flex-grow: 1;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 40px;
+}
+
+@media (min-width: 400px) {
+    .keep-searchAndFilter {
+        flex-direction: row;
+    }   
+}
