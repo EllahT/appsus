@@ -55,12 +55,13 @@ function query() {
     return Promise.resolve(notes);
 }
 
-function addNote(type, color, content) {
+function addNote(type, color, content, isPinned) {
     let newNote = {
         id: utilService.makeId(),
         type: type,
         color: color,
         content: content,
+        isPinned: isPinned,
         created: getDateAndTime()
     }
     notes.unshift(newNote);
@@ -163,7 +164,7 @@ function changeIsDone(todoId, noteId) {
 }
 
 function togglePin(noteId) {
-    const note = notes.find(note => note.id === noteId);
+    let note = notes.find(note => note.id === noteId);
     note.isPinned = !note.isPinned;
     storageService.store(NOTES_KEY, notes);
 }

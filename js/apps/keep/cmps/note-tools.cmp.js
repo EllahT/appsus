@@ -6,7 +6,7 @@ export default {
     <div class="clr-picker">
         <div @click="emitChangeColor(color.code)" v-for="color in colors" :class="color.name" class="clr-circle"></div>
     </div>
-    <button id="" :note="note" @click="emitTogglePin">Pin</button>
+    <button :note="note" @click="emitTogglePin">{{pinnedImg(note)}}</button>
     <button @click="emitDeletingNote">Trashcan</button>
     </section>
     `,
@@ -27,13 +27,12 @@ export default {
         emitDeletingNote() {
             this.$emit('deletedNote')
         },
-        emitTogglePin(ev) {
-            this.$emit('toggledPin');
-            this.pinnedImg(this.note);
+        emitTogglePin() {
+            this.$emit('toggledPin', this.note.id);
         },
         pinnedImg(note) {
-            if (note.isPinned) return 'Unpin'
-            if (!note.isPinned) return 'Pin'
+            return (note.isPinned)? 'Unpin' : 'Pin';
+            
         }
     },
     props: ['note'],

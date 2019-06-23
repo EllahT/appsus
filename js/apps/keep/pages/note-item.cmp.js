@@ -14,7 +14,7 @@ export default {
             <todos-display v-else-if="note.type === 'todo'" :note="note"></todos-display>
             <img-display v-else-if="note.type === 'img'" :content="note.content"></img-display>
             <video-display v-else="note.type === 'video'" :content="note.content"></video-display>
-            <note-tools :note="note" @toggledPin="togglePin" @changedColor="changeColor" @deletedNote="deleteNote(noteId)"></note-tools>
+            <note-tools :note="note" @toggledPin="togglePin" @changedColor="changeColor" @deletedNote="deleteNote(note.id)"></note-tools>
         </li>
     `,
     created() {
@@ -25,7 +25,6 @@ export default {
     data() {
         return {
             bgcolor: this.note.color,
-            noteId: this.note.id,
         }
     },
     methods: {
