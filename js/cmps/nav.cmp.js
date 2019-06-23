@@ -2,6 +2,8 @@
 
 export default {
     template: `
+    <div>
+    <div class="screen" v-if="isShowNav" @click="closeNav"></div>
         <div class="nav-container">
             <span class="fas fa-th-large fa-2x toggle-nav-btn" @click="toggleShowNav"></span>
             <nav class="main-nav" v-if="isShowNav">
@@ -10,6 +12,7 @@ export default {
                 <router-link to="/email/inbox"><span class="fas fa-paper-plane fa-lg"></span></router-link> 
                 <router-link to="/keep"><span class="far fa-sticky-note fa-lg"></span></router-link>
             </nav>
+        </div>
         </div>
     `,
 
