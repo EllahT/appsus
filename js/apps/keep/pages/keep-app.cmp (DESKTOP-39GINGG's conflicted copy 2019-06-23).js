@@ -31,7 +31,7 @@ export default {
             notes: [],
             filterAndSortParams: {
                 searchParam: '',
-                filter: 'all',
+                filter: 'All',
                 sort: {by: 'Created', op: '-'}
             }
         }
@@ -44,22 +44,7 @@ export default {
         },
 
         filterNotes(filter) {
-            let filterToSend
-            switch (filter) {
-                case 'text': 
-                    filterToSend = 'txt';
-                    break;
-                case 'image': 
-                    filterToSend = 'img';
-                    break;
-                case 'todos': 
-                    filterToSend = 'todo';
-                    break;
-                case 'video': 
-                    filterToSend = 'video';
-                    break;
-            }
-            this.filterAndSortParams.filter = filterToSend;
+            this.filterAndSortParams.filter = filter;
             this.updateNotes();
         },
 
@@ -70,13 +55,12 @@ export default {
         
         updateNotes() {
             keepService.query(this.filterAndSortParams)
-            .then((notes) => {
-                this.notes = notes})
+            .then((notes) => {this.notes = notes})
         },
 
         clearSearch() {
             this.filterAndSortParams.searchParam = '';
-            keepService.query()
+            emailService.query()
             .then((notes) => {this.notes = notes})
         },
     },

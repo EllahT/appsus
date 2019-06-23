@@ -20,23 +20,19 @@ export default {
     `,
     methods: {
         emitSearchBy(searchParam) {
-            console.log('got emited to search', searchParam)
-            // this.$emit('searchBy',searchParams);
+            this.$emit('searchBy',searchParam);
         },
 
         emitFilterBy(filter)  {
-            console.log('got emited to filter',filter)
-            // this.$emit('filtered',filter);
+            this.$emit('filtered',filter);
         },
 
         emitSortBy(sorter)  {
-            console.log('got emited to sort', sorter)
-            // this.$emit('sorted',sorter);
+            this.$emit('sorted',sorter);
         },
 
         emitClear() {
-            console.log('got emited to clear')
-            // this.$emit('clearSearch','');
+            this.$emit('clearSearch','');
         }
     },
 

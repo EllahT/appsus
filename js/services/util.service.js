@@ -4,7 +4,9 @@ export default {
     makeLorem,
     makeId,
     priceForDisplay,
-    getTodayAsInputVal
+    getTodayAsInputVal,
+    createSortFuncDate,
+    createSortFuncTxt
 }
 
 
@@ -67,3 +69,50 @@ function getTodayAsInputVal() {
         local.setMinutes(local.getMinutes() - local.getTimezoneOffset());
         return local.toJSON().slice(0,10);
 }
+
+function createSortFuncDate(op,dateKey) {
+    function sorting(a,b) {
+        if (op === '+') {
+            if (a[dateKey].timeStamp > b[dateKey].timeStamp) {
+                return 1;
+            } else if (a[dateKey].timeStamp < b[dateKey].timeStamp) {
+                return -1;
+            } else {
+                return 0;
+            }    
+        } else {
+            if (a[dateKey].timeStamp < b[dateKey].timeStamp) {
+                return 1;
+            } else if (a[dateKey].timeStamp > b[dateKey].timeStamp) {
+                return -1;
+            } else {
+                return 0;
+            }    
+        } 
+    }
+    return sorting;
+}
+
+function createSortFuncTxt(txt,op) {
+    function sorting(a,b) {
+        if (op === '+') {
+            if (a[txt] > b[txt]) {
+                return 1;
+            } else if (a[txt] < b[txt]) {
+                return -1;
+            } else {
+                return 0;
+            }    
+        } else {
+            if (a[txt] < b[txt]) {
+                return 1;
+            } else if (a[txt] > b[txt]) {
+                return -1;
+            } else {
+                return 0;
+            }    
+        } 
+    }
+    return sorting;
+}
+
