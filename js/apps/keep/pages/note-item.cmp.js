@@ -6,7 +6,7 @@ import todosDisplay from '../cmps/todos-display.cmp.js';
 import noteTools from '../cmps/note-tools.cmp.js';
 import todoItem from '../cmps/todo-item.cmp.js';
 import videoDisplay from '../cmps/video-display.cmp.js';
-import eventBus, { SHOW_MSG } from '../../../services/event-bus.service.js';
+import eventBus, { SHOW_MSG, COMPOSE_MAIL_CONTENT } from '../../../services/event-bus.service.js';
 
 export default {
     template: `
@@ -16,6 +16,7 @@ export default {
             <img-display v-else-if="note.type === 'img'" :content="note.content"></img-display>
             <video-display v-else="note.type === 'video'" :content="note.content"></video-display>
             <note-tools :note="note" @toggledPin="togglePin" @changedColor="changeColor" @deletedNote="deleteNote(note.id)"></note-tools>
+            <button v-if="note.type !== 'todo'" @click="composeEmail(note.content)">mail this note</button>
         </li>
     `,
     created() {
@@ -46,6 +47,13 @@ export default {
         },
         togglePin(noteId) {
             keepService.togglePin(noteId);
+        },
+
+        composeEmail(content) {
+            setTimeout(() => {
+                eventBus.$emit(COMPOSE_MAIL_CONTENT,content);
+            },100)
+            this.$router.push('/email/inbox');
         }
 
     },

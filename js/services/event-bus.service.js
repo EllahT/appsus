@@ -1,9 +1,6 @@
 var bus = new Vue();
 
 export const SHOW_MSG = 'show-msg';
-
-// bus.$on(SHOW_MSG, (ev)=>{
-//     console.log('Show-msg just Happened', ev);
-// })
+export const COMPOSE_MAIL_CONTENT = 'txt';
 
 export default bus;

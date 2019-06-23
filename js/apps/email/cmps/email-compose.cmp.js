@@ -23,7 +23,7 @@ export default {
     
     `,
 
-    props: ['draft', 'reply'],
+    props: ['draft', 'reply','note'],
 
     data() {
         return {
@@ -45,6 +45,12 @@ export default {
         if (this.reply !=='') {
             this.email.subject = 'RE: '+ this.reply.subject;
             this.email.body = this.reply.body + '\n\n***\n\n';
+        }
+
+        if (this.note !=='') {
+            console.log('entered')
+            this.email.subject = 'Sharing a note';
+            this.email.body = this.note;
         }
 
     },
