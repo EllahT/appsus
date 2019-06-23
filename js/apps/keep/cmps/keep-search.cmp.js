@@ -3,9 +3,10 @@
 export default {
     template: `
         <section class="keep-search">
-            <h3>Search <span class="fas fa-search"></span></h3>
-            <div class="searchs">
+            <div class="search-container">
                 <input @keyup.enter="emitSearch" type="text" v-model="searchParam" placeholder="search inside notes"/>
+                <h3><span @mousedown="emitSearch" class="fas fa-search fa-xs"></span></h3>
+
                 <button @click="emitClearSearchs">Clear</button>
             </div>
         </section>

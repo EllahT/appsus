@@ -12,11 +12,13 @@ export default {
     <header class="keep-header">
         <app-logo></app-logo>
         <h1 class="keep-title">Keep</h1>
-        <div class="keep-searchAndFilter">
-            <keep-search @searchBy="emitSearchBy" @clearSearch="emitClear"></keep-search>
-            <keep-filter @filtered="emitFilterBy"></keep-filter>
-            <keep-sort @sorted="emitSortBy"></keep-sort>
-        </div>
+            <div class="header-container">
+                <div class="keep-searchAndFilter">
+                    <keep-search @searchBy="emitSearchBy" @clearSearch="emitClear"></keep-search>
+                    <keep-filter @filtered="emitFilterBy"></keep-filter>
+                    <keep-sort @sorted="emitSortBy"></keep-sort>
+                </div>
+            </div>
         <main-nav></main-nav>
         <user-msg></user-msg>
     </header>

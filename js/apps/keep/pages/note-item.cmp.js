@@ -55,7 +55,6 @@ export default {
             this.editClicked = !this.editClicked;
         },
         changeTextContent(ev){
-            console.log(ev.path[0].innerText);
             this.note.content = ev.path[0].innerText;
             keepService.updateTextContent(this.note.id, this.note.content);
         },

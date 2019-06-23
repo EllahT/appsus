@@ -23,7 +23,7 @@ const fakeNotes = [
         id: 'stamMashu',
         type: 'txt',
         content: 'Remember that your nose and ears are constantly growing',
-        color: '#63f0e2',
+        color: '#00faaf',
         isPinned: false,
         created: getDateAndTime()
     },
@@ -118,7 +118,6 @@ function deleteNote(noteId) {
 
 // for editing the note in real time with the tools
 function updateTextContent(noteId, noteContent) {
-    console.log(noteId, noteContent);
     const note = notes.find(note => note.id === noteId);
     note.content = noteContent;
     storageService.store(NOTES_KEY, notes);
