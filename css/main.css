@@ -22,14 +22,23 @@ button {
     /* position: absolute; */
     top: 0;
     left: 0;
-    padding: 20px;
+    padding-right: 20px;
+    font-family: 'Righteous';
+    font-weight: 500px;
+    font-size: 1.7rem;
+    /* border-bottom-right-radius: 50px; */
 }
 
-.logo-sign {
+/* .logo-sign {
     color: white;
     font-size: 80px;
-}
+} */
 
-.logo img {
+/* .logo img {
     border-radius: 50px;
+} */
+
+@font-face {
+    font-family: 'Righteous', sans-serif;
+    src: url('../fonts/Righteous-Regular.ttf');
 }

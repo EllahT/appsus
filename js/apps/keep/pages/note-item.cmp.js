@@ -6,6 +6,7 @@ import todosDisplay from '../cmps/todos-display.cmp.js';
 import noteTools from '../cmps/note-tools.cmp.js';
 import todoItem from '../cmps/todo-item.cmp.js';
 import videoDisplay from '../cmps/video-display.cmp.js';
+import eventBus, { SHOW_MSG } from '../../../services/event-bus.service.js';
 
 export default {
     template: `
@@ -37,9 +38,11 @@ export default {
         },
         deleteNote(noteId) {
             keepService.deleteNote(noteId);
+            eventBus.$emit(SHOW_MSG, {txt: 'your note has been deleted!', type: 'failure'});
         },
         deleteTodo(todoId, noteId) {
             keepService.deleteTodo(todoId, noteId);
+            eventBus.$emit(SHOW_MSG, {txt: 'your todo has been deleted!', type: 'failure'});
         },
         togglePin(noteId) {
             keepService.togglePin(noteId);

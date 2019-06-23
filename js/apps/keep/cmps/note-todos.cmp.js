@@ -2,6 +2,7 @@
 
 import utilService from '../../../services/util.service.js';
 import todoItem from './todo-item.cmp.js';
+import eventBus, { SHOW_MSG } from '../../../services/event-bus.service.js';
 
 export default {
     template: `
@@ -28,6 +29,7 @@ export default {
             this.newTodo.id = utilService.makeId();
             this.todos.push(this.newTodo);
             this.newTodo = { text: '', isDone: false, id: '' };
+            eventBus.$emit(SHOW_MSG, {txt: 'your todo has been added!', type: 'success'});
         },
         deleteTodo(todoId) {
             const todoIdx = this.todos.findIndex(todo => todo.id === todoId);

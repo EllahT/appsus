@@ -5,39 +5,37 @@ import appLogo from '../../../cmps/logo.cmp.js'
 import keepSearch from '../cmps/keep-search.cmp.js';
 import keepFilter from '../cmps/keep-filter.cmp.js';
 import keepSort from '../cmps/keep-sort.cmp.js';
+import userMsg from '../../../cmps/user-msg.cmp.js';
 
 export default {
     template: `
     <header class="keep-header">
         <app-logo></app-logo>
-        <h1 class="keep-title">keep</h1>
+        <h1 class="keep-title">Keep</h1>
         <div class="keep-searchAndFilter">
             <keep-search @searchBy="emitSearchBy" @clearSearch="emitClear"></keep-search>
             <keep-filter @filtered="emitFilterBy"></keep-filter>
             <keep-sort @sorted="emitSortBy"></keep-sort>
         </div>
         <main-nav></main-nav>
+        <user-msg></user-msg>
     </header>
     `,
     methods: {
         emitSearchBy(searchParam) {
-            console.log('got emited to search', searchParam)
-            // this.$emit('searchBy',searchParams);
+            this.$emit('searchBy',searchParam);
         },
 
         emitFilterBy(filter)  {
-            console.log('got emited to filter',filter)
-            // this.$emit('filtered',filter);
+            this.$emit('filtered',filter);
         },
 
         emitSortBy(sorter)  {
-            console.log('got emited to sort', sorter)
-            // this.$emit('sorted',sorter);
+            this.$emit('sorted',sorter);
         },
 
         emitClear() {
-            console.log('got emited to clear')
-            // this.$emit('clearSearch','');
+            this.$emit('clearSearch','');
         }
     },
 
@@ -46,7 +44,8 @@ export default {
         appLogo,
         keepSearch,
         keepFilter,
-        keepSort
+        keepSort,
+        userMsg
     }
 }
 

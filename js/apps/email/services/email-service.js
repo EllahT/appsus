@@ -261,58 +261,12 @@ function sortEmails(emailsToSort, sorter) {
     var sortFunc;
     
     if (sorter.by === 'subject') {
-        sortFunc = createSortFuncTxt(sorter.by, sorter.op);
+        sortFunc = utilService.createSortFuncTxt(sorter.by, sorter.op);
     } else {
-        sortFunc = createSortFuncSentAt(sorter.op);
+        sortFunc = utilService.createSortFuncDate(sorter.op,'sentAt');
     }
 
     return emailsToSort.sort(sortFunc);
-}
-
-function createSortFuncSentAt(op) {
-    function sorting(a,b) {
-        if (op === '+') {
-            if (a.sentAt.timeStamp > b.sentAt.timeStamp) {
-                return 1;
-            } else if (a.sentAt.timeStamp < b.sentAt.timeStamp) {
-                return -1;
-            } else {
-                return 0;
-            }    
-        } else {
-            if (a.sentAt.timeStamp < b.sentAt.timeStamp) {
-                return 1;
-            } else if (a.sentAt.timeStamp > b.sentAt.timeStamp) {
-                return -1;
-            } else {
-                return 0;
-            }    
-        } 
-    }
-    return sorting;
-}
-
-function createSortFuncTxt(txt,op) {
-    function sorting(a,b) {
-        if (op === '+') {
-            if (a[txt] > b[txt]) {
-                return 1;
-            } else if (a[txt] < b[txt]) {
-                return -1;
-            } else {
-                return 0;
-            }    
-        } else {
-            if (a[txt] < b[txt]) {
-                return 1;
-            } else if (a[txt] > b[txt]) {
-                return -1;
-            } else {
-                return 0;
-            }    
-        } 
-    }
-    return sorting;
 }
 
 function getEmailById(emailId) {

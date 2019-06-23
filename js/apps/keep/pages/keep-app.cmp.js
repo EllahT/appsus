@@ -9,14 +9,15 @@ import pinnedNotes from '../cmps/pinned-notes.cmp.js'
 export default {
     template: `
     <section>
-        <keep-header class="keep-header"></keep-header>
-        <div class="app-container">
-            <div class="file-background">
-                <pinned-notes :notes="notes"></pinned-notes>
-                <add-new :notes="notes" class="add-new"></add-new>    
-                <notes-list :notes="notes"></notes-list>
-            </div>
-        </div>
+        <keep-header class="keep-header"
+            @clearSearch="clearSearch" 
+            @searchBy="searchNotes" 
+            @filtered="filterNotes" 
+            @sorted="sortNotes">
+        </keep-header>
+        <pinned-notes :notes="notes"></pinned-notes>
+        <add-new :notes="notes" class="add-new"></add-new>    
+        <notes-list :notes="notes"></notes-list>
     </section>
     `,
     created() {
@@ -26,12 +27,57 @@ export default {
     },
     data() {
         return {
-            notes: []
+            notes: [],
+            filterAndSortParams: {
+                searchParam: '',
+                filter: 'all',
+                sort: {by: 'Created', op: '-'}
+            }
         }
     },
 
-    computed: {
+    methods: {
+        searchNotes(searchParam) {
+            this.filterAndSortParams.searchParam = searchParam;
+            this.updateNotes();
+        },
+
+        filterNotes(filter) {
+            let filterToSend
+            switch (filter) {
+                case 'text': 
+                    filterToSend = 'txt';
+                    break;
+                case 'image': 
+                    filterToSend = 'img';
+                    break;
+                case 'todos': 
+                    filterToSend = 'todo';
+                    break;
+                case 'video': 
+                    filterToSend = 'video';
+                    break;
+            }
+            this.filterAndSortParams.filter = filterToSend;
+            this.updateNotes();
+        },
+
+        sortNotes(sorter) {
+            this.filterAndSortParams.sort = sorter;
+            this.updateNotes();
+        },
         
+        updateNotes() {
+            keepService.query(this.filterAndSortParams)
+            .then((notes) => {
+                this.notes = notes})
+        },
+
+        clearSearch() {
+            this.filterAndSortParams.searchParam = '';
+            keepService.query()
+            .then((notes) => {this.notes = notes})
+        },
     },
   
     components: {

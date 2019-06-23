@@ -22,37 +22,75 @@ const fakeNotes = [
         id: 'stamMashu',
         type: 'txt',
         content: 'Remember that your nose and ears are constantly growing',
-        color: '#00faaf',
-        isPinned: false
+        color: '#63f0e2',
+        isPinned: false,
+        created: getDateAndTime()
     },
     {
         id: 'otherMashu',
         type: 'todo',
         content: [{text: 'Stay hungry', isDone: true, id: 'thebestid'},{text: 'Stay foolish', isDone: false, id: 'thesecondbestid'}],
         color: '#fafa34',
-        isPinned: false
+        isPinned: false,
+        created: getDateAndTime()
     },
     {
         id: 'odMashu',
         type: 'img',
         content: 'http://cdn.kickvick.com/wp-content/uploads/2015/09/cutest-bunny-rabbits-17.jpg',
         color: '#965bd1',
-        isPinned: true
+        isPinned: true,
+        created: getDateAndTime()
     }
 ]
 
 let notes;
 
-function query() {
-    // let updatedNotes;
+function query(filterAndSortParams) {
     if (!notes) notes = storageService.load(NOTES_KEY);
     if (!notes || !notes.length) {
         notes = fakeNotes;
         storageService.store(NOTES_KEY, notes)
     }
 
-    // insert checking filter here
-    return Promise.resolve(notes);
+    if (!filterAndSortParams) return Promise.resolve(notes)
+    
+    let filteredNotes = notes;
+
+    if (filterAndSortParams.searchParam) {
+
+        filteredNotes = filteredNotes.filter(note => {
+            if (note.type === 'txt') {
+                return note.content.toLowerCase().includes(filterAndSortParams.searchParam.toLowerCase());
+            } else if (note.type === 'todo') {              
+                let filteredTodos = note.content.filter(todo => todo.text.toLowerCase().includes(filterAndSortParams.searchParam.toLowerCase()))
+                return filteredTodos.length
+            }
+            return false;
+        })
+    }
+
+    if (filterAndSortParams.filter && filterAndSortParams.filter !== 'all') {
+        filteredNotes = filteredNotes.filter(note => (note.type === filterAndSortParams.filter));
+    }
+
+    if (filterAndSortParams.sort.by && filterAndSortParams.sort.op) {
+        filteredNotes = sortNotes(filteredNotes,filterAndSortParams.sort);
+    }
+
+    return Promise.resolve(filteredNotes);
+}    
+
+function sortNotes(notesToSort, sorter) {
+    var sortFunc;
+    
+    if (sorter.by === 'created') {
+        sortFunc = utilService.createSortFuncDate(sorter.op,'created');
+    } else {
+        sortFunc = utilService.createSortFuncTxt(sorter.by, sorter.op);
+    }
+
+    return notesToSort.sort(sortFunc);
 }
 
 function addNote(type, color, content, isPinned) {

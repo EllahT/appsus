@@ -1,6 +1,10 @@
 @import '../keep/note-image.css';
 @import '../keep//note-video.css';
 
+body {
+    margin: 0%;
+}
+
 .note-item {
     list-style-type: none;
     padding: 10px;
@@ -14,6 +18,7 @@
 
 }
 
+
 .yellow {
     background-color: #fafa34;
 }
@@ -26,13 +31,28 @@
     background-color: #965bd1;
 }
 
+.yellow-txt {
+    color: #fafa34;
+}
+.white-txt {
+    color: #ffffff;
+}
+.purple-txt {
+    color: #965bd1;
+}
+.turquoise-txt {
+    color: #00faaf;
+}
+
+
 .keep-header {
     display: flex;
     flex-direction: row;
     justify-content: center;
     padding: 10px;
+    padding-bottom: 0%;
     background-color: #00faaf;
-    border-top-left-radius: 50%;
+    border-top-left-radius: 50px;
 }
 
 .clr-circle {
@@ -69,7 +89,7 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    /* padding: 40px; */
+    padding-bottom: 0;
 }
 
 @media (min-width: 400px) {
@@ -91,4 +111,5 @@
     border-top-left-radius: 25%;
     border-top-right-radius: 25px;
     padding: 20px;
+    margin-bottom: 0;
 }
