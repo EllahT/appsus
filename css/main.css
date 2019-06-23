@@ -5,6 +5,12 @@
 @import './nav.css';
 @import './about.css';
 
+
+@font-face {
+    font-family: 'Righteous', sans-serif;
+    src: url('../fonts/Righteous-Regular.ttf');
+}
+
 * {
     box-sizing: border-box;
 }
@@ -37,8 +43,3 @@ button {
 /* .logo img {
     border-radius: 50px;
 } */
-
-@font-face {
-    font-family: 'Righteous', sans-serif;
-    src: url('../fonts/Righteous-Regular.ttf');
-}

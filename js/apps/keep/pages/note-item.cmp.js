@@ -6,16 +6,18 @@ import todosDisplay from '../cmps/todos-display.cmp.js';
 import noteTools from '../cmps/note-tools.cmp.js';
 import todoItem from '../cmps/todo-item.cmp.js';
 import videoDisplay from '../cmps/video-display.cmp.js';
+import editTodos from '../cmps/edit-todos.cmp.js';
 import eventBus, { SHOW_MSG, COMPOSE_MAIL_CONTENT } from '../../../services/event-bus.service.js';
 
 export default {
     template: `
         <li :style="{'background-color': bgcolor}" class="note-item">
-            <p class="note-txt" v-if="note.type === 'txt'">{{note.content}}</p>
+            <edit-todos v-if="editClicked" :note="note"></edit-todos>
+            <p contenteditable="true" @change="changeTextContent" class="note-txt" v-if="note.type === 'txt'">{{note.content}}</p>
             <todos-display v-else-if="note.type === 'todo'" :note="note"></todos-display>
             <img-display v-else-if="note.type === 'img'" :content="note.content"></img-display>
             <video-display v-else="note.type === 'video'" :content="note.content"></video-display>
-            <note-tools :note="note" @toggledPin="togglePin" @changedColor="changeColor" @deletedNote="deleteNote(note.id)"></note-tools>
+            <note-tools :note="note" @editIsClicked="openEditModal" @toggledPin="togglePin" @changedColor="changeColor" @deletedNote="deleteNote(note.id)"></note-tools>
             <button v-if="note.type !== 'todo'" @click="composeEmail(note.content)">mail this note</button>
         </li>
     `,
@@ -27,6 +29,7 @@ export default {
     data() {
         return {
             bgcolor: this.note.color,
+            editClicked: false
         }
     },
     methods: {
@@ -48,7 +51,13 @@ export default {
         togglePin(noteId) {
             keepService.togglePin(noteId);
         },
+        openEditModal(noteId) {
+            console.log('hi');
+            this.editClicked = !this.editClicked;
+        },
+        changeTextContent(){
 
+        },
         composeEmail(content) {
             setTimeout(() => {
                 eventBus.$emit(COMPOSE_MAIL_CONTENT,content);
@@ -68,6 +77,7 @@ export default {
         todoItem,
         imgDisplay,
         todosDisplay,
-        videoDisplay
+        videoDisplay,
+        editTodos
     }
 }

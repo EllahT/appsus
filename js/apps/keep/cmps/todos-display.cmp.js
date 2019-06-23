@@ -22,7 +22,7 @@ export default {
         },
         changeIsDone(todoId) {
             keepService.changeIsDone(todoId, this.note.id)
-        }
+        },
     },
     components: {
         todoItem
