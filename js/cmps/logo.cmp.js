@@ -2,6 +2,10 @@
 
 export default {
     template: `
-    <section>Strudel</section>
+    <section class="logo">
+        <span class="fas fa-at logo-sign"></span>
+        <!-- <img src="https://dummyimage.com/50x50/000/1aa1ad"/> -->
+
+    </section>
     `
 }

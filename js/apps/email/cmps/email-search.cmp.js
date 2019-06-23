@@ -3,6 +3,7 @@
 export default {
     template: `
         <section class="email-search">
+            <h3>Search <span class="fas fa-search"></span></h3>
             <div class="searchs">
                 <input @keyup.enter="emitSearch" type="text" v-model="searchTxt" placeholder="search inside emails subject"/>
                 <select v-model="searchBy">

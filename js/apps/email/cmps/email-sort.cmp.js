@@ -3,14 +3,17 @@
 export default {
     template: `
         <section class="email-sort">
-            <select v-model="sortBy.by">
-                <option>Sent At</option>
-                <option>Subject</option>
-            </select>
-            <select v-model="sortBy.op">
-                <option>+</option>
-                <option>-</option>
-            </select>
+            <h3>Sort <span class="fas fa-sort-amount-up-alt"></span></h3>
+            <div class="sorters">
+                <select v-model="sortBy.by">
+                    <option>Sent At</option>
+                    <option>Subject</option>
+                </select>
+                <select v-model="sortBy.op">
+                    <option>+</option>
+                    <option>-</option>
+                </select>
+            </div>
         </section>
     `,
 
