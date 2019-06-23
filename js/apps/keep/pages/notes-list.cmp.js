@@ -7,7 +7,7 @@ export default {
     <section class="notes-container">
         <p>Hi Notes List</p>
         <ul>
-            <note-item v-for="currNote in notes" :note="currNote" :key="currNote.id"></note-item>      
+            <note-item v-if="!currNote.isPinned" v-for="currNote in notes" :note="currNote" :key="currNote.id"></note-item>      
         </ul>
     </section>
     `,

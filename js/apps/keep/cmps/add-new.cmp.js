@@ -26,6 +26,7 @@ export default {
             <input type="button" class="clr-circle yellow" @click="setClr"/>
             <input type="button" class="clr-circle purple" @click="setClr"/>
             <input type="button" class="clr-circle turquoise" @click="setClr"/>
+            <input type="button" :value="pinnedImg" @click="togglePin"/>
             <button type="submit">+</button>
 
 
@@ -39,7 +40,8 @@ export default {
                 type: 'txt',
                 color: '#fafa34',
                 content: '',
-                time: ''
+                time: '',
+                isPinned: false
             }
         }
     },
@@ -62,12 +64,6 @@ export default {
                 isPinned: false
             }
         },
-        
-        doSomething() {
-            console.log('editing text');
-            
-        },
-
         setType(ev) {
             this.note.type = ev.target.value;
         },
@@ -75,8 +71,16 @@ export default {
         changeContent(content) {
             this.note.content = content;
         },
+        togglePin() {
+            this.note.isPinned = !this.note.isPinned;
+        }
     },
-
+    computed: {
+        pinnedImg() {
+            if (this.note.isPinned) return 'Unpin';
+            else return 'Pin'
+        }
+    },
     components: {
         noteText,
         noteTodos,

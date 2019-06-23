@@ -9,7 +9,7 @@ export default {
         </li>
     `,
     created() {
-        console.log(this.todo.isDone);
+        
         
     },
     props: ['todo'],

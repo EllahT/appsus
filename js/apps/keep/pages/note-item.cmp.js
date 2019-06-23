@@ -11,16 +11,13 @@ export default {
     template: `
         <li :style="{'background-color': bgcolor}" class="note-item">
             <p v-if="note.type === 'txt'">{{note.content}}</p>
-            <todos-display :note="note" v-else-if="note.type === 'todo'"></todos-display>
-            <img-display :content="note.content" v-else-if="note.type === 'img'"></img-display>
-            <video-display :content="note.content" v-else-if="note.type === 'video'"></video-display>
-            <note-tools @changedColor="changeColor" @deletedNote="deleteNote(noteId)"></note-tools>
+            <todos-display v-else-if="note.type === 'todo'" :note="note"></todos-display>
+            <img-display v-else-if="note.type === 'img'" :content="note.content"></img-display>
+            <video-display v-else="note.type === 'video'" :content="note.content"></video-display>
+            <note-tools :note="note" @toggledPin="togglePin" @changedColor="changeColor" @deletedNote="deleteNote(noteId)"></note-tools>
         </li>
     `,
     created() {
-        console.log('note item is alive');
-        console.log(this.note.type, this.note);
-        
         // const noteId = this.$route.params.theNoteId;
         // keepService.getById(noteId)
         //     .then(note => this.note = note)
@@ -40,15 +37,15 @@ export default {
             keepService.updateColor(noteId, color)
         },
         deleteNote(noteId) {
-            console.log('item to delete:', noteId);
             keepService.deleteNote(noteId);
         },
         deleteTodo(todoId, noteId) {
             keepService.deleteTodo(todoId, noteId);
         },
-        toggleChecked(todoId) {
-
+        togglePin(noteId) {
+            keepService.togglePin(noteId);
         }
+
     },
     computed: {
         isTodos() {

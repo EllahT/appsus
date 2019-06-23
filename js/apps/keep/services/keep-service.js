@@ -8,7 +8,8 @@ export default {
     // editNote,
     deleteNote,
     deleteTodo,
-    changeIsDone
+    changeIsDone,
+    togglePin
 }
 
 const NOTES_KEY = 'notes';
@@ -20,7 +21,7 @@ const fakeNotes = [
     {
         id: 'stamMashu',
         type: 'txt',
-        content: 'I have to work',
+        content: 'Remember that your nose and ears are constantly growing',
         color: '#63f0e2',
         isPinned: false
     },
@@ -36,7 +37,7 @@ const fakeNotes = [
         type: 'img',
         content: 'http://cdn.kickvick.com/wp-content/uploads/2015/09/cutest-bunny-rabbits-17.jpg',
         color: '#965bd1',
-        isPinned: false
+        isPinned: true
     }
 ]
 
@@ -154,9 +155,15 @@ function getDateAndTime() {
 function changeIsDone(todoId, noteId) {
     const note = notes.find(note => note.id === noteId);
     let todos = note.content;
-    const todo = todos.find(todo => todo.id === todoId );
+    const todo = todos.find(todo => todo.id === todoId);
     console.log(todo);
     
     todo.isDone = !todo.isDone;
+    storageService.store(NOTES_KEY, notes);
+}
+
+function togglePin(noteId) {
+    const note = notes.find(note => note.id === noteId);
+    note.isPinned = !note.isPinned;
     storageService.store(NOTES_KEY, notes);
 }

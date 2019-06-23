@@ -14,7 +14,7 @@ export default {
     `,
     props: ['note'],
     created() {
-        
+
     },
     methods: {
         deleteTodo(todoId) {
