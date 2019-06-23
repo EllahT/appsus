@@ -13,11 +13,11 @@ export default {
     template: `
         <li :style="{'background-color': bgcolor}" class="note-item">
             <edit-todos v-if="editClicked" :note="note"></edit-todos>
-            <p contenteditable="true" @change="changeTextContent" class="note-txt" v-if="note.type === 'txt'">{{note.content}}</p>
+            <p contenteditable="true" @mouseout="changeTextContent" class="note-txt" v-if="note.type === 'txt'">{{note.content}}</p>
             <todos-display v-else-if="note.type === 'todo'" :note="note"></todos-display>
             <img-display v-else-if="note.type === 'img'" :content="note.content"></img-display>
             <video-display v-else="note.type === 'video'" :content="note.content"></video-display>
-            <note-tools :note="note" @editIsClicked="openEditModal" @toggledPin="togglePin" @changedColor="changeColor" @deletedNote="deleteNote(note.id)"></note-tools>
+            <note-tools :note="note" @editIsClicked="openEdit" @toggledPin="togglePin" @changedColor="changeColor" @deletedNote="deleteNote(note.id)"></note-tools>
             <button v-if="note.type !== 'todo'" @click="composeEmail(note.content)">mail this note</button>
         </li>
     `,
@@ -51,12 +51,13 @@ export default {
         togglePin(noteId) {
             keepService.togglePin(noteId);
         },
-        openEditModal(noteId) {
-            console.log('hi');
+        openEdit() {
             this.editClicked = !this.editClicked;
         },
-        changeTextContent(){
-
+        changeTextContent(ev){
+            console.log(ev.path[0].innerText);
+            this.note.content = ev.path[0].innerText;
+            keepService.updateTextContent(this.note.id, this.note.content);
         },
         composeEmail(content) {
             setTimeout(() => {

@@ -5,7 +5,6 @@ import keepService from '../services/keep-service.js';
 export default {
     template: `
     <section>
-        <h1>Hiiiii</h1>
             <form v-if="note.type === 'todo'" >
                 <input type="text" v-model="newTodo.text" />
                 <button @click.prevent="addTodo">+</button>

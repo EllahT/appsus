@@ -5,9 +5,8 @@
 @import './nav.css';
 @import './about.css';
 
-
 @font-face {
-    font-family: 'Righteous', sans-serif;
+    font-family: 'Righteous';
     src: url('../fonts/Righteous-Regular.ttf');
 }
 

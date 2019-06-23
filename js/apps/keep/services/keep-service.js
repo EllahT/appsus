@@ -5,7 +5,7 @@ export default {
     updateColor,
     getById,
     addNote,
-    editNoteContent,
+    updateTextContent,
     deleteNote,
     deleteTodo,
     changeIsDone,
@@ -117,8 +117,11 @@ function deleteNote(noteId) {
 }
 
 // for editing the note in real time with the tools
-function editNoteContent() {
-
+function updateTextContent(noteId, noteContent) {
+    console.log(noteId, noteContent);
+    const note = notes.find(note => note.id === noteId);
+    note.content = noteContent;
+    storageService.store(NOTES_KEY, notes);
 }
 
 function updateColor(noteId, color) {
@@ -151,10 +154,6 @@ function getById(noteId) {
     }
 }
 
-function setFilter() {
-
-}
-
 function addTodo(newTodo, noteId) {
     newTodo.id = utilService.makeId()
     const note = notes.find(note => note.id === noteId);
@@ -171,22 +170,6 @@ function deleteTodo(todoId, noteId) {
     storageService.store(NOTES_KEY, notes);
 }
 
-// addTodo() {
-//     console.log('soon adding to do');
-//     console.log(this.newTodo);
-//     this.newTodo.id = utilService.makeId();
-//     console.log(this.newTodo.id);
-
-//     this.todos.push(this.newTodo)
-// },
-// deleteTodo(todoId) {
-//     const todoIdx = this.todos.findIndex((todo) => { todo.id === todoId })
-//     this.todos.splice(todoIdx, 1);
-// },
-// ifChecked(todoId) {
-//     const todoIdx = this.todos.findIndex((todo) => { todo.id === todoId })
-
-// }
 function getDateAndTime() {
     let timeStamp = new Date();
     return {timeStamp: timeStamp.getTime(), year: timeStamp.getFullYear(), month: timeStamp.getMonth()+1, day: timeStamp.getDate(), hours: timeStamp.getHours(), minutes: timeStamp.getMinutes(), strDate: timeStamp.toDateString()}
