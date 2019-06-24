@@ -17,7 +17,8 @@ export default {
     },
     methods: {
         emitContent() {
-            this.$emit('contentChanged', this.text)
+            this.$emit('contentChanged', this.text);
+            this.text = '';
         }
     }
 

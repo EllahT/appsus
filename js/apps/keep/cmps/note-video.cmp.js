@@ -8,14 +8,17 @@ export default {
             <form>
                 Search for videos
                 <input @keyup.enter.prevent="updateVideoList" v-model="videoSearchParam" type="text" placeholder="search for videos"/>
+                <button class="fas fa-search" @click="updateVideoList"></button>
             </form>
         
             
             <div v-if="videoList" class="videos-container">
                 <h1>Videos</h1>
 
-                <ul v-for="video in videoList" class="videos-list">
-                    <div @click="pickVideo(video.id.videoId)">{{video.snippet.title}}</div>
+                <ul class="videos-list">
+                    <li v-for="video in videoList" @click="pickVideo(video.id.videoId)">
+                    {{video.snippet.title}}
+                    </li>
                 </ul>
             </div>
 
@@ -33,7 +36,7 @@ export default {
         return {
             videoId: '',
             videoList: [],
-            videoSearchParam: 'dogs'
+            videoSearchParam: ''
 
         }
     }, 

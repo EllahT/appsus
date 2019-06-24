@@ -6,8 +6,8 @@ let audio;
 export default {
     template: `
     <section>
-        <button @click.prevent="startRec">Start</button>
-        <button @click.prevent="stopRec">Stop</button>
+        <button @click.prevent="startRec">Start Recording</button>
+        <button @click.prevent="stopRec">Stop Recording</button>
         <button @click.prevent="playRec">Play</button>
     </section>
     
@@ -21,6 +21,7 @@ export default {
 
     methods: {
         startRec() {
+            console.log('started')
             navigator.mediaDevices.getUserMedia({ audio: true })
             .then(stream => {
                 mediaRecorder = new MediaRecorder(stream);
