@@ -10,6 +10,27 @@
     src: url('../fonts/Righteous-Regular.ttf');
 }
 
+@font-face {
+    font-family: 'Lucida';
+    src: url('../fonts/Lucida\ Sans\ Unicode\ Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('../fonts/Staatliches-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Staatliches';
+    src: url('../fonts/Staatliches-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Unica One';
+    src: url('../fonts/UnicaOne-Regular.ttf')
+}
+
+
 * {
     box-sizing: border-box;
 }

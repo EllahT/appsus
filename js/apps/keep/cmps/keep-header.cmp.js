@@ -19,7 +19,7 @@ export default {
                     <keep-sort @sorted="emitSortBy"></keep-sort>
                 </div>
             </div>
-        <main-nav></main-nav>
+        <main-nav class="keep-nav"></main-nav>
         <user-msg></user-msg>
     </header>
     `,
