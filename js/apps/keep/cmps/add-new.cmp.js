@@ -5,6 +5,7 @@ import noteText from './note-txt.cmp.js';
 import noteImg from './note-img.cmp.js';
 import noteTodos from './note-todos.cmp.js';
 import noteVideo from './note-video.cmp.js';
+import noteAudio from './note-audio.cmp.js';
 import eventBus, { SHOW_MSG } from '../../../services/event-bus.service.js';
 
 export default {
@@ -17,11 +18,13 @@ export default {
             <input type="button" value="img" @click="setType"/>
             <input type="button" value="todo" @click="setType"/>
             <input type="button" value="video" @click="setType"/>
+            <input type="button" value="audio" @click="setType"/>
 
             <note-text :content="note.content" @contentChanged="changeContent" v-if="note.type === 'txt'"></note-text>
             <note-img @imgNoteChanged="changeContent" v-else-if="note.type === 'img'"></note-img>
             <note-video @videoNoteChanged="changeContent" v-else-if="note.type === 'video'"></note-video>
-            <note-todos :content="note.content" @newTodosChanged="changeContent" v-else="note.type === 'todo'"></note-todos>
+            <note-todos :content="note.content" @newTodosChanged="changeContent" v-else-if="note.type === 'todo'"></note-todos>
+            <note-audio @audioNoteChanged="changeContent" v-else="note.type === 'audio'"></note-audio>
             
             <!-- <button class="showColors">to do: btn to open colors menu</button> -->
             <input type="button" class="clr-circle yellow" @click="setClr"/>
@@ -83,6 +86,7 @@ export default {
         noteText,
         noteTodos,
         noteImg,
-        noteVideo
+        noteVideo,
+        noteAudio
     }
 }

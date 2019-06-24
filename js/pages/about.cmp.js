@@ -11,13 +11,13 @@ export default {
         <div class="team-members">
             <div class="team-member">
                 <h3>Tammy</h3>
-                <img class="team-image" src="https://dummyimage.com/300x300/000/1aa1ad"/>
+                <img class="team-image" src="../../img/tammy.jpg"/>
                 <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veritatis, numquam odio quia architecto nesciunt, esse quasi dolor amet dolorem, aperiam exercitationem. Consectetur architecto illo repudiandae quas dicta sit corporis quae?</p>
             </div>
 
             <div class="team-member">
                 <h3>Ellah</h3>
-                <img class="team-image" src="https://dummyimage.com/300x300/000/1aa1ad"/>
+                <img class="team-image" src="../../img/ellah.jpg"/>
                 <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veritatis, numquam odio quia architecto nesciunt, esse quasi dolor amet dolorem, aperiam exercitationem. Consectetur architecto illo repudiandae quas dicta sit corporis quae?</p>
             </div>
         </div>

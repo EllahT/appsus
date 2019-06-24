@@ -12,7 +12,9 @@
     align-items: center;
 }
 
-
 .team-image {
     border-radius: 160px;
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
 }

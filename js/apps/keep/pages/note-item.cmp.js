@@ -6,6 +6,7 @@ import todosDisplay from '../cmps/todos-display.cmp.js';
 import noteTools from '../cmps/note-tools.cmp.js';
 import todoItem from '../cmps/todo-item.cmp.js';
 import videoDisplay from '../cmps/video-display.cmp.js';
+import audioDisplay from '../cmps/audio-display.cmp.js';
 import editTodos from '../cmps/edit-todos.cmp.js';
 import eventBus, { SHOW_MSG, COMPOSE_MAIL_CONTENT } from '../../../services/event-bus.service.js';
 
@@ -16,9 +17,10 @@ export default {
             <p contenteditable="true" @mouseout="changeTextContent" class="note-txt" v-if="note.type === 'txt'">{{note.content}}</p>
             <todos-display v-else-if="note.type === 'todo'" :note="note"></todos-display>
             <img-display v-else-if="note.type === 'img'" :content="note.content"></img-display>
-            <video-display v-else="note.type === 'video'" :content="note.content"></video-display>
+            <video-display v-else-if="note.type === 'video'" :content="note.content"></video-display>
+            <audio-display v-else="note.type === 'audio'" :content="note.content"></audio-display>
             <note-tools :note="note" @editIsClicked="openEdit" @toggledPin="togglePin" @changedColor="changeColor" @deletedNote="deleteNote(note.id)"></note-tools>
-            <button v-if="note.type !== 'todo'" @click="composeEmail(note.content)">mail this note</button>
+            <button v-if="isMailable" @click="composeEmail(note.content)">mail this note</button>
         </li>
     `,
     created() {
@@ -32,6 +34,7 @@ export default {
             editClicked: false
         }
     },
+
     methods: {
         changeColor(color) {
             this.bgcolor = color;
@@ -68,7 +71,11 @@ export default {
     },
     computed: {
         isTodos() {
-            return note.type === 'todo'
+            return this.note.type === 'todo'
+        },
+
+        isMailable() {
+            return !(this.note.type === 'todo' || this.note.type === 'audio')
         }
     },
     props: ['note'],
@@ -78,6 +85,7 @@ export default {
         imgDisplay,
         todosDisplay,
         videoDisplay,
+        audioDisplay,
         editTodos
     }
 }
