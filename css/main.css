@@ -30,7 +30,6 @@
     src: url('../fonts/UnicaOne-Regular.ttf')
 }
 
-
 * {
     box-sizing: border-box;
 }
@@ -54,6 +53,10 @@ button {
     font-size: 1.7rem;
     margin: 0 auto;
     /* border-bottom-right-radius: 50px; */
+}
+
+.dark-text {
+    color: #292927
 }
 
 /* .logo-sign {
