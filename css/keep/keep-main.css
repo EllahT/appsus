@@ -45,21 +45,6 @@ body {
     color: #00faaf;
 }
 
-
-.keep-header {
-    display: flex;
-    flex-direction: row;
-    padding-bottom: 0%;
-    background-color: #00faaf;
-    border-top-left-radius: 50px;
-}
-
-.header-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
 .clr-circle {
     height: 15px;
     width: 15px;
@@ -85,21 +70,6 @@ body {
 
 .todo-item {
     list-style-type: none;
-}
-
-.keep-searchAndFilter {
-    padding: 5px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    padding-bottom: 0;
-}
-
-@media (min-width: 400px) {
-    .keep-searchAndFilter {
-        flex-direction: row;
-    }   
 }
 
 .note-txt {
@@ -129,35 +99,4 @@ body {
     margin-bottom: 0;
     background-color: white;
     padding-top: 10px;
-}
-
-.search-container {
-    width: 250px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    /* max-height: 1.2rem; */
-}
-
-.search-container input {
-    border: none;
-    outline-color: #00faaf
-}
-
-.keep-sort {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-.keep-sort select {
-    border: none;
-    outline-color: #00faaf
-}
-
-.logo h1 {
-    position: absolute;
-    top: -10px;
-    left: 15px;
 }

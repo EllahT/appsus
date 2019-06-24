@@ -2,7 +2,7 @@
 
 export default {
     template: `
-        <section class="email-sort">
+        <section class="app-sort">
             <h3>Sort <span class="fas fa-sort"></span></h3>
             <div class="sorters">
                 <select v-model="sortBy.by">

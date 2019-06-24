@@ -2,7 +2,7 @@
 
 export default {
     template: `
-        <section class="email-filter">
+        <section class="app-filter">
             <h3>Filter <span class="fas fa-envelope"></span></h3>
             <select v-model="filterBy">
                 <option>All</option>

@@ -2,7 +2,7 @@
 
 export default {
     template: `
-        <section class="keep-sort">
+        <section class="app-sort">
             <div class="sorters">
                 <select v-model="sortBy.by">
                     <option>Created</option>
