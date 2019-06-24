@@ -9,7 +9,7 @@ import noteAudio from './note-audio.cmp.js';
 
 export default {
     template: `
-    <section class="new-note-editor">
+    <section class="new-note-editor" :style="{'background-color': note.color}">
         <form action="#" @submit.prevent="addNewNote">
             <h1>Make a new note happen.</h1>
         <div class="type-btns">
@@ -20,7 +20,7 @@ export default {
             <button class="fas fa-microphone round-btn" @click.prevent="setType('audio')"></button>
         </div>
 
-        <div class="new-notes-types" :style="{'background-color': note.color}">
+        <div class="new-notes-types" >
             <note-text :content="note.content" @contentChanged="changeContent" v-if="note.type === 'txt'"></note-text>
             <note-img @imgNoteChanged="changeContent" v-else-if="note.type === 'img'"></note-img>
             <note-video @videoNoteChanged="changeContent" v-else-if="note.type === 'video'"></note-video>

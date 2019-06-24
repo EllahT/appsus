@@ -109,7 +109,8 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 250px;
+    height: max-content;
+    padding-bottom: 10px;
 }
 
 .new-notes-types {
@@ -118,6 +119,11 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.new-note-tools {
+    text-align: center;
+    height: 45px;
 }
 
 .new-edit {
@@ -143,6 +149,14 @@ body {
     align-items: center
 }
 
+.content-display ul li.todo-item {
+    position: relative;
+    right: 18px;
+}
 /* .pin {
     position: relative;
 } */
+
+.type-btns {
+    text-align: center;
+}
