@@ -8,7 +8,7 @@ export default {
         </div>
         <button class="round-btn" @click="toggleClrs"><i class="fas fa-tint"></i></button>
         <button :note="note" v-if="note.type === 'todo'" class="round-btn" @click="emitEditClicked"><i class="fas fa-edit"></i></button>
-    <button class="round-btn pin" :note="note" @click="emitTogglePin"><i class="fas fa-thumbtack"></i></button>
+    <button class="pin-round fas fa-thumbtack" :class="pinnedColor" :note="note" @click="emitTogglePin"></button>
     <button class="round-btn far fa-trash-alt" @click="emitDeletingNote"></button>
     <button v-if="isMailable" class="round-btn fas fa-envelope fa-xs" @click="emitComposeEmail"></button>
     </section>
@@ -32,9 +32,7 @@ export default {
         emitTogglePin() {
             this.$emit('toggledPin', this.note.id);
         },
-        pinnedImg(note) {
-            return (note.isPinned)? 'Unpin' : 'Pin';
-        },
+    
         emitEditClicked() {
             this.$emit('editIsClicked', this.note.id);
         },
@@ -49,6 +47,9 @@ export default {
     computed: {
         isMailable() {
             return !(this.note.type === 'todo' || this.note.type === 'audio')
-        }
+        },
+        pinnedColor() {    
+            return (this.note.isPinned)? 'unpinned' : 'pinned';
+        },
     },
 }

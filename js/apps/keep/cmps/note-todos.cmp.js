@@ -9,7 +9,7 @@ export default {
                 <p>Add a checklist</p>
                 <form @submit.prevent="emitContent" >
                     <input type="text" v-model="newTodo.text" />
-                    <button class="round-btn" @click="addTodo">+</button>
+                    <button class="s-round-btn" @click="addTodo">+</button>
                 </form>
                 <ul>
                     <todo-item @deletingTodo="deleteTodo" @isDoneChanged="changeIsDone" v-for="currTodo in todos" :todo="currTodo" :key="currTodo.id"></todo-item>

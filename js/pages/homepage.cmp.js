@@ -6,7 +6,7 @@ export default  {
     <section class="home">
         <header>
             <h1 class="home-title">Welcome to Strudel Appsus</h1>
-            <h4 class="home-subtitle">by Tammy and Ellah </h4>
+            <h4 class="home-subtitle">By Tammy and Ellah </h4>
             <span class="fas fa-2x fa-angle-double-down arrows-nav" v-scroll-to="{
                 el: '#line-nav',
                 duration: 800,
