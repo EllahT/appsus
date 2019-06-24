@@ -109,13 +109,21 @@ button {
     display: flex;
     align-items: center;
     flex-direction: column;
+    padding-left: 10px;
 }
 
-@media (min-width: 800px) {
+@media (min-width: 620px) {
     .app-searchAndFilter {
         flex-direction: row;
         flex-grow: 1;
         justify-content: space-between;
+        padding-left: 20px;
+    }
+}
+
+@media (min-width: 650px) {
+    .app-searchAndFilter {
+        padding-left: 50px;
     }
 }
 
