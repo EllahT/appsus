@@ -2,8 +2,8 @@
 
 export default {
     template: `
-    <div class="logo">
+    <router-link to="/" class="logo">
         <p>StrudeL</p>
-    </div>
+    </router-link>
     `
 }

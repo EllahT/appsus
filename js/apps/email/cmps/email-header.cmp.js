@@ -11,9 +11,10 @@ export default {
     template: `
     <section class="app-header email-header">
         <app-logo></app-logo>
-        <div class="app-title-container"><h1 class="app-title">Email</h1></div>
+        <router-link to="/keep" class="app-sub-title-container"><p class="app-sub-title">Keep</p></router-link>
+        <router-link to="/email/inbox" class="app-title-container"><p class="app-title">Email</p></router-link>
         <div class="app-searchAndFilter">
-            <email-search class="app-search" @searchBy="emitSearchBy" @clearSearch="emitClear"></email-search>
+            <email-search @searchBy="emitSearchBy" @clearSearch="emitClear"></email-search>
             <email-filter :isOptionFilterOn="isOptionFilterOn" @filtered="emitFilterBy"></email-filter>
             <email-sort @sorted="emitSortBy"></email-sort>
             <user-msg></user-msg>

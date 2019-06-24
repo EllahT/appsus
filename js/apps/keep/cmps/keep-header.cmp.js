@@ -11,7 +11,8 @@ export default {
     template: `
     <header class="app-header keep-header">
         <app-logo></app-logo>
-        <div class="app-title-container"><h1 class="app-title">Keep</h1></div>
+        <router-link to="/keep" class="app-title-container"><p class="app-title">Keep</p></router-link>
+        <router-link to="/email/inbox" class="app-sub-title-container"><p class="app-sub-title">Email</p></router-link>
         <div class="app-searchAndFilter">
             <keep-search @searchBy="emitSearchBy" @clearSearch="emitClear"></keep-search>
             <keep-filter @filtered="emitFilterBy"></keep-filter>

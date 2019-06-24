@@ -42,7 +42,8 @@ const fakeNotes = [
         color: '#d8bef3',
         isPinned: true,
         created: getDateAndTime()
-    }
+    },
+    
 ]
 
 let notes;

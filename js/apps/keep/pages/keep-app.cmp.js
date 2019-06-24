@@ -32,7 +32,7 @@ export default {
     mounted() {
         eventBus.$on(NOTE_MAIL_CONTENT, (email)=> {
             let content = email.subject + '\n' + email.body;
-            keepService.addNote('txt', '#fafa34', content , false);
+            keepService.addNote('txt', '#d8bef3', content , false);
         })
     },
 
