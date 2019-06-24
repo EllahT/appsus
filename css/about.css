@@ -4,13 +4,22 @@
 
 .team-members {
     display: flex;
+    margin: 10px;
+    flex-direction: column;
+}
+
+@media (min-width: 790px) {
+    .team-members {
+        flex-direction: row;
+    }
 }
 
 .team-member {
     display: flex;
     flex-direction: column;
+    margin: 10px;
     align-items: center;
-    width: 50%;
+    width: calc(50%-10px);
 }
 
 .team-image {
