@@ -9,7 +9,7 @@ body {
     padding: 10px;
     margin-bottom: 10px;
     min-height: 200px;
-    min-width: 200px;
+    min-width: 250px;
     max-width: 300px;
     display: flex;
     flex-flow: column wrap;
@@ -133,6 +133,7 @@ body {
 .note-tools{
     display: none;
     width: 150px;
+    margin: 5px;
 }
 
 .note-item:hover .note-tools {
@@ -159,4 +160,13 @@ body {
 
 .type-btns {
     text-align: center;
+}
+
+.new-note-form {
+    max-width: 90vw;
+}
+
+.video-container {
+    position: relative;
+    left: 25px;
 }
