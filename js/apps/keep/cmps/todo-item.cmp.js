@@ -3,9 +3,9 @@
 export default {
     template: `
         <li class="todo-item" :class="{'done': todo.isDone}">
-            <input type="checkbox" @change="toggle" v-model="todo.isDone" />
+            <input class="no-outline" type="checkbox" @change="toggle" v-model="todo.isDone" />
             <label>{{todo.text}}</label>
-            <button @click.prevent="emitDeleteTodo(todo.id)">✖</button>
+            <button class="round-btn" @click.prevent="emitDeleteTodo(todo.id)">✖</button>
         </li>
     `,
     created() {

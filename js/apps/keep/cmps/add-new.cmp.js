@@ -29,17 +29,21 @@ export default {
         </div>
             
             <div class="new-note-tools">
-                <input type="button" class="clr-circle yellow" @click="setClr"/>
-                <input type="button" class="clr-circle purple" @click="setClr"/>
-                <input type="button" class="clr-circle turquoise" @click="setClr"/>
+                <button @click.prevent="toggleClrs" class="round-btn"><i class="fas fa-tint"></i></button>
                 <button class="round-btn fas fa-thumbtack" @click.prevent="togglePin"></button>
                 <button type="submit" class="round-btn fas fa-plus"></button>
+                <div v-if="isShowClrs">
+                    <input type="button" class="clr-circle yellow" @click="setClr"/>
+                    <input type="button" class="clr-circle purple" @click="setClr"/>
+                    <input type="button" class="clr-circle turquoise" @click="setClr"/>
+                </div>
             </div>
         </form>
     </section>
     `,
     data() {
         return {
+            isShowClrs: false,
             note: {
                 type: 'txt',
                 color: '#fdfdc4',
@@ -55,7 +59,7 @@ export default {
             if (ev.target.classList.contains('purple')) this.note.color = '#d8bef3';
             if (ev.target.classList.contains('turquoise')) this.note.color = '#ccffec';
         },
-        addNewNote() {            
+        addNewNote() {
             keepService.addNote(this.note.type, this.note.color, this.note.content, this.note.isPinned);
             this.note = {
                 type: 'txt',
@@ -73,6 +77,9 @@ export default {
         },
         togglePin() {
             this.note.isPinned = !this.note.isPinned;
+        },
+        toggleClrs() {
+            this.isShowClrs = !this.isShowClrs
         }
     },
     computed: {

@@ -6,9 +6,9 @@ let audio;
 export default {
     template: `
     <section>
-        <button @click.prevent="startRec">Start Recording</button>
-        <button @click.prevent="stopRec">Stop Recording</button>
-        <button @click.prevent="playRec">Play</button>
+        <button class="rounde-btn" @click.prevent="startRec">Start Recording</button>
+        <button class="rounde-btn" @click.prevent="stopRec">Stop Recording</button>
+        <button class="rounde-btn" @click.prevent="playRec">Play</button>
     </section>
     
     `,
