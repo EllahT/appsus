@@ -6,16 +6,18 @@ let audio;
 export default {
     template: `
     <section>
-        <button class="rounde-btn" @click.prevent="startRec">Start Recording</button>
-        <button class="rounde-btn" @click.prevent="stopRec">Stop Recording</button>
-        <button class="rounde-btn" @click.prevent="playRec">Play</button>
+        <button class="round-btn" @click.prevent="startRec"><i class="fas fa-microphone"></i></button>
+        <button class="round-btn" @click.prevent="stopRec"><i class="fas fa-stop"></i></button>
+        <button class="round-btn" @click.prevent="playRec"><i class="fas fa-volume-up"></i></button>
     </section>
     
     `,
 
     data() {
         return {
-            dataAudio: null
+            dataAudio: null,
+            isRec: false,
+            
         }
     },
 

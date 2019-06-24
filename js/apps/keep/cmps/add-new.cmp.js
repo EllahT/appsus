@@ -10,7 +10,7 @@ import noteAudio from './note-audio.cmp.js';
 export default {
     template: `
     <section class="new-note-editor" :style="{'background-color': note.color}">
-        <form action="#" @submit.prevent="addNewNote">
+        <form class="new-note-form" action="#" @submit.prevent="addNewNote">
             <h1>Make a new note happen.</h1>
         <div class="type-btns">
             <button class="fas fa-font round-btn" @click.prevent="setType('txt')"></button>
