@@ -11,13 +11,13 @@ export default {
         <div class="team-members">
             <div class="team-member">
                 <h3 class="team-name">Tammy</h3>
-                <img class="team-image" src="../../img/tammy.jpg"/>
+                <img class="team-image" src="img/tammy.jpg"/>
                 <p class="team-text">Based in Tel Aviv, Tammy is an aspiring Junior Fullstack web developer that loves animals but is allergic to all of them.</p>
             </div>
 
             <div class="team-member">
                 <h3 class="team-name">Ellah</h3>
-                <img class="team-image" src="../../img/ellah.jpg"/>
+                <img class="team-image" src="img/ellah.jpg"/>
                 <p class="team-text">Ellah is based in Ramat Gan and is a Lawyer on the way to become a Fullstack Developer. Enjoys her walks with Lily, her dog, and is addicted to Netflix.</p>
             </div>
         </div>
