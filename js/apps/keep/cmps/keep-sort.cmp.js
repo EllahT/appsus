@@ -14,7 +14,7 @@ export default {
                     <option>-</option>
                 </select>
             </div>
-            <h3><span class="fas fa-sort"></span></h3>
+            <span class="fas fa-sort"></span>
         </section>
     `,
 

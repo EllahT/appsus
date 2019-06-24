@@ -11,6 +11,7 @@ export default {
     template: `
     <section class="app-header email-header">
         <app-logo></app-logo>
+        <div class="app-title-container"><h1 class="app-title">Email</h1></div>
         <div class="app-searchAndFilter">
             <email-search class="app-search" @searchBy="emitSearchBy" @clearSearch="emitClear"></email-search>
             <email-filter :isOptionFilterOn="isOptionFilterOn" @filtered="emitFilterBy"></email-filter>
