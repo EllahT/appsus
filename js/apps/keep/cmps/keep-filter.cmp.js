@@ -2,7 +2,7 @@
 
 export default {
     template: `
-        <section class="keep-filter">
+        <section class="app-filter">
             <select v-model="filterBy">
                 <option>Show All</option>
                 <option>Text</option>

@@ -10,7 +10,7 @@ import eventBus, {NOTE_MAIL_CONTENT} from '../../../services/event-bus.service.j
 export default {
     template: `
     <section>
-        <keep-header class="keep-header"
+        <keep-header
             @clearSearch="clearSearch" 
             @searchBy="searchNotes" 
             @filtered="filterNotes" 

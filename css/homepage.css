@@ -1,17 +1,35 @@
 .home {
-    min-height: 50vh;
+    min-height: 150vh;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-content: center;
-    justify-content: center;
 }
 
-.home img {
-    max-width: max-content;
-    align-self: center;
+.home header {
+    background-image: url(../img/background.jpg);
+    background-position: top;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .homepage-txt {
     margin: 40px 0;
+}
+
+.arrows-nav {
+    color: gray;
+    cursor: pointer;
+}
+
+.arrows-nav:hover {
+    color: black;
+}
+
+#line-nav-bar {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    flex-grow: 1;
+    padding: 50vh 0;
 }

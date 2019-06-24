@@ -11,7 +11,7 @@ export default {
     
     template: `
     <section class="email-app">
-        <email-header 
+        <email-header
             @clearSearch="clearSearch" 
             @searchBy="searchEmails" 
             @filtered="filterEmails" 

@@ -9,10 +9,10 @@ import appNav from '../../../cmps/nav.cmp.js';
 
 export default {
     template: `
-    <section class="email-header">
+    <section class="app-header email-header">
         <app-logo></app-logo>
-        <div class="email-header-searchAndFilter">
-            <email-search @searchBy="emitSearchBy" @clearSearch="emitClear"></email-search>
+        <div class="header-searchAndFilter">
+            <email-search class="app-search" @searchBy="emitSearchBy" @clearSearch="emitClear"></email-search>
             <email-filter :isOptionFilterOn="isOptionFilterOn" @filtered="emitFilterBy"></email-filter>
             <email-sort @sorted="emitSortBy"></email-sort>
             <user-msg></user-msg>
