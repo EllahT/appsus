@@ -179,3 +179,12 @@ button {
     flex-direction: row;
     align-items: center;
 }
+
+input[type=text] {
+    font-family: 'Lato', sans-serif;
+    outline: none;
+}
+
+select {
+    outline: none;
+}

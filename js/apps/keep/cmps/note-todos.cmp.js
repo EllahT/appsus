@@ -29,16 +29,13 @@ export default {
             this.newTodo.id = utilService.makeId();
             this.todos.push(this.newTodo);
             this.newTodo = { text: '', isDone: false, id: '' };
-            eventBus.$emit(SHOW_MSG, {txt: 'your todo has been added!', type: 'success'});
         },
         deleteTodo(todoId) {
             const todoIdx = this.todos.findIndex(todo => todo.id === todoId);
             this.todos.splice(todoIdx, 1);
         },
         emitContent() {
-            this.$emit('newTodosChanged', this.todos);
-            console.log('emiting', this.todos);
-            
+            this.$emit('newTodosChanged', this.todos);            
         },
         changeIsDone(todoId) {
             const todoIdx = this.todos.findIndex(todo => todo.id === todoId);

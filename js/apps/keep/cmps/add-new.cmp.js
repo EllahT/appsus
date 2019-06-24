@@ -6,11 +6,10 @@ import noteImg from './note-img.cmp.js';
 import noteTodos from './note-todos.cmp.js';
 import noteVideo from './note-video.cmp.js';
 import noteAudio from './note-audio.cmp.js';
-import eventBus, { SHOW_MSG } from '../../../services/event-bus.service.js';
 
 export default {
     template: `
-    <section>
+    <section class="new-note-editor">
         <form action="#" @submit.prevent="addNewNote">
             
             <button class="fas fa-font" @click.prevent="setType('txt')"></button>
@@ -19,11 +18,13 @@ export default {
             <button class="fab fa-youtube" @click.prevent="setType('video')"></button>
             <button class="fas fa-microphone" @click.prevent="setType('audio')"></button>
 
-            <note-text :content="note.content" @contentChanged="changeContent" v-if="note.type === 'txt'"></note-text>
-            <note-img @imgNoteChanged="changeContent" v-else-if="note.type === 'img'"></note-img>
-            <note-video @videoNoteChanged="changeContent" v-else-if="note.type === 'video'"></note-video>
-            <note-todos :content="note.content" @newTodosChanged="changeContent" v-else-if="note.type === 'todo'"></note-todos>
-            <note-audio @audioNoteChanged="changeContent" v-else="note.type === 'audio'"></note-audio>
+            <div class="new-notes-types">
+                <note-text :content="note.content" @contentChanged="changeContent" v-if="note.type === 'txt'"></note-text>
+                <note-img @imgNoteChanged="changeContent" v-else-if="note.type === 'img'"></note-img>
+                <note-video @videoNoteChanged="changeContent" v-else-if="note.type === 'video'"></note-video>
+                <note-todos :content="note.content" @newTodosChanged="changeContent" v-else-if="note.type === 'todo'"></note-todos>
+                <note-audio @audioNoteChanged="changeContent" v-else="note.type === 'audio'"></note-audio>
+            </div>
             
             
             <input type="button" class="clr-circle yellow" @click="setClr"/>

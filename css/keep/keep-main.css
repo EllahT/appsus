@@ -17,6 +17,7 @@ body {
     justify-content: center;
     align-items: center;
     color: #292927;
+    margin-left: 10px;
 }
 
 
@@ -112,6 +113,10 @@ body {
 .pinned-notes, .notes-container {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: wrap-reverse;
 
+}
+
+.new-note-editor {
+    display: block
 }
