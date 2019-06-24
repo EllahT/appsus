@@ -4,10 +4,67 @@
 @import './homepage.css';
 @import './nav.css';
 @import './about.css';
-
 @font-face {
     font-family: 'Righteous';
     src: url('../fonts/Righteous-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Lucida';
+    src: url('../fonts/Lucida\ Sans\ Unicode\ Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('../fonts/Staatliches-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Staatliches';
+    src: url('../fonts/Staatliches-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Unica One';
+    src: url('../fonts/UnicaOne-Regular.ttf')
+}
+
+@font-face {
+    font-family: 'Lato';
+    src: url('../fonts/Lato-Regular_0.ttf');
+}
+
+@font-face {
+    font-family: 'Lato';
+    src: url('../fonts/Lato-Bold_0.ttf');
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'Oswald';
+    src: url('../fonts/Oswald[wght].ttf');
+}
+
+@font-face {
+    font-family: 'Ubuntu';
+    src: url('../fonts/Ubuntu-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Maven Pro';
+    src: url('../fonts/MavenPro-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Maven Pro';
+    src: url('../fonts/MavenPro-Medium.ttf');
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'Maven Pro';
+    src: url('../fonts/MavenPro-Bold.ttf');
+    font-weight: bold;
 }
 
 * {
@@ -24,25 +81,18 @@ button {
 }
 
 .logo {
-    /* position: absolute; */
     top: 0;
     left: 0;
     padding-right: 20px;
-    font-family: 'Righteous';
-    font-weight: 500px;
+    font-family: 'Oswald';
+    font-weight: 200px;
     font-size: 1.7rem;
     margin: 0 auto;
-    /* border-bottom-right-radius: 50px; */
 }
 
-/* .logo-sign {
-    color: white;
-    font-size: 80px;
-} */
-
-/* .logo img {
-    border-radius: 50px;
-} */
+.dark-text {
+    color: #292927
+}
 
 .app-header {
     display: flex;
@@ -50,27 +100,32 @@ button {
     padding-bottom: 0%;
     background-color: #00faaf;
     border-top-left-radius: 50px;
+    -webkit-box-shadow: inset 0px 0px 3px 0px rgba(255, 255, 255, 1);
+    -moz-box-shadow: inset 0px 0px 3px 0px rgba(255, 255, 255, 1);
+    box-shadow: inset 0px 0px 3px 0px rgba(255, 255, 255, 1);
 }
 
 .header-container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    color: #292927;
 }
 
 .app-searchAndFilter {
     padding: 5px;
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
     padding-bottom: 0;
+    color: #292927;
 }
 
 @media (min-width: 400px) {
     .app-searchAndFilter {
         flex-direction: row;
-    }   
+    }
 }
 
 .search-container {
@@ -79,12 +134,12 @@ button {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    /* max-height: 1.2rem; */
 }
 
 .search-container input {
     border: none;
-    outline-color: #00faaf
+    outline-color: #00faaf;
+    max-width: 20em;
 }
 
 .app-sort {
@@ -95,13 +150,34 @@ button {
 
 .app-sort select {
     border: none;
-    outline-color: #00faaf
+    outline-color: none;
 }
 
-.logo h1 {
+.app-filter {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.app-filter select {
+    border: none;
+    outline: none;
+}
+
+.app-filter select option {
+    border: none;
+    outline: none;
+}
+
+.logo p {
     position: absolute;
-    top: -10px;
-    left: 15px;
+    top: -15px;
+    left: 25px;
+    color: #292927;
 }
 
-
+.sorters {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}

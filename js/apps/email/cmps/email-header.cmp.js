@@ -11,13 +11,13 @@ export default {
     template: `
     <section class="app-header email-header">
         <app-logo></app-logo>
-        <div class="header-searchAndFilter">
+        <div class="app-searchAndFilter">
             <email-search class="app-search" @searchBy="emitSearchBy" @clearSearch="emitClear"></email-search>
             <email-filter :isOptionFilterOn="isOptionFilterOn" @filtered="emitFilterBy"></email-filter>
             <email-sort @sorted="emitSortBy"></email-sort>
             <user-msg></user-msg>
         </div>
-        <app-nav></app-nav>
+        <app-nav class="app-nav"></app-nav>
     </section>
     `,
 

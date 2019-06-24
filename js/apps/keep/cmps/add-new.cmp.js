@@ -38,7 +38,7 @@ export default {
         return {
             note: {
                 type: 'txt',
-                color: '#fafa34',
+                color: '#fdfdc4',
                 content: '',
                 time: '',
                 isPinned: false
@@ -47,16 +47,16 @@ export default {
     },
     methods: {
         setClr(ev) {
-            if (ev.target.classList.contains('yellow')) this.note.color = '#fafa34';
-            if (ev.target.classList.contains('purple')) this.note.color = '#965bd1';
-            if (ev.target.classList.contains('turquoise')) this.note.color = '#00faaf';
+            if (ev.target.classList.contains('yellow')) this.note.color = '#fdfdc4';
+            if (ev.target.classList.contains('purple')) this.note.color = '#d8bef3';
+            if (ev.target.classList.contains('turquoise')) this.note.color = '#ccffec';
         },
         
         addNewNote() {            
             keepService.addNote(this.note.type, this.note.color, this.note.content, this.note.isPinned);
             this.note = {
                 type: 'txt',
-                color: '#fafa34',
+                color: '#fdfdc4',
                 content: '',
                 time: '',
                 isPinned: false

@@ -9,17 +9,15 @@ import userMsg from '../../../cmps/user-msg.cmp.js';
 
 export default {
     template: `
-    <header class="app-header">
+    <header class="app-header keep-header">
         <app-logo></app-logo>
-        <h1 class="keep-title">Keep</h1>
-            <div class="header-container">
-                <div class="header-searchAndFilter">
-                    <keep-search class="app-search" @searchBy="emitSearchBy" @clearSearch="emitClear"></keep-search>
-                    <keep-filter @filtered="emitFilterBy"></keep-filter>
-                    <keep-sort @sorted="emitSortBy"></keep-sort>
-                </div>
-            </div>
-        <main-nav></main-nav>
+        <div class="keep-title-container"><h1 class="keep-title">Keep</h1></div>
+        <div class="app-searchAndFilter">
+            <keep-search @searchBy="emitSearchBy" @clearSearch="emitClear"></keep-search>
+            <keep-filter @filtered="emitFilterBy"></keep-filter>
+            <keep-sort @sorted="emitSortBy"></keep-sort>
+        </div>
+        <main-nav class="app-nav"></main-nav>
         <user-msg></user-msg>
     </header>
     `,
