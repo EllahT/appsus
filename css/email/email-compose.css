@@ -67,6 +67,10 @@
     margin: 5px 0;
 }
 
+.email-input-body input, .email-input-subject input {
+    color: #9a9b94;
+}
+
 .email-input-body {
     flex-grow: 1;
 }

@@ -37,7 +37,7 @@ const defaultEmails = [
         subject: utilService.makeLorem(10), 
         body: 'searching inside the body', 
         isRead: true, 
-        sentAt: getDateAndTime(), 
+        sentAt: {timeStamp: 1526470200, year: 2018, month: 5, day: 16, hours: 13, minutes: 15, strDate: 'Wed May 16, 2018'}, 
         isStarred: false, 
         type: 'email'
     },
@@ -92,7 +92,7 @@ const defaultEmails = [
         to: 'popo popo', 
         subject: utilService.makeLorem(10), 
         body: utilService.makeLorem(50), 
-        sentAt: getDateAndTime(), 
+        sentAt: {timeStamp: 1526470200, year: 2018, month: 5, day: 16, hours: 13, minutes: 15, strDate: 'Wed May 16, 2018'}, 
         isRead: true, 
         isStarred: true,
         type: 'draft'
