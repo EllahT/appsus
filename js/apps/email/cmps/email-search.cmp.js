@@ -5,7 +5,7 @@ export default {
         <section class="app-search">
             <div class="search-container">
                 <input @keyup.enter="emitSearch" type="text" v-model="searchTxt" placeholder="search inside emails subject"/>
-                <h3><span class="fas fa-search"></span></h3>
+                <h3><span class="fas fa-search fa-xs"></span></h3>
                 <select v-model="searchBy">
                     <option v-for="option in arrSearchParams" :value="option" >{{option}}</option>
                 </select>

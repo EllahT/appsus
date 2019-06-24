@@ -98,11 +98,9 @@ button {
     display: flex;
     flex-direction: row;
     padding-bottom: 0%;
-    background-color: #00faaf;
+    background-color: #d3e1dc;
     border-top-left-radius: 50px;
-    -webkit-box-shadow: inset 0px 0px 3px 0px rgba(255, 255, 255, 1);
-    -moz-box-shadow: inset 0px 0px 3px 0px rgba(255, 255, 255, 1);
-    box-shadow: inset 0px 0px 3px 0px rgba(255, 255, 255, 1);
+
 }
 
 .header-container {
@@ -138,7 +136,7 @@ button {
 
 .search-container input {
     border: none;
-    outline-color: #00faaf;
+    outline-color: #ccffec;
     max-width: 20em;
 }
 

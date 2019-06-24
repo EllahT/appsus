@@ -16,7 +16,7 @@ export default {
             @filtered="filterNotes" 
             @sorted="sortNotes">
         </keep-header>
-        <div class="app-main">
+        <div class="keep-app-main">
             <pinned-notes :notes="notes"></pinned-notes>
             <add-new :notes="notes" class="add-new"></add-new>    
             <notes-list :notes="notes"></notes-list>

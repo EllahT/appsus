@@ -8,7 +8,7 @@ export default {
                 <option>Read</option>
                 <option>Unread</option>
             </select>
-            <h3><span class="fas fa-envelope"></span></h3>
+            <h3><span class="fas fa-envelope fa-xs"></span></h3>
         </section>
     `,
 

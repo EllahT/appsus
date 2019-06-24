@@ -5,7 +5,7 @@ import noteItem from '../pages/note-item.cmp.js'
 export default {
     template: `
     <section>
-        <ul>
+        <ul class="pinned-notes">
             <note-item v-if="currNote.isPinned" v-for="currNote in pinnedNotes" :note="currNote" :key="currNote.id"></note-item>      
         </ul>
 
