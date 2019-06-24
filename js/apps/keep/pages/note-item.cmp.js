@@ -13,14 +13,16 @@ import eventBus, { SHOW_MSG, COMPOSE_MAIL_CONTENT } from '../../../services/even
 export default {
     template: `
         <li :style="{'background-color': bgcolor}" class="note-item">
-            <edit-todos v-if="editClicked" :note="note"></edit-todos>
-            <p contenteditable="true" @mouseout="changeTextContent" class="note-txt" v-if="note.type === 'txt'">{{note.content}}</p>
-            <todos-display v-else-if="note.type === 'todo'" :note="note"></todos-display>
-            <img-display v-else-if="note.type === 'img'" :content="note.content"></img-display>
-            <video-display v-else-if="note.type === 'video'" :content="note.content"></video-display>
-            <audio-display v-else="note.type === 'audio'" :content="note.content"></audio-display>
             <note-tools :note="note" @editIsClicked="openEdit" @toggledPin="togglePin" @changedColor="changeColor" @deletedNote="deleteNote(note.id)"></note-tools>
-            <button v-if="isMailable" @click="composeEmail(note.content)">mail this note</button>
+            <button v-if="isMailable" class="round-btn fas fa-envelope fa-xs" @click="composeEmail(note.content)"></button>
+            <edit-todos v-if="editClicked" :note="note"></edit-todos>
+            <div class="content-display">
+                <p contenteditable="true" @mouseout="changeTextContent" class="note-txt" v-if="note.type === 'txt'">{{note.content}}</p>
+                <todos-display v-else-if="note.type === 'todo'" :note="note"></todos-display>
+                <img-display v-else-if="note.type === 'img'" :content="note.content"></img-display>
+                <video-display v-else-if="note.type === 'video'" :content="note.content"></video-display>
+                <audio-display v-else="note.type === 'audio'" :content="note.content"></audio-display>
+            </div>
         </li>
     `,
     created() {

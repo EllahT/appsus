@@ -8,9 +8,9 @@ body {
     list-style-type: none;
     padding: 10px;
     margin-bottom: 10px;
-    max-height: 300px;
+    min-height: 200px;
+    min-width: 200px;
     max-width: 300px;
-    /* border: 1px black solid;  */
     display: flex;
     flex-flow: column wrap;
     justify-content: center;
@@ -123,3 +123,26 @@ body {
 .new-edit {
     /* height: 50px; */
 }
+
+.note-tools{
+    display: none;
+    
+}
+
+.note-item:hover .note-tools {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.content-display {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}
+
+/* .pin {
+    position: relative;
+} */

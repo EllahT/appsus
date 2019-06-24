@@ -2,12 +2,13 @@
 
 export default {
     template: `
-    <section>
+    <section class="note-tools">
     <button :note="note" v-if="note.type === 'todo'" class="round-btn" @click="emitEditClicked"><i class="fas fa-edit"></i></button>
-    <div class="clr-picker">
+    <button class="round-btn" @click="toggleClrs"><i class="fas fa-tint"></i></button>
+    <div v-if="isShowClrs" class="clr-picker">
         <div @click="emitChangeColor(color.code)" v-for="color in colors" :class="color.name" class="clr-circle"></div>
     </div>
-    <button class="round-btn" :note="note" @click="emitTogglePin"><i class="fas fa-thumbtack"></i></button>
+    <button class="round-btn pin" :note="note" @click="emitTogglePin"><i class="fas fa-thumbtack"></i></button>
     <button class="round-btn far fa-trash-alt" @click="emitDeletingNote"></button>
     </section>
     `,
@@ -16,7 +17,7 @@ export default {
     },
     data() {
         return {
-            isShowColors: false,
+            isShowClrs: false,
             colors: [{ code: '#fdfdc4', name: 'yellow' }, { code: '#ccffec', name: 'turquoise' }, { code: '#d8bef3', name: 'purple' }]
         }
     },
@@ -35,6 +36,9 @@ export default {
         },
         emitEditClicked() {
             this.$emit('editIsClicked', this.note.id);
+        },
+        toggleClrs() {
+            this.isShowClrs = !this.isShowClrs
         }
     },
     props: ['note'],
