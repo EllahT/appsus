@@ -1,5 +1,5 @@
 .nav-container {
-    position: absolute;
+    /* position: absolute; */
     top: 0;
     right: 0;
     padding: 10px;
@@ -7,6 +7,8 @@
     flex-direction: column;
     justify-content: right;
     align-items: center;
+    color: #292927;
+
 }
 
 .toggle-nav-btn {
@@ -15,6 +17,7 @@
 }
 
 .main-nav {
+    /* position: absolute; */
     display: flex;
     flex-direction: column;
     max-width: max-content;
@@ -30,7 +33,7 @@
 }
 
 .main-nav > a:hover {
-    color: black;
+    color: #292927;
 }
 
 .screen {

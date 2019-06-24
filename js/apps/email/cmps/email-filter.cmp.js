@@ -3,12 +3,12 @@
 export default {
     template: `
         <section class="app-filter">
-            <h3>Filter <span class="fas fa-envelope"></span></h3>
             <select v-model="filterBy">
                 <option>All</option>
                 <option>Read</option>
                 <option>Unread</option>
             </select>
+            <h3><span class="fas fa-envelope"></span></h3>
         </section>
     `,
 

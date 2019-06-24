@@ -3,7 +3,6 @@
 export default {
     template: `
         <section class="app-sort">
-            <h3>Sort <span class="fas fa-sort"></span></h3>
             <div class="sorters">
                 <select v-model="sortBy.by">
                     <option>Sent At</option>
@@ -13,6 +12,7 @@ export default {
                     <option>+</option>
                     <option>-</option>
                 </select>
+                <h3><span class="fas fa-sort"></span></h3>
             </div>
         </section>
     `,

@@ -23,7 +23,7 @@ const fakeNotes = [
         id: 'stamMashu',
         type: 'txt',
         content: 'Remember that your nose and ears are constantly growing',
-        color: '#00faaf',
+        color: '#ccffec',
         isPinned: false,
         created: getDateAndTime()
     },
@@ -31,7 +31,7 @@ const fakeNotes = [
         id: 'otherMashu',
         type: 'todo',
         content: [{text: 'Stay hungry', isDone: true, id: 'thebestid'},{text: 'Stay foolish', isDone: false, id: 'thesecondbestid'}],
-        color: '#fafa34',
+        color: '#fdfdc4',
         isPinned: false,
         created: getDateAndTime()
     },
@@ -39,7 +39,7 @@ const fakeNotes = [
         id: 'odMashu',
         type: 'img',
         content: 'http://cdn.kickvick.com/wp-content/uploads/2015/09/cutest-bunny-rabbits-17.jpg',
-        color: '#965bd1',
+        color: '#d8bef3',
         isPinned: true,
         created: getDateAndTime()
     }
