@@ -20,7 +20,7 @@ import storageService from '../../../services/storage.service.js'
 
 const fakeNotes = [
     {
-        id: 'stamMashu',
+        id: utilService.makeId(),
         type: 'txt',
         content: 'Remember that your nose and ears are constantly growing',
         color: '#ccffec',
@@ -28,7 +28,7 @@ const fakeNotes = [
         created: getDateAndTime()
     },
     {
-        id: 'otherMashu',
+        id: utilService.makeId(),
         type: 'todo',
         content: [{text: 'Stay hungry', isDone: true, id: 'thebestid'},{text: 'Stay foolish', isDone: false, id: 'thesecondbestid'}],
         color: '#fdfdc4',
@@ -36,14 +36,21 @@ const fakeNotes = [
         created: getDateAndTime()
     },
     {
-        id: 'odMashu',
+        id: utilService.makeId(),
         type: 'img',
         content: 'http://cdn.kickvick.com/wp-content/uploads/2015/09/cutest-bunny-rabbits-17.jpg',
         color: '#d8bef3',
         isPinned: true,
         created: getDateAndTime()
     },
-    
+    {
+        id: utilService.makeId(),
+        type: 'img',
+        content: 'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80',
+        color: '#fdfdc4',
+        isPinned: false,
+        created: getDateAndTime()
+    }
 ]
 
 let notes;

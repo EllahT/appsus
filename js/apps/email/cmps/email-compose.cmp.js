@@ -8,16 +8,16 @@ export default {
         </div>
         <form class="new-mail-form" @submit.prevent="emitNewEmail">
             <div class="from-input-container">
-                <div>from:</div>
+                <div>From:</div>
                 <input type="text" v-model="email.from" readonly/>
             </div>
             <div class="to-input-container">
-                <div>to: </div>
+                <div>To: </div>
                 <input type="text" v-model="email.to" readonly/>
             </div>
-            <input class="email-input-subject" type="text" v-model="email.subject" ref="subjectInput" placeholder="subject"/>
+            <input class="email-input-subject" type="text" v-model="email.subject" ref="subjectInput" placeholder="Subject"/>
             <textarea class="email-input-body" v-model="email.body" ref="bodyInput"></textarea> 
-            <button class="submitBtn" :disabled="invalid">Send</button>
+            <button class="submit-btn" :disabled="invalid">Send</button>
         </form>
     </section>
     
