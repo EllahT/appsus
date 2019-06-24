@@ -9,6 +9,7 @@
     grid-template-areas: 
     "emailHeader emailHeader"
     "emailNav emailMain";
+    font-family: 'Lato', sans-serif;
 }
 
 .email-header {

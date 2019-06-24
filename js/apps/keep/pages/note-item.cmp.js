@@ -13,8 +13,7 @@ import eventBus, { SHOW_MSG, COMPOSE_MAIL_CONTENT } from '../../../services/even
 export default {
     template: `
         <li :style="{'background-color': bgcolor}" class="note-item">
-            <note-tools :note="note" @editIsClicked="openEdit" @toggledPin="togglePin" @changedColor="changeColor" @deletedNote="deleteNote(note.id)"></note-tools>
-            <button v-if="isMailable" class="round-btn fas fa-envelope fa-xs" @click="composeEmail(note.content)"></button>
+            <note-tools :note="note" @composeEmail="composeEmail" @editIsClicked="openEdit" @toggledPin="togglePin" @changedColor="changeColor" @deletedNote="deleteNote(note.id)"></note-tools>
             <edit-todos v-if="editClicked" :note="note"></edit-todos>
             <div class="content-display">
                 <p contenteditable="true" @mouseout="changeTextContent" class="note-txt" v-if="note.type === 'txt'">{{note.content}}</p>
@@ -75,10 +74,6 @@ export default {
         isTodos() {
             return this.note.type === 'todo'
         },
-
-        isMailable() {
-            return !(this.note.type === 'todo' || this.note.type === 'audio')
-        }
     },
     props: ['note'],
     components: {

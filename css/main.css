@@ -240,7 +240,7 @@ select {
         margin-top: 0;
         margin-bottom: 0;
         color: #292927;
-        font-size: 1.5rem;
+        font-size: 1.2rem;
     }
     .app-sub-title-container {
         background-color: #e9e9e5;
@@ -259,6 +259,7 @@ select {
     }
 }
 
+    
 .app-title {
     margin-top: 0;
     margin-bottom: 0;
