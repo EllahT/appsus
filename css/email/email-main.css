@@ -1,11 +1,10 @@
 @import '../email/email-list.css';
 @import '../email/email-details.css';
 @import '../email/email-compose.css';
-@import '../email/email-search-and-filter.css';
 
 .email-app {
     display: grid;
-    grid-template-columns: 80px 1fr;
+    grid-template-columns: 120px 1fr;
     grid-template-rows: 100px 1fr;
     grid-template-areas: 
     "emailHeader emailHeader"
@@ -18,27 +17,33 @@
 
 .email-nav {
     grid-area: emailNav;
-    width: 80px;
     text-align: center;
     margin: 10px 0;
+    margin-top: 40px;
 }
 
 .email-list-container {
     grid-area: emailMain;
-    padding: 5px;
 }
 
 .email-nav-list {
     list-style: none;
-    width: 75px;
-    text-align: start;
-    padding: 5px;
+    width: 120px;
+    text-align: center;
+    padding: 20px;
     margin: 0px;
 }
 
 .email-nav-list li {
     margin: 5px 0;
+    padding: 8px 0;
+    color: #9a9b94;
+    border-bottom: 1px solid #e9e9e5;
 }
+
+.email-nav-list li:hover {
+    color: #52524e;
+} 
 
 .theresUnread {
     font-weight: bold;

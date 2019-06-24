@@ -5,31 +5,32 @@ import noteText from './note-txt.cmp.js';
 import noteImg from './note-img.cmp.js';
 import noteTodos from './note-todos.cmp.js';
 import noteVideo from './note-video.cmp.js';
+import noteAudio from './note-audio.cmp.js';
 import eventBus, { SHOW_MSG } from '../../../services/event-bus.service.js';
 
 export default {
     template: `
     <section>
-        <h1>Where new Notes Happen.</h1>
         <form action="#" @submit.prevent="addNewNote">
             
-            <input type="button" value="txt" @click="setType"/>
-            <input type="button" value="img" @click="setType"/>
-            <input type="button" value="todo" @click="setType"/>
-            <input type="button" value="video" @click="setType"/>
+            <button class="fas fa-font" @click.prevent="setType('txt')"></button>
+            <button class="far fa-image" @click.prevent="setType('img')"></button>
+            <button class="fas fa-tasks" @click.prevent="setType('todo')"></button>
+            <button class="fab fa-youtube" @click.prevent="setType('video')"></button>
+            <button class="fas fa-microphone" @click.prevent="setType('audio')"></button>
 
             <note-text :content="note.content" @contentChanged="changeContent" v-if="note.type === 'txt'"></note-text>
             <note-img @imgNoteChanged="changeContent" v-else-if="note.type === 'img'"></note-img>
             <note-video @videoNoteChanged="changeContent" v-else-if="note.type === 'video'"></note-video>
-            <note-todos :content="note.content" @newTodosChanged="changeContent" v-else="note.type === 'todo'"></note-todos>
+            <note-todos :content="note.content" @newTodosChanged="changeContent" v-else-if="note.type === 'todo'"></note-todos>
+            <note-audio @audioNoteChanged="changeContent" v-else="note.type === 'audio'"></note-audio>
             
-            <!-- <button class="showColors">to do: btn to open colors menu</button> -->
+            
             <input type="button" class="clr-circle yellow" @click="setClr"/>
             <input type="button" class="clr-circle purple" @click="setClr"/>
             <input type="button" class="clr-circle turquoise" @click="setClr"/>
-            <input type="button" :value="pinnedImg" @click="togglePin"/>
-            <button type="submit">+</button>
-
+            <button class="fas fa-thumbtack" @click="togglePin"></button>
+            <button type="submit" class="fas fa-sticky-note"></button>
         </form>
     </section>
     `,
@@ -60,11 +61,9 @@ export default {
                 time: '',
                 isPinned: false
             }
-
-            eventBus.$emit(SHOW_MSG, {txt: 'your note has been added!', type: 'success'});
         },
-        setType(ev) {
-            this.note.type = ev.target.value;
+        setType(val) {
+            this.note.type = val;
         },
         changeContent(content) {
             this.note.content = content;
@@ -83,6 +82,7 @@ export default {
         noteText,
         noteTodos,
         noteImg,
-        noteVideo
+        noteVideo,
+        noteAudio
     }
 }

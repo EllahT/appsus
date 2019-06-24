@@ -1,5 +1,4 @@
 .home {
-    min-height: 150vh;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -7,6 +6,7 @@
 }
 
 .home header {
+    height: 100vh;
     background-image: url(../img/background.jpg);
     background-position: top;
     background-size: cover;
