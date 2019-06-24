@@ -5,7 +5,7 @@ export default {
     template: `
         <section class="user-msg" :class="msg.type" v-if="msg">
             <button @click="closeMsg">x</button>
-            <h3>{{msg.txt}}</h3>
+            <p>{{msg.txt}}</p>
         </section>
     `,
     data() {

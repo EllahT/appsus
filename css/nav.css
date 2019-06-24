@@ -8,7 +8,14 @@
     justify-content: right;
     align-items: center;
     color: #292927;
+    display: block;
+    z-index: 10;
+}
 
+@media (min-width: 760px) {
+    .nav-container {
+        display: none;
+    }
 }
 
 .toggle-nav-btn {
@@ -16,7 +23,7 @@
     margin: 5px;
 }
 
-.main-nav {
+.nav-container .main-nav {
     display: flex;
     flex-direction: column;
     max-width: max-content;

@@ -223,11 +223,11 @@ function query(filterAndSortParams) {
     if (!filterAndSortParams) return Promise.resolve(filteredEmails)
     
     if (filterAndSortParams.searchParams.subject) {
-        filteredEmails = filteredEmails.filter(email => email.subject.includes(filterAndSortParams.searchParams.subject));
+        filteredEmails = filteredEmails.filter(email => email.subject.toLowerCase().includes(filterAndSortParams.searchParams.subject.toLowerCase()));
     }
 
     if (filterAndSortParams.searchParams.content) {
-        filteredEmails = filteredEmails.filter(email => email.body.includes(filterAndSortParams.searchParams.content));
+        filteredEmails = filteredEmails.filter(email => email.body.toLowerCase().includes(filterAndSortParams.searchParams.content.toLowerCase()));
     }
 
     if (filterAndSortParams.filter === 'read') {

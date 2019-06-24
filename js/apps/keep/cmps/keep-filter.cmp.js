@@ -10,6 +10,7 @@ export default {
                 <option>Image</option>
                 <option>Video</option>
             </select>
+            <span class="fas fa-filter fa-xs"></span>
         </section>
     `,
 
