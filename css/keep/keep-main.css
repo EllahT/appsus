@@ -154,9 +154,6 @@ body {
     position: relative;
     right: 18px;
 }
-/* .pin {
-    position: relative;
-} */
 
 .type-btns {
     text-align: center;
@@ -169,4 +166,14 @@ body {
 .video-container {
     position: relative;
     left: 25px;
+}
+
+.unpinned {
+    background: #52524e;
+    color: white;
+}
+
+.pinned {
+    background: white;
+    color: #52524e;
 }

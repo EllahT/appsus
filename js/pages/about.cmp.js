@@ -5,20 +5,20 @@ export default {
     template: `
     <section class="about">
         <app-logo></app-logo>
-        <h1>About Us</h1>
+        <h1 class="About-sub">About Us</h1>
         <main-nav></main-nav>
 
         <div class="team-members">
             <div class="team-member">
-                <h3>Tammy</h3>
+                <h3 class="team-name">Tammy</h3>
                 <img class="team-image" src="../../img/tammy.jpg"/>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veritatis, numquam odio quia architecto nesciunt, esse quasi dolor amet dolorem, aperiam exercitationem. Consectetur architecto illo repudiandae quas dicta sit corporis quae?</p>
+                <p class="team-text">Based in Tel Aviv, Tammy is an aspiring Junior Fullstack web developer that loves animals but is allergic to all of them.</p>
             </div>
 
             <div class="team-member">
-                <h3>Ellah</h3>
+                <h3 class="team-name">Ellah</h3>
                 <img class="team-image" src="../../img/ellah.jpg"/>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veritatis, numquam odio quia architecto nesciunt, esse quasi dolor amet dolorem, aperiam exercitationem. Consectetur architecto illo repudiandae quas dicta sit corporis quae?</p>
+                <p class="team-text">Ellah is based in Ramat Gan and is a Lawyer on the way to become a Fullstack Developer. Enjoys her walks with Lily, her dog, and is addicted to Netflix.</p>
             </div>
         </div>
 

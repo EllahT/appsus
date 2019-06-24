@@ -12,7 +12,7 @@ export default {
         
             
             <div v-if="videoList" class="videos-container">
-                <h1>Search results</h1>
+                <h1>Search results:</h1>
 
                 <ul class="videos-list">
                     <li v-for="video in videoList" @click="pickVideo(video.id.videoId)">

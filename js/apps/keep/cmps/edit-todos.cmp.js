@@ -7,7 +7,7 @@ export default {
     <section>
             <form v-if="note.type === 'todo'" >
                 <input type="text" v-model="newTodo.text" />
-                <button @click.prevent="addTodo">+</button>
+                <button class="s-round-btn" @click.prevent="addTodo">+</button>
             </form>
     </section>
     `,

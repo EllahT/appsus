@@ -5,7 +5,7 @@ export default {
         <li class="todo-item" :class="{'done': todo.isDone}">
             <input class="no-outline" type="checkbox" @change="toggle" v-model="todo.isDone" />
             <label>{{todo.text}}</label>
-            <button class="round-btn" @click.prevent="emitDeleteTodo(todo.id)">✖</button>
+            <button class="s-round-btn" @click.prevent="emitDeleteTodo(todo.id)">✖</button>
         </li>
     `,
     created() {

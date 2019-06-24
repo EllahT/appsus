@@ -2,7 +2,7 @@ import audioService from '../services/audio-service.js';
 
 export default {
     template: `
-        <button @click="playSound">play</button>    
+        <button class="round-btn fas fa-volume-up" @click="playSound"></button>    
     `,
 
     data() {
