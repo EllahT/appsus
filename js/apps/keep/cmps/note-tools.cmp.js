@@ -3,12 +3,12 @@
 export default {
     template: `
     <section>
-    <button :note="note" v-if="note.type === 'todo'" @click="emitEditClicked">Edit</button>
+    <button :note="note" v-if="note.type === 'todo'" class="round-btn" @click="emitEditClicked"><i class="fas fa-edit"></i></button>
     <div class="clr-picker">
         <div @click="emitChangeColor(color.code)" v-for="color in colors" :class="color.name" class="clr-circle"></div>
     </div>
-    <button :note="note" @click="emitTogglePin">{{pinnedImg(note)}}</button>
-    <button @click="emitDeletingNote">Trashcan</button>
+    <button class="round-btn" :note="note" @click="emitTogglePin"><i class="fas fa-thumbtack"></i></button>
+    <button class="round-btn far fa-trash-alt" @click="emitDeletingNote"></button>
     </section>
     `,
     created() {

@@ -5,15 +5,15 @@ export default  {
     template: `
     <section class="home">
         <header>
-            <h1>Welcome to Strudel Appsus</h1>
-            <h4>by Tammy and Ellah </h4>
-            <main-nav></main-nav>
-            <p class="homepage-txt">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolor dignissimos earum vitae temporibus omnis, sit sint minima blanditiis voluptatem ea accusantium, id cum, nam repudiandae rerum nulla voluptatum excepturi at?</p>
-            <span class="fas fa-angle-double-down arrows-nav" v-scroll-to="{
+            <h1 class="home-title">Welcome to Strudel Appsus</h1>
+            <h4 class="home-subtitle">by Tammy and Ellah </h4>
+            <span class="fas fa-2x fa-angle-double-down arrows-nav" v-scroll-to="{
                 el: '#line-nav',
                 duration: 800,
                 easing: 'linear'}">
             </span>
+            <main-nav></main-nav>
+            <p class="homepage-txt">Convenient apps, but not corporate.</p>
         </header>
         <div id="line-nav-bar">
             <nav id="line-nav">
