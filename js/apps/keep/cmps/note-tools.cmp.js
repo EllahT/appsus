@@ -17,7 +17,7 @@ export default {
     data() {
         return {
             isShowColors: false,
-            colors: [{ code: '#fafa34', name: 'yellow' }, { code: '#63f0e2', name: 'turquoise' }, { code: '#965bd1', name: 'purple' }]
+            colors: [{ code: '#fafa34', name: 'yellow' }, { code: '#00faaf', name: 'turquoise' }, { code: '#965bd1', name: 'purple' }]
         }
     },
     methods: {
