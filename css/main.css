@@ -81,13 +81,9 @@ button {
 }
 
 .logo {
-    top: 0;
-    left: 0;
     padding-right: 20px;
     font-family: 'Oswald';
-    font-weight: 200px;
     font-size: 1.7rem;
-    margin: 0 auto;
 }
 
 .dark-text {
@@ -96,16 +92,14 @@ button {
 
 .app-header {
     display: flex;
-    flex-direction: row;
-    padding-bottom: 0%;
     background-color: #d3e1dc;
     border-top-left-radius: 50px;
+    padding-right: 70px;
 
 }
 
 .header-container {
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
     color: #292927;
 }
@@ -113,16 +107,14 @@ button {
 .app-searchAndFilter {
     padding: 5px;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
     align-items: center;
-    padding-bottom: 0;
-    color: #292927;
 }
 
-@media (min-width: 400px) {
+@media (min-width: 730px) {
     .app-searchAndFilter {
         flex-direction: row;
+        flex-grow: 1;
+        justify-content: center;
     }
 }
 
@@ -138,6 +130,10 @@ button {
     border: none;
     outline-color: #ccffec;
     max-width: 20em;
+}
+
+.app-search, .app-filter {
+    margin-right: 100px;
 }
 
 .app-sort {
@@ -168,9 +164,9 @@ button {
 }
 
 .logo p {
-    position: absolute;
-    top: -15px;
-    left: 25px;
+    margin-top: 15px;
+    margin-left: 25px;
+    margin-bottom: 0;
     color: #292927;
 }
 
@@ -180,6 +176,10 @@ button {
     align-items: center;
 }
 
+.sorters select {
+    margin-right: 5px;
+}
+
 input[type=text] {
     font-family: 'Lato', sans-serif;
     outline: none;
@@ -187,4 +187,20 @@ input[type=text] {
 
 select {
     outline: none;
+}
+
+.app-title-container {
+    background-color: white;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding: 10px;
+    margin-top: 30px;
+    margin-bottom: 0;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.app-title {
+    margin-top: 0;
+    margin-bottom: 0;
+    color: #292927;
 }

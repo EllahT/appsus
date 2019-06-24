@@ -4,7 +4,7 @@ export default {
     template: `
         <section class="app-filter">
             <select v-model="filterBy">
-                <option>Show All</option>
+                <option>All</option>
                 <option>Text</option>
                 <option>Todos</option>
                 <option>Image</option>

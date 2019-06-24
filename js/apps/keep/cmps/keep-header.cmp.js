@@ -11,7 +11,7 @@ export default {
     template: `
     <header class="app-header keep-header">
         <app-logo></app-logo>
-        <div class="keep-title-container"><h1 class="keep-title">Keep</h1></div>
+        <div class="app-title-container"><h1 class="app-title">Keep</h1></div>
         <div class="app-searchAndFilter">
             <keep-search @searchBy="emitSearchBy" @clearSearch="emitClear"></keep-search>
             <keep-filter @filtered="emitFilterBy"></keep-filter>
