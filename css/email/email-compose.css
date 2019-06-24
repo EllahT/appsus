@@ -1,20 +1,27 @@
 .compose-email {
     position: fixed;
     bottom: 0;
-    border: 1px solid;
-    border-top: none;
-    width: 400px;
-    height: 500px;
-    background-color: #e5eef3;
-    border-top-right-radius: 10px;
-    border-top-left-radius: 10px;
+    border: none;
+    width: 300px;
+    height: 400px;
+    margin-left: 20px;
+    background-color: #d3e1dc;
     display: flex;
     flex-direction: column;
+    color: #9a9b94;
+}
+
+@media (min-width: 470px) {
+    .compose-email {
+        width: 400px;
+        height: 500px;
+        margin-left: 50px;
+    }
 }
 
 .compose-email-header {
-    background-color: #475a63;
-    color: white;
+    background-color: #52524e;
+    color: #e9e9e5;
     height: 40px;
     padding: 10px;
     border-radius: inherit;
@@ -26,19 +33,20 @@
     background-color: transparent;
     border: none;
     border-radius: 5px;
-    color: white;
+    color: #e9e9e5;
     cursor: pointer;
+    font-size: 1rem;
 }
 
 .close-compose-btn:hover {
-    background-color: #5f92ab;;
+    color: #d4d6c8;
 }
 
 .new-mail-form {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    margin: 0 5px;
+    margin: 0 8px;
 }
 
 .from-input-container, .to-input-container {
@@ -50,6 +58,8 @@
     flex-grow: 1;
     padding: 5px 0;
     margin: 5px 0;
+    margin-left: 5px;
+    color: #9a9b94;
 }
 
 .email-input-subject, .email-input-body {
@@ -61,4 +71,9 @@
     flex-grow: 1;
 }
 
+.submit-btn {
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
   
