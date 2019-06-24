@@ -11,27 +11,30 @@ export default {
     template: `
     <section class="new-note-editor">
         <form action="#" @submit.prevent="addNewNote">
-            
+            <h1>Make a new note happen.</h1>
+        <div class="type-btns">
             <button class="fas fa-font" @click.prevent="setType('txt')"></button>
             <button class="far fa-image" @click.prevent="setType('img')"></button>
             <button class="fas fa-tasks" @click.prevent="setType('todo')"></button>
             <button class="fab fa-youtube" @click.prevent="setType('video')"></button>
             <button class="fas fa-microphone" @click.prevent="setType('audio')"></button>
+        </div>
 
-            <div class="new-notes-types">
-                <note-text :content="note.content" @contentChanged="changeContent" v-if="note.type === 'txt'"></note-text>
-                <note-img @imgNoteChanged="changeContent" v-else-if="note.type === 'img'"></note-img>
-                <note-video @videoNoteChanged="changeContent" v-else-if="note.type === 'video'"></note-video>
-                <note-todos :content="note.content" @newTodosChanged="changeContent" v-else-if="note.type === 'todo'"></note-todos>
-                <note-audio @audioNoteChanged="changeContent" v-else="note.type === 'audio'"></note-audio>
+        <div class="new-notes-types" :style="{'background-color': note.color}">
+            <note-text :content="note.content" @contentChanged="changeContent" v-if="note.type === 'txt'"></note-text>
+            <note-img @imgNoteChanged="changeContent" v-else-if="note.type === 'img'"></note-img>
+            <note-video @videoNoteChanged="changeContent" v-else-if="note.type === 'video'"></note-video>
+            <note-todos :content="note.content" @newTodosChanged="changeContent" v-else-if="note.type === 'todo'"></note-todos>
+            <note-audio @audioNoteChanged="changeContent" v-else="note.type === 'audio'"></note-audio>
+        </div>
+            
+            <div class="new-note-tools">
+                <input type="button" class="clr-circle yellow" @click="setClr"/>
+                <input type="button" class="clr-circle purple" @click="setClr"/>
+                <input type="button" class="clr-circle turquoise" @click="setClr"/>
+                <button class="fas fa-thumbtack" @click.prevent="togglePin"></button>
+                <button type="submit" class="fas fa-sticky-note"></button>
             </div>
-            
-            
-            <input type="button" class="clr-circle yellow" @click="setClr"/>
-            <input type="button" class="clr-circle purple" @click="setClr"/>
-            <input type="button" class="clr-circle turquoise" @click="setClr"/>
-            <button class="fas fa-thumbtack" @click="togglePin"></button>
-            <button type="submit" class="fas fa-sticky-note"></button>
         </form>
     </section>
     `,
@@ -52,7 +55,6 @@ export default {
             if (ev.target.classList.contains('purple')) this.note.color = '#d8bef3';
             if (ev.target.classList.contains('turquoise')) this.note.color = '#ccffec';
         },
-        
         addNewNote() {            
             keepService.addNote(this.note.type, this.note.color, this.note.content, this.note.isPinned);
             this.note = {
