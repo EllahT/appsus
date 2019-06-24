@@ -21,6 +21,7 @@
     text-align: center;
     color: gray;
     background-color: lightgray;
+    z-index: 10;
 }
 
 .main-nav > a {
