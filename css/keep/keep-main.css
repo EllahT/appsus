@@ -126,7 +126,7 @@ body {
 
 .note-tools{
     display: none;
-    
+    width: 150px;
 }
 
 .note-item:hover .note-tools {

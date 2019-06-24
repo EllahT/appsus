@@ -95,7 +95,6 @@ button {
     background-color: #d3e1dc;
     border-top-left-radius: 50px;
     padding-right: 70px;
-
 }
 
 .header-container {
@@ -155,11 +154,9 @@ button {
     .app-search, .app-filter, .app-sort {
         margin: 0;
     }
-
     .app-search, .app-filter {
         margin-right: 100px;
-    }  
-    
+    }
 }
 
 .app-sort {
@@ -229,7 +226,6 @@ select {
     .app-title-container, .app-tilte, .app-sub-title-container, .app-sub-title {
         display: block;
     }
-
     .app-title-container {
         background-color: white;
         border-top-left-radius: 5px;
@@ -240,14 +236,12 @@ select {
         margin-right: 5px;
         font-family: 'Ubuntu', sans-serif;
     }
-    
     .app-title {
         margin-top: 0;
         margin-bottom: 0;
         color: #292927;
         font-size: 1.5rem;
     }
-    
     .app-sub-title-container {
         background-color: #e9e9e5;
         border-top-left-radius: 5px;
@@ -258,12 +252,13 @@ select {
         margin-right: 5px;
         font-family: 'Ubuntu', sans-serif;
     }
-    
     .app-sub-title {
         margin-top: 0;
         margin-bottom: 0;
         color: #9a9b94;
     }
+}
+
 .app-title {
     margin-top: 0;
     margin-bottom: 0;
@@ -297,4 +292,7 @@ select {
     width: 25px;
     border: none;
     background: white;
+    -webkit-box-shadow: 2px 2px 2px 0px rgba(212, 214, 200, 1);
+    -moz-box-shadow: 2px 2px 2px 0px rgba(212, 214, 200, 1);
+    box-shadow: 2px 2px 2px 0px rgba(212, 214, 200, 1);
 }
