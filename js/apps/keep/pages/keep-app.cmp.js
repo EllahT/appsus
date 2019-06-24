@@ -16,9 +16,11 @@ export default {
             @filtered="filterNotes" 
             @sorted="sortNotes">
         </keep-header>
-        <pinned-notes :notes="notes"></pinned-notes>
-        <add-new :notes="notes" class="add-new"></add-new>    
-        <notes-list :notes="notes"></notes-list>
+        <div class="app-main">
+            <pinned-notes :notes="notes"></pinned-notes>
+            <add-new :notes="notes" class="add-new"></add-new>    
+            <notes-list :notes="notes"></notes-list>
+        </div>
     </section>
     `,
     created() {

@@ -30,6 +30,38 @@
     src: url('../fonts/UnicaOne-Regular.ttf')
 }
 
+@font-face {
+    font-family: 'Lato';
+    src: url('../fonts/Lato-Regular_0.ttf');
+}
+@font-face {
+    font-family: 'Lato';
+    src: url('../fonts/Lato-Bold_0.ttf');
+    font-weight: bold;
+}
+@font-face {
+    font-family: 'Oswald';
+    src: url('../fonts/Oswald[wght].ttf');
+}
+@font-face {
+    font-family: 'Ubuntu';
+    src: url('../fonts/Ubuntu-Regular.ttf');
+}
+@font-face {
+    font-family: 'Maven Pro';
+    src: url('../fonts/MavenPro-Regular.ttf');
+}
+@font-face {
+    font-family: 'Maven Pro';
+    src: url('../fonts/MavenPro-Medium.ttf');
+    font-weight: 500;
+}
+@font-face {
+    font-family: 'Maven Pro';
+    src: url('../fonts/MavenPro-Bold.ttf');
+    font-weight: bold;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -44,15 +76,13 @@ button {
 }
 
 .logo {
-    /* position: absolute; */
     top: 0;
     left: 0;
     padding-right: 20px;
-    font-family: 'Righteous';
-    font-weight: 500px;
+    font-family: 'Oswald';
+    font-weight: 200px;
     font-size: 1.7rem;
     margin: 0 auto;
-    /* border-bottom-right-radius: 50px; */
 }
 
 .dark-text {
@@ -122,7 +152,7 @@ button {
     outline-color: #00faaf
 }
 
-.logo h1 {
+.logo p {
     position: absolute;
     top: -10px;
     left: 15px;

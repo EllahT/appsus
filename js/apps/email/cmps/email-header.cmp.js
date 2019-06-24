@@ -17,7 +17,7 @@ export default {
             <email-sort @sorted="emitSortBy"></email-sort>
             <user-msg></user-msg>
         </div>
-        <app-nav></app-nav>
+        <app-nav class="app-nav"></app-nav>
     </section>
     `,
 
