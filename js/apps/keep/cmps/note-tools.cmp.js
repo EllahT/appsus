@@ -10,6 +10,7 @@ export default {
     </div>
     <button class="round-btn pin" :note="note" @click="emitTogglePin"><i class="fas fa-thumbtack"></i></button>
     <button class="round-btn far fa-trash-alt" @click="emitDeletingNote"></button>
+    <button v-if="isMailable" class="round-btn fas fa-envelope fa-xs" @click="emitComposeEmail"></button>
     </section>
     `,
     created() {
@@ -39,10 +40,15 @@ export default {
         },
         toggleClrs() {
             this.isShowClrs = !this.isShowClrs
+        },
+        emitComposeEmail() {
+            this.$emit('composeEmail', this.note.content);
         }
     },
     props: ['note'],
     computed: {
-
+        isMailable() {
+            return !(this.note.type === 'todo' || this.note.type === 'audio')
+        }
     },
 }
