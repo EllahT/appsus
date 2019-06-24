@@ -3,7 +3,7 @@
 export default {
     template: `
         <section>
-            <input type="text" placeholder="Write away..." v-model="text" @change="emitContent"/>
+            <input @keyup.enter="emitAddNote" type="text" placeholder="Write away..." v-model="text" @change="emitContent"/>
         </section>
     `,
     data() {
@@ -18,7 +18,12 @@ export default {
     methods: {
         emitContent() {
             this.$emit('contentChanged', this.text);
+        },
+
+        emitAddNote() {
+            this.$emit('addNewNote', this.text);
             this.text = '';
+
         }
     }
 

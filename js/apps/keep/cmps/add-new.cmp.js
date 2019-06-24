@@ -20,8 +20,8 @@ export default {
             <button class="fas fa-microphone round-btn" @click.prevent="setType('audio')"></button>
         </div>
 
-        <div class="new-notes-types" >
-            <note-text :content="note.content" @contentChanged="changeContent" v-if="note.type === 'txt'"></note-text>
+        <div class="new-notes-types">
+            <note-text :content="note.content" @addNewNote="addNewNote" @contentChanged="changeContent" v-if="note.type === 'txt'"></note-text>
             <note-img @imgNoteChanged="changeContent" v-else-if="note.type === 'img'"></note-img>
             <note-video @videoNoteChanged="changeContent" v-else-if="note.type === 'video'"></note-video>
             <note-todos :content="note.content" @newTodosChanged="changeContent" v-else-if="note.type === 'todo'"></note-todos>
