@@ -13,11 +13,11 @@ export default {
         <form action="#" @submit.prevent="addNewNote">
             <h1>Make a new note happen.</h1>
         <div class="type-btns">
-            <button class="fas fa-font" @click.prevent="setType('txt')"></button>
-            <button class="far fa-image" @click.prevent="setType('img')"></button>
-            <button class="fas fa-tasks" @click.prevent="setType('todo')"></button>
-            <button class="fab fa-youtube" @click.prevent="setType('video')"></button>
-            <button class="fas fa-microphone" @click.prevent="setType('audio')"></button>
+            <button class="fas fa-font round-btn" @click.prevent="setType('txt')"></button>
+            <button class="far fa-image round-btn" @click.prevent="setType('img')"></button>
+            <button class="fas fa-tasks round-btn" @click.prevent="setType('todo')"></button>
+            <button class="fab fa-youtube round-btn" @click.prevent="setType('video')"></button>
+            <button class="fas fa-microphone round-btn" @click.prevent="setType('audio')"></button>
         </div>
 
         <div class="new-notes-types" :style="{'background-color': note.color}">
@@ -32,8 +32,8 @@ export default {
                 <input type="button" class="clr-circle yellow" @click="setClr"/>
                 <input type="button" class="clr-circle purple" @click="setClr"/>
                 <input type="button" class="clr-circle turquoise" @click="setClr"/>
-                <button class="fas fa-thumbtack" @click.prevent="togglePin"></button>
-                <button type="submit" class="fas fa-sticky-note"></button>
+                <button class="round-btn fas fa-thumbtack" @click.prevent="togglePin"></button>
+                <button type="submit" class="round-btn fas fa-plus"></button>
             </div>
         </form>
     </section>
