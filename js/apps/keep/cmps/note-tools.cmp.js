@@ -3,11 +3,11 @@
 export default {
     template: `
     <section class="note-tools">
-    <button :note="note" v-if="note.type === 'todo'" class="round-btn" @click="emitEditClicked"><i class="fas fa-edit"></i></button>
-    <button class="round-btn" @click="toggleClrs"><i class="fas fa-tint"></i></button>
-    <div v-if="isShowClrs" class="clr-picker">
-        <div @click="emitChangeColor(color.code)" v-for="color in colors" :class="color.name" class="clr-circle"></div>
-    </div>
+        <div v-if="isShowClrs" class="clr-picker">
+            <div @click="emitChangeColor(color.code)" v-for="color in colors" :class="color.name" class="clr-circle"></div>
+        </div>
+        <button class="round-btn" @click="toggleClrs"><i class="fas fa-tint"></i></button>
+        <button :note="note" v-if="note.type === 'todo'" class="round-btn" @click="emitEditClicked"><i class="fas fa-edit"></i></button>
     <button class="round-btn pin" :note="note" @click="emitTogglePin"><i class="fas fa-thumbtack"></i></button>
     <button class="round-btn far fa-trash-alt" @click="emitDeletingNote"></button>
     <button v-if="isMailable" class="round-btn fas fa-envelope fa-xs" @click="emitComposeEmail"></button>
